@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1571953651 source:c:\users\mark\documents\workspace\2048\game.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<stdbool.h>
+	<stdlib.h>
+	<stdio.h>
+	"game.h"
+
+1571953828 c:\users\mark\documents\workspace\2048\game.h
+
+1571953569 source:c:\users\mark\documents\workspace\2048\main.c
+	"game.c"
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<stdbool.h>
+	<stdlib.h>
+
+1571953651 c:\users\mark\documents\workspace\2048\game.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<stdbool.h>
+	<stdlib.h>
+	<stdio.h>
+	"game.h"
+

@@ -1,4 +1,4 @@
-
+#include "game.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <stdbool.h>
@@ -29,6 +29,10 @@ void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prende
 
 
 int main(int argc, char *argv[]) {
+
+    tabla uj_tabla = create_tabla(3, 3);
+    print_tabla(&uj_tabla);
+
     SDL_Window *window;
     SDL_Renderer *renderer;
     sdl_init(350, 200, &window, &renderer);
