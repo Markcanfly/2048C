@@ -41,50 +41,89 @@ void swipe(tabla *tabla, char direction){
         int **fields = tabla -> dynarr;
 
         case 'U':
+            for (int oszlop = 0; oszlop < size_x; oszlop++) {
+                int i = 1; // Don't check the first
+                while (i < size_y) {
+                    int *num = &fields[i][oszlop];
+                    int *near_num = &fields[i-1][oszlop];
+                    if (i == 0 || *num == 0) {
+                        i++;
+                    } else if (*near_num == 0) {
+                        *near_num = *num;
+                        *num = 0;
+                        i--;
+                        // Decrement, check last num
+                    } else if (*near_num == *num) {
+                        *near_num += *num;
+                        *num = 0;
+                        i++;
+                    }
+                }
+            }
             break;
         case 'D':
+            for (int oszlop = 0; oszlop < size_x; oszlop++) {
+                int i = size_y - 2; // Don't check the first
+                while (i >= 0) {
+                    int *num = &fields[i][oszlop];
+                    int *near_num = &fields[i-1][oszlop];
+                    if (i == 0 || *num == 0) {
+                        i++;
+                    } else if (*near_num == 0) {
+                        *near_num = *num;
+                        *num = 0;
+                        i--;
+                        // Decrement, check last num
+                    } else if (*near_num == *num) {
+                        *near_num += *num;
+                        *num = 0;
+                        i++;
+                    }
+                }
+            }
             break;
         case 'L':
             for (int sor = 0; sor < size_y; sor++) {
-                    // check each row
-                int i = 1; // Don't even check 0
+                int i = 1; // Don't check the first
                 while (i < size_x) {
-                    if (fields[sor][i] == 0) {
-                        // if at wall or is empty (0), skip
+                    int *num = fields[sor][i];
+                    int *near_num = fields[sor][i-1];
+                    if (u == 0 || *num == 0) {
+                        // At wall, or is empty => skip
                         i++;
-                    } else if (fields[sor][i-1] == 0) {
-                        // Leftmost is 0
-                        fields[sor][i-1] = fields[sor][i];
-                        fields[sor][i] = 0;
-                        // don't increment i => check again
-                    } else if (fields[sor][i-1] == fields[sor][i]) {
-                        // Leftmost is the same num => add
-                        fields[sor][i-1] += fields[sor][i];
-                        fields[sor][i] = 0;
-                        // don't increment i => check again
+                    } else if (*near_num == 0) {
+                        // Is 0, just push
+                        *near_num = *num;
+                        *num = 0;
+                        i--;
+                    } else if (*near_num == *num) {
+                        // The same number => add
+                        *near_num += *num;
+                        *num = 0;
+                        i++;
                     }
-
                 }
             }
             break;
         case 'R':
             for (int sor = 0; sor < size_y; sor++) {
-                    // check each row
-                int i = size_x - 2; // Don't even check the last one
-                while (i > 0) {
-                    if (fields[sor][i] == 0) {
-                        // if at wall or is empty (0), skip
+                int i = size_x - 2; // Don't check the last one
+                while (i >= 0) {
+                    int *num = fields[sor][i];
+                    int *near_num = fields[sor][i+1];
+                    if (i == 0 || *num == 0) {
+                        // At wall, or is empty => skip
                         i++;
-                    } else if (fields[sor][i-1] == 0) {
-                        // Leftmost is 0
-                        fields[sor][i-1] = fields[sor][i];
-                        fields[sor][i] = 0;
-                        // don't increment i => check again
-                    } else if (fields[sor][i-1] == fields[sor][i]) {
-                        // Leftmost is the same num => add
-                        fields[sor][i-1] += fields[sor][i];
-                        fields[sor][i] = 0;
-                        // don't increment i => check again
+                    } else if (*near_num == 0) {
+                        // Is 0, just push
+                        *near_num = *num;
+                        *num = 0;
+                        i--;
+                    } else if (*near_num == *num) {
+                        // The same number => add
+                        *near_num += *num;
+                        *num = 0;
+                        i++;
                     }
                 }
             }
