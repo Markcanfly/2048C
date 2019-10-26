@@ -4,8 +4,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
-
-
+// For testing only
+#include <windows.h>
 
 /* kulon fuggvenybe, hogy olvashatobb legyen */
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL));
 
-    tabla *uj_tabla = create_tabla(4, 4, 2);
+    tabla *uj_tabla = create_tabla(4, 4, 3);
     print_tabla(uj_tabla);
     free_tabla(uj_tabla);
 

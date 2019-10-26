@@ -152,23 +152,24 @@ void add_random(tabla *to_add) {
     int size_y = to_add -> size_y;
     int **fields = to_add -> dynarr;
 
-    coord *uresek = (coord*) malloc(size_x * size_y * sizeof(coord));
+    int* uresek[size_x*size_y];
     int elemcount = 0;
 
+    // Find all empty blocks
     for (int y = 0; y < size_y; y++) {
         for (int x = 0; x < size_x; x++) {
             if (fields[y][x] == 0) {
-                uresek[elemcount++].x = x;
-                uresek[elemcount++].y = y;
+                uresek[elemcount++] = &fields[y][x];
             }
         }
     }
     if (elemcount > 0) {
         // !Don't forget! elemcount = max index + 1
-        coord* found = &uresek[my_rand(0, elemcount)];
-        fields[found->y][found->x] = (my_rand(0, 10) >= 8) ? 4 : 2;
+        int *found = uresek[my_rand(0, elemcount)];
+        *found = (my_rand(0, 10) >= 8) ? 4 : 2;
         // Spawn a 2/4 with a 90/10 % chance.
     }
-
-    free(uresek);
 }
+
+// TODO add renderer
+// TODO add gamestate-checker
