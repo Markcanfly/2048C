@@ -3,6 +3,8 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
+
 
 
 /* kulon fuggvenybe, hogy olvashatobb legyen */
@@ -30,8 +32,11 @@ void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prende
 
 int main(int argc, char *argv[]) {
 
-    tabla uj_tabla = create_tabla(3, 3);
-    print_tabla(&uj_tabla);
+    srand(time(NULL));
+
+    tabla *uj_tabla = create_tabla(4, 4, 2);
+    print_tabla(uj_tabla);
+    free_tabla(uj_tabla);
 
     SDL_Window *window;
     SDL_Renderer *renderer;
