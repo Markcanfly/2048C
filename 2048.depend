@@ -7,10 +7,10 @@
 	<stdio.h>
 	"game.h"
 
-1571953828 c:\users\mark\documents\workspace\2048\game.h
+1571954011 c:\users\mark\documents\workspace\2048\game.h
 
-1571953569 source:c:\users\mark\documents\workspace\2048\main.c
-	"game.c"
+1571953867 source:c:\users\mark\documents\workspace\2048\main.c
+	"game.h"
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<stdbool.h>

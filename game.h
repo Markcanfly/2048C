@@ -9,7 +9,7 @@ typedef struct tabla {
 
 tabla create_tabla(int size_x, int size_y);
 
-//void swipe(tabla *tabla, char direction);
+void swipe(tabla *tabla, char direction);
 
 void free_tabla(tabla *to_free);
 
