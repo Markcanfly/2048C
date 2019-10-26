@@ -43,7 +43,7 @@ void swipe(tabla *tabla, char direction){
         case 'U':
             for (int oszlop = 0; oszlop < size_x; oszlop++) {
                 int i = 1; // Don't check the first
-                while (i < size_y) {
+                while (i >= 0 && i <= size_-1) {
                     int *num = &fields[i][oszlop];
                     int *near_num = &fields[i-1][oszlop];
                     if (i == 0 || *num == 0) {
@@ -64,20 +64,20 @@ void swipe(tabla *tabla, char direction){
         case 'D':
             for (int oszlop = 0; oszlop < size_x; oszlop++) {
                 int i = size_y - 2; // Don't check the first
-                while (i >= 0) {
+                while (i >= 0 && i <= size_-1) {
                     int *num = &fields[i][oszlop];
                     int *near_num = &fields[i-1][oszlop];
                     if (i == 0 || *num == 0) {
-                        i++;
+                        i--;
                     } else if (*near_num == 0) {
                         *near_num = *num;
                         *num = 0;
-                        i--;
+                        i++;
                         // Decrement, check last num
                     } else if (*near_num == *num) {
                         *near_num += *num;
                         *num = 0;
-                        i++;
+                        i--;
                     }
                 }
             }
@@ -85,7 +85,7 @@ void swipe(tabla *tabla, char direction){
         case 'L':
             for (int sor = 0; sor < size_y; sor++) {
                 int i = 1; // Don't check the first
-                while (i < size_x) {
+                while (i >= 0 && i <= size_x-1) {
                     int *num = fields[sor][i];
                     int *near_num = fields[sor][i-1];
                     if (u == 0 || *num == 0) {
@@ -108,22 +108,22 @@ void swipe(tabla *tabla, char direction){
         case 'R':
             for (int sor = 0; sor < size_y; sor++) {
                 int i = size_x - 2; // Don't check the last one
-                while (i >= 0) {
+                while (i >= 0 && i <= size_x-1) {
                     int *num = fields[sor][i];
                     int *near_num = fields[sor][i+1];
                     if (i == 0 || *num == 0) {
                         // At wall, or is empty => skip
-                        i++;
+                        i--;
                     } else if (*near_num == 0) {
                         // Is 0, just push
                         *near_num = *num;
                         *num = 0;
-                        i--;
+                        i++;
                     } else if (*near_num == *num) {
                         // The same number => add
                         *near_num += *num;
                         *num = 0;
-                        i++;
+                        i--;
                     }
                 }
             }
