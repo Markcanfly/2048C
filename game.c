@@ -46,13 +46,13 @@ void print_tabla(tabla *to_print) {
     }
 }
 
-void swipe(tabla *tabla, char direction){
+void swipe(tabla *to_swipe, char direction){
+    int size_x = to_swipe -> size_x;
+    int size_y = to_swipe -> size_y;
+    int **fields = to_swipe -> dynarr;
+
     switch (direction) {
         // Set respective loop parameters
-        int size_x = tabla -> size_x;
-        int size_y = tabla -> size_y;
-        int **fields = tabla -> dynarr;
-
         case 'U':
             for (int oszlop = 0; oszlop < size_x; oszlop++) {
                 int i = 1; // Don't check the first
@@ -69,6 +69,9 @@ void swipe(tabla *tabla, char direction){
                     } else if (*near_num == *num) {
                         *near_num += *num;
                         *num = 0;
+                        i++;
+                    } else {
+                        // Different numbers => skip
                         i++;
                     }
                 }
@@ -91,6 +94,9 @@ void swipe(tabla *tabla, char direction){
                         *near_num += *num;
                         *num = 0;
                         i--;
+                    } else {
+                        // Different numbers => skip
+                        i++;
                     }
                 }
             }
@@ -113,6 +119,9 @@ void swipe(tabla *tabla, char direction){
                         // The same number => add
                         *near_num += *num;
                         *num = 0;
+                        i++;
+                    } else {
+                        // Different numbers => skip
                         i++;
                     }
                 }
@@ -137,6 +146,9 @@ void swipe(tabla *tabla, char direction){
                         *near_num += *num;
                         *num = 0;
                         i--;
+                    } else {
+                        // Different numbers => skip
+                        i++;
                     }
                 }
             }
@@ -145,6 +157,8 @@ void swipe(tabla *tabla, char direction){
             // throw error
             break;
     }
+
+//    add_random(to_swipe);
 }
 
 void add_random(tabla *to_add) {
