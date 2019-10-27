@@ -1,11 +1,10 @@
-#include "game.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
-// For testing only
-#include <windows.h>
+#include "game.h"
 
 /* kulon fuggvenybe, hogy olvashatobb legyen */
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {
@@ -37,11 +36,18 @@ int main(int argc, char *argv[]) {
     tabla *uj_tabla = create_tabla(4, 4, 3);
     print_tabla(uj_tabla);
     for (int i = 0; i < 5; i++) {
-        printf("-------------------");
-        swipe(uj_tabla, 'R');
-        swipe(uj_tabla, 'L');
-        swipe(uj_tabla, 'U');
-        swipe(uj_tabla, 'D');
+        printf("--------U-----------\n");
+        push_up(uj_tabla);
+        print_tabla(uj_tabla);
+        printf("--------L-----------\n");
+        push_left(uj_tabla);
+        print_tabla(uj_tabla);
+        // TODO fix D and R, they don't even do their job right and get bad memory access errors
+        printf("--------D-----------\n");
+        push_down(uj_tabla);
+        print_tabla(uj_tabla);
+        printf("--------R-----------\n");
+        push_right(uj_tabla);
         print_tabla(uj_tabla);
     }
     free_tabla(uj_tabla);
