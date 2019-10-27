@@ -86,18 +86,17 @@ void push_left(tabla *to_push) {
         while (i >= 0 && i <= size_x-1) {
             int *num = &fields[sor][i];
 
-            if (i == 0) {
+            if (i != 0) {
                 int *near_num = &fields[sor][i-1];
                 if (*num == 0) {
                     // num is empty => skip
                     i++;
                 } else if (*near_num == 0) {
-                    // Is 0, just push
                     *near_num = *num;
                     *num = 0;
                     i--;
+                    // Decrement, check last num
                 } else if (*near_num == *num) {
-                    // The same number => add
                     *near_num += *num;
                     *num = 0;
                     i++;
@@ -106,7 +105,7 @@ void push_left(tabla *to_push) {
                     i++;
                 }
             } else {
-                // Skip if i is at edge of field
+                // Skip if num is at edge of field
                 i++;
             }
         }
