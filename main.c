@@ -8,7 +8,19 @@
 #include "game.h"
 #include "push_tiles.h"
 
-/* kulon fuggvenybe, hogy olvashatobb legyen */
+
+/*  -- TODO list - ordered by priority --
+
+    TODO Add game event management: win check, isMoveLegal check
+    TODO fix merging a tile twice in one push
+    TODO menu
+    TODO save game to file
+    TODO highscore table
+    TODO move logging, undo
+    TODO animations
+    TODO proper GUI
+*/
+
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         SDL_Log("Nem indithato az SDL: %s", SDL_GetError());
