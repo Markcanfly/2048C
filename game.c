@@ -44,7 +44,7 @@ void print_tabla(tabla *to_print) {
     }
 }
 
-void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, int x0, int y0, int x1, int y1) {
+void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int x0, int y0, int x1, int y1) {
     int size_x = to_draw -> size_x;
     int size_y = to_draw -> size_y;
     int **fields = to_draw -> dynarr;
@@ -52,19 +52,48 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, int x0, int y0, int x1, 
     const int width = x1 - x0;
     const int height = y1 - y0;
 
+    // Declare variables needed for Text rendering
+    SDL_Surface *num;
+    SDL_Texture *num_t;
+    char num_char[5]; // Size 5 buffer (max val is 8192)
+    SDL_Rect loc = { 0, 0, 0, 0 };
+
+    // Temporary SDL color declaration
+
+    SDL_Color beige = {238,228,218};
+    SDL_Color black = { 0, 0, 0};
+
+
     for (int y = 0; y < size_y; y++) {
         for (int x = 0; x < size_x; x++) {
             if (fields[y][x] != 0) {
-                boxColor(renderer,
-                         x0 + (width / size_x) * x,
-                         y0 + (height / size_y) * y,
-                         x0 + (height / size_x) * (x + 1),
-                         y0 + (height / size_y) * (y + 1),
-                         0xEEE4DAFF);
+                // Create frame coords
+                int x0_ = x0 + (width / size_x) * x;
+                int y0_ = y0 + (height / size_y) * y;
+                int x1_ = x0 + (height / size_x) * (x + 1);
+                int y1_ = y0 + (height / size_y) * (y + 1);
+
+                boxColor(renderer, x0_, y0_, x1_, y1_, 0xEEE4DAFF);
+
+
+                // Text rendering
+
+                itoa(fields[y][x], num_char, 10); // Int to char array
+                num = TTF_RenderUTF8_Blended(num_font, num_char, black);
+                num_t = SDL_CreateTextureFromSurface(renderer, num);
+
+                loc.x = (x1_ + x0_) / 2;
+                loc.y = (y1_ + y0_) / 2;
+                loc.w = num -> w;
+                loc.h = num -> h;
+
+                SDL_RenderCopy(renderer, num_t, NULL, &loc);
             }
         }
     }
 
+    SDL_FreeSurface(num);
+    SDL_DestroyTexture(num_t);
 
 
 

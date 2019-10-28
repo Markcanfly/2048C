@@ -2,6 +2,7 @@
 #define GAME_H_INCLUDED
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 typedef struct tabla {
     int **dynarr;
@@ -20,6 +21,6 @@ void free_tabla(tabla *to_free);
 
 void print_tabla(tabla *to_print);
 
-void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, int x0, int y0, int x1, int y1);
+void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int x0, int y0, int x1, int y1);
 
 #endif // GAME_H_INCLUDED

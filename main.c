@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -13,7 +14,7 @@ void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prende
         SDL_Log("Nem indithato az SDL: %s", SDL_GetError());
         exit(1);
     }
-    SDL_Window *window = SDL_CreateWindow("SDL peldaprogram", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, szeles, magas, 0);
+    SDL_Window *window = SDL_CreateWindow("2048", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, szeles, magas, 0);
     if (window == NULL) {
         SDL_Log("Nem hozhato letre az ablak: %s", SDL_GetError());
         exit(1);
@@ -23,8 +24,8 @@ void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prende
         SDL_Log("Nem hozhato letre a megjelenito: %s", SDL_GetError());
         exit(1);
     }
-    SDL_RenderClear(renderer);
 
+    SDL_RenderClear(renderer);
     *pwindow = window;
     *prenderer = renderer;
 }
@@ -40,14 +41,21 @@ int main(int argc, char *argv[]) {
 
     SDL_Window *window;
     SDL_Renderer *renderer;
-    SDL_SetRenderDrawColor(renderer, 210, 180, 140, 255);
-    draw_tiles(renderer, uj_tabla, 0, 0, 400, 400);
+    //SDL_SetRenderDrawColor(renderer, 210, 180, 140, 255);
+
+    // Open font
+    TTF_Init();
+    TTF_Font *font = TTF_OpenFont("arial.ttf", 32);
+    if (!font) {
+        SDL_Log("Nem sikerult megnyitni a fontot! %s\n", TTF_GetError());
+        exit(1);
+    }
+
     sdl_init(400, 400, &window, &renderer);
+    draw_tiles(renderer, uj_tabla, font, 0, 0, 400, 400);
 
     bool quit = false;
-    bool left = false;
-    bool right = false;
-    bool rajz = true;
+
     while (!quit) {
 
         // Game background
@@ -55,7 +63,7 @@ int main(int argc, char *argv[]) {
 
         // Draw tiles
 
-        draw_tiles(renderer, uj_tabla, 0, 0, 400, 400);
+        draw_tiles(renderer, uj_tabla, font, 0, 0, 400, 400);
 
         SDL_RenderPresent(renderer);
 
@@ -66,21 +74,14 @@ int main(int argc, char *argv[]) {
             /* felhasznaloi esemeny: ilyeneket general az idozito fuggveny */
             case SDL_KEYUP:
                 switch (event.key.keysym.sym) {
-                    case SDLK_LEFT: left = false; rajz = true; push_left(uj_tabla); break;
-                    case SDLK_RIGHT: right = false; rajz = true; push_right(uj_tabla); break;
+                    case SDLK_LEFT: push_left(uj_tabla); break;
+                    case SDLK_RIGHT: push_right(uj_tabla); break;
                     case SDLK_UP: push_up(uj_tabla); break;
                     case SDLK_DOWN: push_down(uj_tabla); break;
                     case SDLK_ESCAPE: quit = true; break;
                 }
                 printf("---------\n");
                 print_tabla(uj_tabla);
-                break;
-
-            case SDL_KEYDOWN:
-                switch (event.key.keysym.sym) {
-                    case SDLK_LEFT: left = true; rajz = true; break;
-                    case SDLK_RIGHT: right = true; rajz = true; break;
-                }
                 break;
 
             case SDL_QUIT:
@@ -90,6 +91,7 @@ int main(int argc, char *argv[]) {
 
     }
     free_tabla(uj_tabla);
+    TTF_CloseFont(font);
     SDL_Quit();
     return 0;
 }
