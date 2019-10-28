@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "game.h"
+#include "push_tiles.h"
 
 /* kulon fuggvenybe, hogy olvashatobb legyen */
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {
@@ -35,44 +36,28 @@ int main(int argc, char *argv[]) {
 
     tabla *uj_tabla = create_tabla(4, 4, 3);
     print_tabla(uj_tabla);
-    for (int i = 0; i < 5; i++) {
-        printf("--------U-----------\n");
-        push_up(uj_tabla);
-        print_tabla(uj_tabla);
-        printf("--------L-----------\n");
-        push_left(uj_tabla);
-        print_tabla(uj_tabla);
-        // TODO fix D and R, they don't even do their job right and get bad memory access errors
-        printf("--------D-----------\n");
-        push_down(uj_tabla);
-        print_tabla(uj_tabla);
-        printf("--------R-----------\n");
-        push_right(uj_tabla);
-        print_tabla(uj_tabla);
-    }
-    free_tabla(uj_tabla);
+
 
     SDL_Window *window;
     SDL_Renderer *renderer;
-    sdl_init(350, 200, &window, &renderer);
+    SDL_SetRenderDrawColor(renderer, 210, 180, 140, 255);
+    draw_tiles(renderer, uj_tabla, 0, 0, 400, 400);
+    sdl_init(400, 400, &window, &renderer);
 
     bool quit = false;
     bool left = false;
     bool right = false;
     bool rajz = true;
     while (!quit) {
-        if (rajz) {
-            if (left)
-                filledTrigonRGBA(renderer, 50, 100, 150, 50, 150, 150, 0x00, 0xC0, 0x00, 0xFF);
-            else
-                filledTrigonRGBA(renderer, 50, 100, 150, 50, 150, 150, 0xFF, 0x00, 0x00, 0xFF);
-            if (right)
-                filledTrigonRGBA(renderer, 300, 100, 200, 50, 200, 150, 0x00, 0xC0, 0x00, 0xFF);
-            else
-                filledTrigonRGBA(renderer, 300, 100, 200, 50, 200, 150, 0xFF, 0x00, 0x00, 0xFF);
-            SDL_RenderPresent(renderer);
-            rajz = false;
-        }
+
+        // Game background
+        boxColor(renderer, 0, 0, 400, 400, 0xD2B48CFF);
+
+        // Draw tiles
+
+        draw_tiles(renderer, uj_tabla, 0, 0, 400, 400);
+
+        SDL_RenderPresent(renderer);
 
         SDL_Event event;
         SDL_WaitEvent(&event);
@@ -81,10 +66,14 @@ int main(int argc, char *argv[]) {
             /* felhasznaloi esemeny: ilyeneket general az idozito fuggveny */
             case SDL_KEYUP:
                 switch (event.key.keysym.sym) {
-                    case SDLK_LEFT: left = false; rajz = true; break;
-                    case SDLK_RIGHT: right = false; rajz = true; break;
+                    case SDLK_LEFT: left = false; rajz = true; push_left(uj_tabla); break;
+                    case SDLK_RIGHT: right = false; rajz = true; push_right(uj_tabla); break;
+                    case SDLK_UP: push_up(uj_tabla); break;
+                    case SDLK_DOWN: push_down(uj_tabla); break;
                     case SDLK_ESCAPE: quit = true; break;
                 }
+                printf("---------\n");
+                print_tabla(uj_tabla);
                 break;
 
             case SDL_KEYDOWN:
@@ -98,8 +87,9 @@ int main(int argc, char *argv[]) {
                 quit = true;
                 break;
         }
-    }
 
+    }
+    free_tabla(uj_tabla);
     SDL_Quit();
     return 0;
 }

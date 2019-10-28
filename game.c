@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -41,6 +42,32 @@ void print_tabla(tabla *to_print) {
         }
         printf("\n");
     }
+}
+
+void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, int x0, int y0, int x1, int y1) {
+    int size_x = to_draw -> size_x;
+    int size_y = to_draw -> size_y;
+    int **fields = to_draw -> dynarr;
+
+    const int width = x1 - x0;
+    const int height = y1 - y0;
+
+    for (int y = 0; y < size_y; y++) {
+        for (int x = 0; x < size_x; x++) {
+            if (fields[y][x] != 0) {
+                boxColor(renderer,
+                         x0 + (width / size_x) * x,
+                         y0 + (height / size_y) * y,
+                         x0 + (height / size_x) * (x + 1),
+                         y0 + (height / size_y) * (y + 1),
+                         0xEEE4DAFF);
+            }
+        }
+    }
+
+
+
+
 }
 
 // TODO add renderer
