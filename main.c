@@ -10,16 +10,13 @@
 
 
 /*  -- TODO list - ordered by priority --
-
-    TODO Add game event management: win check, isMoveLegal check
-        TODO win case raised in move func upon generating 2048 tiles
-    TODO fix merging a tile twice in one push
     TODO menu
     TODO save game to file
     TODO highscore table
     TODO move logging, undo
     TODO animations
     TODO proper GUI
+    TODO fix merging a tile twice in one push? cannot reproduce, got it on video
 */
 
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {

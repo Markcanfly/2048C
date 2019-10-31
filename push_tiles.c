@@ -31,6 +31,11 @@ void push_up(tabla *to_push) {
                     // Decrement, check last num
                 } else if (*near_num == *num) {
                     *near_num += *num;
+
+                    // Win check
+                    if (*near_num == 2048)
+                        printf("Game won.");
+
                     *num = 0;
                     valid_move = true;
                     i++;
@@ -72,6 +77,11 @@ void push_down(tabla *to_push) {
                     // Decrement, check last num
                 } else if (*near_num == *num) {
                     *near_num += *num;
+
+                    // Win check
+                    if (*near_num == 2048)
+                        printf("Game won.");
+
                     *num = 0;
                     valid_move = true;
                     i--;
@@ -114,6 +124,11 @@ void push_left(tabla *to_push) {
                     // Decrement, check last num
                 } else if (*near_num == *num) {
                     *near_num += *num;
+
+                    // Win check
+                    if (*near_num == 2048)
+                        printf("Game won.");
+
                     *num = 0;
                     valid_move = true;
                     i++;
@@ -157,6 +172,11 @@ void push_right(tabla *to_push) {
                 } else if (*near_num == *num) {
                     // The same number => add
                     *near_num += *num;
+
+                    // Win check
+                    if (*near_num == 2048)
+                        printf("Game won.");
+
                     *num = 0;
                     valid_move = true;
                     i--;
