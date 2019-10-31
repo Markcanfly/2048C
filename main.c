@@ -12,8 +12,7 @@
 /*  -- TODO list - ordered by priority --
 
     TODO Add game event management: win check, isMoveLegal check
-        TODO win case raised in move func upon generating 2048 tile
-        TODO losecheck in separate function
+        TODO win case raised in move func upon generating 2048 tiles
     TODO fix merging a tile twice in one push
     TODO menu
     TODO save game to file

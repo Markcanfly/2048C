@@ -99,5 +99,39 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
 
 }
 
+bool lost(tabla* to_check) {
+    int size_x = to_check -> size_x;
+    int size_y = to_check -> size_y;
+    int **fields = to_check -> dynarr;
+
+    for (int y = 0; y < size_y; y++) {
+        for (int x = 0; x < size_x; x++) {
+            int* current = &fields[y][x];
+            if (*current == 0)
+                return false;
+
+            if (y != size_y - 1) {
+                // Not checking last row
+                int* next_v = &fields[y+1][x];
+                if (*next_v == 0)
+                    return false;
+                if (*current == *next_v)
+                    return false;
+            }
+
+            if (x != size_x - 1) {
+                // Not checking last column
+                int *next_h = &fields[y][x+1];
+                if (*next_h == 0)
+                    return false;
+                if (*next_h == *current)
+                    return false;
+            }
+        }
+    }
+
+    return true;
+
+}
 // TODO add renderer
 // TODO add gamestate-checker
