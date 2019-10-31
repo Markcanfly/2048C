@@ -23,4 +23,5 @@ void print_tabla(tabla *to_print);
 
 void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int x0, int y0, int x1, int y1);
 
+
 #endif // GAME_H_INCLUDED

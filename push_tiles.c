@@ -1,5 +1,6 @@
 #include "push_tiles.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
 int my_rand(int from, int to) {
     return rand() % (to - from) + from;
@@ -9,6 +10,7 @@ void push_up(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    bool valid_move = false;
 
     for (int oszlop = 0; oszlop < size_x; oszlop++) {
         int i = 1; // Don't check the first
@@ -23,11 +25,13 @@ void push_up(tabla *to_push) {
                 } else if (*near_num == 0) {
                     *near_num = *num;
                     *num = 0;
+                    valid_move = true;
                     i--;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
                     *near_num += *num;
                     *num = 0;
+                    valid_move = true;
                     i++;
                 } else {
                     // Different numbers => skip
@@ -39,12 +43,14 @@ void push_up(tabla *to_push) {
             }
         }
     }
-    add_random(to_push);
+    if (valid_move)
+        add_random(to_push);
 }
 void push_down(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    bool valid_move = false;
 
     for (int oszlop = 0; oszlop < size_x; oszlop++) {
         int i = size_y - 2; // Don't check the first
@@ -58,11 +64,13 @@ void push_down(tabla *to_push) {
                 } else if (*near_num == 0) {
                     *near_num = *num;
                     *num = 0;
+                    valid_move = true;
                     i++;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
                     *near_num += *num;
                     *num = 0;
+                    valid_move = true;
                     i--;
                 } else {
                     // Different numbers => skip
@@ -74,12 +82,14 @@ void push_down(tabla *to_push) {
             }
         }
     }
-    add_random(to_push);
+    if (valid_move)
+        add_random(to_push);
 }
 void push_left(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    bool valid_move = false;
 
     for (int sor = 0; sor < size_y; sor++) {
         int i = 1; // Don't check the first
@@ -94,11 +104,13 @@ void push_left(tabla *to_push) {
                 } else if (*near_num == 0) {
                     *near_num = *num;
                     *num = 0;
+                    valid_move = true;
                     i--;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
                     *near_num += *num;
                     *num = 0;
+                    valid_move = true;
                     i++;
                 } else {
                     // Different numbers => skip
@@ -110,12 +122,14 @@ void push_left(tabla *to_push) {
             }
         }
     }
-    add_random(to_push);
+    if (valid_move)
+        add_random(to_push);
 }
 void push_right(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    bool valid_move = false;
 
     for (int sor = 0; sor < size_y; sor++) {
         int i = size_x - 2; // Don't check the last one
@@ -131,11 +145,13 @@ void push_right(tabla *to_push) {
                     // Is 0, just push
                     *near_num = *num;
                     *num = 0;
+                    valid_move = true;
                     i++;
                 } else if (*near_num == *num) {
                     // The same number => add
                     *near_num += *num;
                     *num = 0;
+                    valid_move = true;
                     i--;
                 } else {
                     // Different numbers => skip
@@ -147,7 +163,8 @@ void push_right(tabla *to_push) {
             }
         }
     }
-    add_random(to_push);
+    if (valid_move)
+        add_random(to_push);
 }
 
 void add_random(tabla *to_add) {

@@ -12,6 +12,8 @@
 /*  -- TODO list - ordered by priority --
 
     TODO Add game event management: win check, isMoveLegal check
+        TODO win case raised in move func upon generating 2048 tile
+        TODO losecheck in separate function
     TODO fix merging a tile twice in one push
     TODO menu
     TODO save game to file
@@ -83,7 +85,7 @@ int main(int argc, char *argv[]) {
         SDL_WaitEvent(&event);
 
         switch (event.type) {
-            /* felhasznaloi esemeny: ilyeneket general az idozito fuggveny */
+
             case SDL_KEYUP:
                 switch (event.key.keysym.sym) {
                     case SDLK_LEFT: push_left(uj_tabla); break;
