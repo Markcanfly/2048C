@@ -73,7 +73,7 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
                 int x1_ = x0 + (height / size_x) * (x + 1);
                 int y1_ = y0 + (height / size_y) * (y + 1);
 
-                boxColor(renderer, x0_, y0_, x1_, y1_, 0xEEE4DAFF);
+                roundedBoxColor(renderer, x0_, y0_, x1_, y1_, 10, 0xEEE4DAFF);
 
 
                 // Text rendering
@@ -82,8 +82,8 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
                 num = TTF_RenderUTF8_Blended(num_font, num_char, black);
                 num_t = SDL_CreateTextureFromSurface(renderer, num);
 
-                loc.x = (x1_ + x0_) / 2;
-                loc.y = (y1_ + y0_) / 2;
+                loc.x = (x1_ + x0_) / 2 - (num -> w / 2);
+                loc.y = (y1_ + y0_) / 2 - (num -> h / 2);
                 loc.w = num -> w;
                 loc.h = num -> h;
 
