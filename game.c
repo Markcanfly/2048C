@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "style.h"
 #include "game.h"
 #include "push_tiles.h"
 
@@ -53,7 +54,7 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
     const int height = y1 - y0;
 
     // Declare variables needed for Text rendering
-    SDL_Surface *num;
+    SDL_Surface *num_s;
     SDL_Texture *num_t;
     char num_char[5]; // Size 5 buffer (max val is 8192)
     SDL_Rect loc = { 0, 0, 0, 0 };
@@ -73,26 +74,32 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
                 int x1_ = x0 + (height / size_x) * (x + 1);
                 int y1_ = y0 + (height / size_y) * (y + 1);
 
-                roundedBoxColor(renderer, x0_, y0_, x1_, y1_, 10, 0xEEE4DAFF);
+                // Get colors and create box
+                int number = fields[y][x];
 
+                tile this_tile = getTile(number);
+
+
+
+                roundedBoxColor(renderer, x0_, y0_, x1_, y1_, 10, this_tile.backgroundColor);
 
                 // Text rendering
 
-                itoa(fields[y][x], num_char, 10); // Int to char array
-                num = TTF_RenderUTF8_Blended(num_font, num_char, black);
-                num_t = SDL_CreateTextureFromSurface(renderer, num);
+                itoa(number, num_char, 10); // Int to char array
+                num_s = TTF_RenderUTF8_Blended(num_font, num_char, this_tile.textColor);
+                num_t = SDL_CreateTextureFromSurface(renderer, num_s);
 
-                loc.x = (x1_ + x0_) / 2 - (num -> w / 2);
-                loc.y = (y1_ + y0_) / 2 - (num -> h / 2);
-                loc.w = num -> w;
-                loc.h = num -> h;
+                loc.x = (x1_ + x0_) / 2 - (num_s -> w / 2);
+                loc.y = (y1_ + y0_) / 2 - (num_s -> h / 2);
+                loc.w = num_s -> w;
+                loc.h = num_s -> h;
 
                 SDL_RenderCopy(renderer, num_t, NULL, &loc);
             }
         }
     }
 
-    SDL_FreeSurface(num);
+    SDL_FreeSurface(num_s);
     SDL_DestroyTexture(num_t);
 
 

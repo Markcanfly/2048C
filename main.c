@@ -68,6 +68,8 @@ int main(int argc, char *argv[]) {
 
     while (!quit) {
 
+        SDL_RenderClear(renderer);
+
         // Game background
         boxColor(renderer, 0, 0, 400, 400, 0xD2B48CFF);
 
