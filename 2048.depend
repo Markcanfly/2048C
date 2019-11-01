@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1572637259 source:c:\users\mark\documents\workspace\2048\game.c
+1572640629 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -10,20 +10,21 @@
 	"game.h"
 	"push_tiles.h"
 
-1572527206 c:\users\mark\documents\workspace\2048\game.h
+1572640613 c:\users\mark\documents\workspace\2048\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
 1572206383 c:\users\mark\documents\workspace\2048\push_tiles.h
 	"game.h"
 
-1572529259 source:c:\users\mark\documents\workspace\2048\push_tiles.c
+1572640556 source:c:\users\mark\documents\workspace\2048\push_tiles.c
 	<stdlib.h>
 	<stdbool.h>
+	<stdio.h>
 	"push_tiles.h"
 	"game.h"
 
-1572637458 source:c:\users\mark\documents\workspace\2048\main.c
+1572640520 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -37,7 +38,7 @@
 1572633599 c:\users\mark\documents\workspace\2048\style.h
 	<SDL2/SDL.h>
 
-1572637308 source:c:\users\mark\documents\workspace\2048\style.c
+1572638120 source:c:\users\mark\documents\workspace\2048\style.c
 	"style.h"
 	<math.h>
 

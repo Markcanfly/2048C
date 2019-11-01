@@ -16,7 +16,6 @@
     TODO move logging, undo
     TODO animations
     TODO proper GUI
-    TODO fix merging a tile twice in one push? cannot reproduce, got it on video
 */
 
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {

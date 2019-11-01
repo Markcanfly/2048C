@@ -59,11 +59,6 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
     char num_char[5]; // Size 5 buffer (max val is 8192)
     SDL_Rect loc = { 0, 0, 0, 0 };
 
-    // Temporary SDL color declaration
-
-    SDL_Color beige = {238,228,218};
-    SDL_Color black = { 0, 0, 0};
-
 
     for (int y = 0; y < size_y; y++) {
         for (int x = 0; x < size_x; x++) {

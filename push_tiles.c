@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h> //debug only
+#include <string.h>
 #include "push_tiles.h"
 #include "game.h"
 
@@ -12,8 +14,11 @@ void push_up(tabla *to_push) {
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     bool valid_move = false;
+    bool just_merged[size_y]; // Store for each val if it's just been merged
 
     for (int oszlop = 0; oszlop < size_x; oszlop++) {
+        memset(just_merged, 0, sizeof(bool) * size_y); // zero out just_merged
+
         int i = 1; // Don't check the first
         while (i >= 0 && i <= size_y-1) {
             int *num = &fields[i][oszlop];
@@ -30,14 +35,19 @@ void push_up(tabla *to_push) {
                     i--;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
-                    *near_num += *num;
+                    if (!just_merged[i]) {
+                        *near_num += *num;
+                        *num = 0;
+                        just_merged[i] = true;
 
-                    // Win check
-                    if (*near_num == 2048)
-                        printf("Game won.");
+                        // Win check
+                        if (*near_num == 2048)
+                            printf("Game won.");
 
-                    *num = 0;
-                    valid_move = true;
+                        valid_move = true;
+                    } else {
+                        just_merged[i] = false;
+                    }
                     i++;
                 } else {
                     // Different numbers => skip
@@ -59,8 +69,11 @@ void push_down(tabla *to_push) {
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     bool valid_move = false;
+    bool just_merged[size_y]; // Store for each val if it's just been merged
 
     for (int oszlop = 0; oszlop < size_x; oszlop++) {
+        memset(just_merged, 0, sizeof(bool) * size_y); // zero out just_merged
+
         int i = size_y - 2; // Don't check the first
         while (i >= 0 && i <= size_y-1) {
             int *num = &fields[i][oszlop];
@@ -76,14 +89,19 @@ void push_down(tabla *to_push) {
                     i++;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
+                    if (!just_merged[i]) {
                     *near_num += *num;
+                    *num = 0;
+                    just_merged[i] = true;
 
                     // Win check
                     if (*near_num == 2048)
                         printf("Game won.");
 
-                    *num = 0;
                     valid_move = true;
+                    } else {
+                        just_merged[i] = false;
+                    }
                     i--;
                 } else {
                     // Different numbers => skip
@@ -105,8 +123,11 @@ void push_left(tabla *to_push) {
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     bool valid_move = false;
+    bool just_merged[size_x]; // Store for each val if it's just been merged
 
     for (int sor = 0; sor < size_y; sor++) {
+        memset(just_merged, 0, sizeof(bool)*size_x); // zero out just_merged
+
         int i = 1; // Don't check the first
         while (i >= 0 && i <= size_x-1) {
             int *num = &fields[sor][i];
@@ -123,14 +144,19 @@ void push_left(tabla *to_push) {
                     i--;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
-                    *near_num += *num;
+                    if (!just_merged[i]) {
+                        just_merged[i] = true;
+                        *near_num += *num;
+                        *num = 0;
 
-                    // Win check
-                    if (*near_num == 2048)
-                        printf("Game won.");
+                        // Win check
+                        if (*near_num == 2048)
+                            printf("Game won.");
 
-                    *num = 0;
-                    valid_move = true;
+                        valid_move = true;
+                    } else {
+                        just_merged[i] = false;
+                    }
                     i++;
                 } else {
                     // Different numbers => skip
@@ -152,8 +178,11 @@ void push_right(tabla *to_push) {
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     bool valid_move = false;
+    bool just_merged[size_x]; // Store for each val if it's just been merged
 
     for (int sor = 0; sor < size_y; sor++) {
+        memset(just_merged, 0, sizeof(bool)*size_x); // zero out just_merged
+
         int i = size_x - 2; // Don't check the last one
         while (i >= 0 && i <= size_x-1) {
             int *num = &fields[sor][i];
@@ -171,14 +200,19 @@ void push_right(tabla *to_push) {
                     i++;
                 } else if (*near_num == *num) {
                     // The same number => add
-                    *near_num += *num;
+                    if (!just_merged[i]) {
+                        *near_num += *num;
+                        *num = 0;
+                        just_merged[i] = true;
 
-                    // Win check
-                    if (*near_num == 2048)
-                        printf("Game won.");
+                        // Win check
+                        if (*near_num == 2048)
+                            printf("Game won.");
 
-                    *num = 0;
-                    valid_move = true;
+                        valid_move = true;
+                    } else {
+                        just_merged[i] = false;
+                    }
                     i--;
                 } else {
                     // Different numbers => skip
