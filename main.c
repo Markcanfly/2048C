@@ -7,6 +7,7 @@
 #include <time.h>
 #include "game.h"
 #include "push_tiles.h"
+#include "menu.h"
 
 
 /*  -- TODO list - ordered by priority --
@@ -61,44 +62,70 @@ int main(int argc, char *argv[]) {
     }
 
     sdl_init(400, 400, &window, &renderer);
-    draw_tiles(renderer, uj_tabla, font, 0, 0, 400, 400);
 
     bool quit = false;
-
+    bool quit_game = true;
     while (!quit) {
+        while (!quit_game) {
+            SDL_RenderClear(renderer);
 
-        SDL_RenderClear(renderer);
+            // Game background
+            boxColor(renderer, 0, 0, 400, 400, 0xD2B48CFF);
 
-        // Game background
-        boxColor(renderer, 0, 0, 400, 400, 0xD2B48CFF);
+            // Draw tiles
 
-        // Draw tiles
+            draw_tiles(renderer, uj_tabla, font, 0, 0, 400, 400);
+            SDL_RenderPresent(renderer);
 
-        draw_tiles(renderer, uj_tabla, font, 0, 0, 400, 400);
+            SDL_Event game_event;
+            SDL_WaitEvent(&game_event);
 
-        SDL_RenderPresent(renderer);
+            switch (game_event.type) {
 
-        SDL_Event event;
-        SDL_WaitEvent(&event);
+                case SDL_KEYUP:
+                    switch (game_event.key.keysym.sym) {
+                        case SDLK_LEFT: push_left(uj_tabla); break;
+                        case SDLK_RIGHT: push_right(uj_tabla); break;
+                        case SDLK_UP: push_up(uj_tabla); break;
+                        case SDLK_DOWN: push_down(uj_tabla); break;
+                        case SDLK_ESCAPE: quit_game = true; break;
+                    }
+                    printf("---------\n");
+                    print_tabla(uj_tabla);
+                    break;
 
-        switch (event.type) {
-
-            case SDL_KEYUP:
-                switch (event.key.keysym.sym) {
-                    case SDLK_LEFT: push_left(uj_tabla); break;
-                    case SDLK_RIGHT: push_right(uj_tabla); break;
-                    case SDLK_UP: push_up(uj_tabla); break;
-                    case SDLK_DOWN: push_down(uj_tabla); break;
-                    case SDLK_ESCAPE: quit = true; break;
-                }
-                printf("---------\n");
-                print_tabla(uj_tabla);
-                break;
-
-            case SDL_QUIT:
-                quit = true;
-                break;
+                case SDL_QUIT:
+                    quit = true;
+                    break;
+            }
         }
+
+    SDL_Event event;
+    SDL_WaitEvent(&event);
+    SDL_RenderClear(renderer);
+
+    int choice = -1; // Store the menu option choice here
+
+    switch (event.type) {
+        case SDL_MOUSEMOTION:
+            choice = draw_menu_main(renderer, font, 0, 0, 400, 400, event.motion.x, event.motion.y, false);
+            break;
+        case SDL_MOUSEBUTTONUP:
+            choice = draw_menu_main(renderer, font, 0, 0, 400, 400, event.button.x, event.button.y, true);
+            switch (choice) {
+                case 0:
+                    quit_game = false;
+                    break;
+            }
+            break;
+        case SDL_KEYDOWN:
+            switch (event.key.keysym.sym) {
+                case SDLK_ESCAPE: quit = true; break;
+            }
+            break;
+
+    }
+    SDL_RenderPresent(renderer);
 
     }
     free_tabla(uj_tabla);

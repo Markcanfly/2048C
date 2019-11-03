@@ -72,7 +72,7 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
                 // Get colors and create box
                 int number = fields[y][x];
 
-                tile this_tile = getTile(number);
+                rect_style this_tile = getTile(number);
 
 
 

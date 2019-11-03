@@ -3,11 +3,17 @@
 
 #include <SDL2/SDL.h>
 
-typedef struct tile {
+typedef struct rect_style {
     SDL_Color textColor;
     Uint32 backgroundColor;
-}tile;
+}rect_style;
 
-tile getTile(int tile_num);
+struct button_style {
+    rect_style inactive;
+    rect_style hover;
+    rect_style down;
+};
+
+rect_style getTile(int tile_num);
 
 #endif // STYLE_H_INCLUDED

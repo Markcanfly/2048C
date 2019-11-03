@@ -5,7 +5,7 @@
     the index in the array is the log2(n) of the tile num,
     except when it's >2048, in which case it's 0 (black).
 */
-tile tiles[12] = {
+rect_style tiles[12] = {
     {{0, 0, 0, 255}, 0xFFFFFFFF}, // super
     {{119, 110, 101, 255}, 0xEEE4DAFF}, // 2
     {{119, 110, 101, 255}, 0xEDE0C8FF}, // 4
@@ -20,7 +20,7 @@ tile tiles[12] = {
     {{249, 246, 242, 255}, 0xEDC22EFF} // 2048
 };
 
-tile getTile(int tile_num) {
+rect_style getTile(int tile_num) {
     if (tile_num > 2048)
         return tiles[0];
 
