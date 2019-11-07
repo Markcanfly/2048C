@@ -42,7 +42,7 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
 
     // Draw each menu item
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < count_menu_elems; i++) {
         int r_x0 = buttons_frame.x;
         int r_y0 = (buttons_frame.h / count_menu_elems) * i;
         int r_x1 = buttons_frame.x + buttons_frame.w;
@@ -68,8 +68,8 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
         button_s = TTF_RenderUTF8_Blended(font, main_menu[i].title, btn_style.textColor);
         button_t = SDL_CreateTextureFromSurface(renderer, button_s);
 
-        loc.x = (r_x0 + r_x1) / 2;
-        loc.y = (r_y0 + r_y1) / 2;
+        loc.x = r_x0 + (buttons_frame.w - button_s -> w) / 2;
+        loc.y = r_y0 + (((buttons_frame.h - y0) / count_menu_elems) - button_s -> h) / 2;
         loc.w = button_s -> w;
         loc.h = button_s -> h;
 

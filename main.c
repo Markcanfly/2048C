@@ -99,7 +99,6 @@ int main(int argc, char *argv[]) {
                     break;
             }
         }
-
     SDL_Event event;
     SDL_WaitEvent(&event);
     SDL_RenderClear(renderer);
