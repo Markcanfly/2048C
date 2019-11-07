@@ -11,9 +11,8 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO fix menu items not rendering if cursor is outside of window
-    TODO fix menu not rendering until cursor move
-    TODO menu
+
+    TODO fix menu not rerendering until cursor move after exiting game
     TODO save game to file
     TODO highscore table
     TODO move logging, undo
@@ -73,6 +72,7 @@ int main(int argc, char *argv[]) {
     bool quit = false;
     bool quit_game = true;
     while (!quit) {
+
         while (!quit_game) {
             SDL_RenderClear(renderer);
 
@@ -112,32 +112,39 @@ int main(int argc, char *argv[]) {
 
 
         int choice = -1; // Store the menu option choice here
+        int mouse_x;
+        int mouse_y;
+        int clicked = false;
 
         switch (event.type) {
             case SDL_MOUSEMOTION:
-                SDL_RenderClear(renderer);
-                choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.motion.x, event.motion.y, false);
+                mouse_x = event.motion.x;
+                mouse_y = event.motion.y;
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                // Print without storing the choice
-                SDL_RenderClear(renderer);
-                draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.button.x, event.button.y, true);
+                mouse_x = event.button.x;
+                mouse_y = event.button.y;
+                clicked = true;
                 break;
             case SDL_MOUSEBUTTONUP:
-                SDL_RenderClear(renderer);
-                choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.button.x, event.button.y, true);
-                switch (choice) {
-                    case 0:
-                        quit_game = false;
-                        break;
-                }
+                mouse_x = event.button.x;
+                mouse_y = event.button.y;
+                clicked = true;
                 break;
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
                     case SDLK_ESCAPE: quit = true; break;
                 }
                 break;
-
+        }
+        SDL_RenderClear(renderer);
+        choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, mouse_x, mouse_y, clicked);
+        switch (choice) {
+            case 0:
+                if (clicked) {
+                    quit_game = false;
+                }
+                break;
         }
         SDL_RenderPresent(renderer);
 
