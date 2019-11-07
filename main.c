@@ -109,19 +109,22 @@ int main(int argc, char *argv[]) {
 
         SDL_Event event;
         SDL_WaitEvent(&event);
-        SDL_RenderClear(renderer);
+
 
         int choice = -1; // Store the menu option choice here
 
         switch (event.type) {
             case SDL_MOUSEMOTION:
+                SDL_RenderClear(renderer);
                 choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.motion.x, event.motion.y, false);
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 // Print without storing the choice
+                SDL_RenderClear(renderer);
                 draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.button.x, event.button.y, true);
                 break;
             case SDL_MOUSEBUTTONUP:
+                SDL_RenderClear(renderer);
                 choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.button.x, event.button.y, true);
                 switch (choice) {
                     case 0:

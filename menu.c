@@ -18,6 +18,8 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
     draws the frame, and returns the id of the menu item
     that the cursor's hovering above.
     */
+
+    printf("%d %d\n", mouse_x, mouse_y); // DEBUG ONLY
     menu_item main_menu[3] = {
         {0, "Play", menu_button},
         {1, "High scores", menu_button},
