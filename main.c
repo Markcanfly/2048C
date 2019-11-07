@@ -109,6 +109,10 @@ int main(int argc, char *argv[]) {
         case SDL_MOUSEMOTION:
             choice = draw_menu_main(renderer, font, 0, 0, 400, 400, event.motion.x, event.motion.y, false);
             break;
+        case SDL_MOUSEBUTTONDOWN:
+            // Print without storing the choice
+            draw_menu_main(renderer, font, 0, 0, 400, 400, event.button.x, event.button.y, true);
+            break;
         case SDL_MOUSEBUTTONUP:
             choice = draw_menu_main(renderer, font, 0, 0, 400, 400, event.button.x, event.button.y, true);
             switch (choice) {
@@ -127,6 +131,7 @@ int main(int argc, char *argv[]) {
     SDL_RenderPresent(renderer);
 
     }
+
     free_tabla(uj_tabla);
     TTF_CloseFont(font);
     SDL_Quit();
