@@ -57,7 +57,6 @@ int main(int argc, char *argv[]) {
 
     SDL_Window *window;
     SDL_Renderer *renderer;
-    //SDL_SetRenderDrawColor(renderer, 210, 180, 140, 255);
 
     // Open font
     TTF_Init();
@@ -139,12 +138,12 @@ int main(int argc, char *argv[]) {
         }
         SDL_RenderClear(renderer);
         choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, mouse_x, mouse_y, clicked);
-        switch (choice) {
-            case 0:
-                if (clicked) {
+        if (clicked) {
+            switch (choice) {
+                case 0:
                     quit_game = false;
-                }
-                break;
+                    break;
+            }
         }
         SDL_RenderPresent(renderer);
 
