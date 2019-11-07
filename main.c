@@ -11,6 +11,8 @@
 
 
 /*  -- TODO list - ordered by priority --
+    TODO fix menu items not rendering if cursor is outside of window
+    TODO fix menu not rendering until cursor move
     TODO menu
     TODO save game to file
     TODO highscore table
@@ -18,6 +20,11 @@
     TODO animations
     TODO proper GUI
 */
+
+// Hyperparameters
+
+const int WINSIZE_X = 400;
+const int WINSIZE_Y = 400;
 
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -61,7 +68,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    sdl_init(400, 400, &window, &renderer);
+    sdl_init(WINSIZE_X, WINSIZE_X, &window, &renderer);
 
     bool quit = false;
     bool quit_game = true;
@@ -70,11 +77,11 @@ int main(int argc, char *argv[]) {
             SDL_RenderClear(renderer);
 
             // Game background
-            boxColor(renderer, 0, 0, 400, 400, 0xD2B48CFF);
+            boxColor(renderer, 0, 0, WINSIZE_X, WINSIZE_Y, 0xD2B48CFF);
 
             // Draw tiles
 
-            draw_tiles(renderer, uj_tabla, font, 0, 0, 400, 400);
+            draw_tiles(renderer, uj_tabla, font, 0, 0, WINSIZE_X, WINSIZE_Y);
             SDL_RenderPresent(renderer);
 
             SDL_Event game_event;
@@ -99,36 +106,37 @@ int main(int argc, char *argv[]) {
                     break;
             }
         }
-    SDL_Event event;
-    SDL_WaitEvent(&event);
-    SDL_RenderClear(renderer);
 
-    int choice = -1; // Store the menu option choice here
+        SDL_Event event;
+        SDL_WaitEvent(&event);
+        SDL_RenderClear(renderer);
 
-    switch (event.type) {
-        case SDL_MOUSEMOTION:
-            choice = draw_menu_main(renderer, font, 0, 0, 400, 400, event.motion.x, event.motion.y, false);
-            break;
-        case SDL_MOUSEBUTTONDOWN:
-            // Print without storing the choice
-            draw_menu_main(renderer, font, 0, 0, 400, 400, event.button.x, event.button.y, true);
-            break;
-        case SDL_MOUSEBUTTONUP:
-            choice = draw_menu_main(renderer, font, 0, 0, 400, 400, event.button.x, event.button.y, true);
-            switch (choice) {
-                case 0:
-                    quit_game = false;
-                    break;
-            }
-            break;
-        case SDL_KEYDOWN:
-            switch (event.key.keysym.sym) {
-                case SDLK_ESCAPE: quit = true; break;
-            }
-            break;
+        int choice = -1; // Store the menu option choice here
 
-    }
-    SDL_RenderPresent(renderer);
+        switch (event.type) {
+            case SDL_MOUSEMOTION:
+                choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.motion.x, event.motion.y, false);
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                // Print without storing the choice
+                draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.button.x, event.button.y, true);
+                break;
+            case SDL_MOUSEBUTTONUP:
+                choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, event.button.x, event.button.y, true);
+                switch (choice) {
+                    case 0:
+                        quit_game = false;
+                        break;
+                }
+                break;
+            case SDL_KEYDOWN:
+                switch (event.key.keysym.sym) {
+                    case SDLK_ESCAPE: quit = true; break;
+                }
+                break;
+
+        }
+        SDL_RenderPresent(renderer);
 
     }
 
