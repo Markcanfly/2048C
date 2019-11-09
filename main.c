@@ -12,7 +12,7 @@
 
 /*  -- TODO list - ordered by priority --
 
-    TODO fix menu not rerendering until cursor move after exiting game
+    TODO fix clicked animation not showing
     TODO save game to file
     TODO highscore table
     TODO move logging, undo
@@ -94,13 +94,19 @@ int main(int argc, char *argv[]) {
                         case SDLK_RIGHT: push_right(uj_tabla); break;
                         case SDLK_UP: push_up(uj_tabla); break;
                         case SDLK_DOWN: push_down(uj_tabla); break;
-                        case SDLK_ESCAPE: quit_game = true; break;
+                        case SDLK_ESCAPE:
+                            quit_game = true;
+                            // Show menu after quitting game
+                            draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, 0, 0, false);
+                            SDL_RenderPresent(renderer);
+                            break;
                     }
                     printf("---------\n");
                     print_tabla(uj_tabla);
                     break;
 
                 case SDL_QUIT:
+                    quit_game = true;
                     quit = true;
                     break;
             }
