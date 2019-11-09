@@ -12,7 +12,6 @@
 
 /*  -- TODO list - ordered by priority --
 
-    TODO fix clicked animation not showing
     TODO save game to file
     TODO highscore table
     TODO move logging, undo
@@ -120,6 +119,7 @@ int main(int argc, char *argv[]) {
         int mouse_x;
         int mouse_y;
         int clicked = false;
+        int keyup = false;
 
         switch (event.type) {
             case SDL_MOUSEMOTION:
@@ -135,6 +135,7 @@ int main(int argc, char *argv[]) {
                 mouse_x = event.button.x;
                 mouse_y = event.button.y;
                 clicked = true;
+                keyup = true;
                 break;
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
@@ -144,7 +145,7 @@ int main(int argc, char *argv[]) {
         }
         SDL_RenderClear(renderer);
         choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, mouse_x, mouse_y, clicked);
-        if (clicked) {
+        if (clicked & keyup) {
             switch (choice) {
                 case 0:
                     quit_game = false;
