@@ -150,6 +150,12 @@ int main(int argc, char *argv[]) {
                 case 0:
                     quit_game = false;
                     break;
+                case 1:
+                    // High score
+                    break;
+                case 2:
+                    quit = true;
+                    break;
             }
         }
         SDL_RenderPresent(renderer);

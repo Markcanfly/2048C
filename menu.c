@@ -12,7 +12,7 @@ struct button_style menu_button = {
     .down = {{249, 246, 242, 255}, 0xF2B179FF}
 };
 
-int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1, int mouse_x, int mouse_y, bool mouse_down) {
+int draw_menu_items(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1, int mouse_x, int mouse_y, bool mouse_down, menu_item menu_elems[], int count_menu_elems) {
     /*
     Takes cursor position, sets the appropriate style of each button,
     draws the frame, and returns the id of the menu item
@@ -20,13 +20,6 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
     */
 
     boxColor(renderer, x0, y0, x1, y1, 0xD2B48CFF);
-
-    const int count_menu_elems = 3;
-    menu_item main_menu[] = {
-        {0, "Play", menu_button},
-        {1, "High scores", menu_button},
-        {2, "Exit", menu_button},
-    };
 
     int selected_menu_elem = -1;
 
@@ -38,6 +31,7 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
         frame_width / 2,
         frame_height / 2
     };
+
     // Text surface
     SDL_Surface *button_s;
     SDL_Texture *button_t;
@@ -57,21 +51,21 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
 
         rect_style btn_style;
         if (r_x0 <= mouse_x && mouse_x <= r_x1 && r_y0 <= mouse_y && mouse_y <= r_y1) {
-            selected_menu_elem = i;
+            selected_menu_elem = menu_elems[i].id;
             if (mouse_down) {
-                btn_style = main_menu[i].style.down;
+                btn_style = menu_elems[i].style.down;
             } else {
-                btn_style = main_menu[i].style.hover;
+                btn_style = menu_elems[i].style.hover;
             }
         } else {
-            btn_style = main_menu[i].style.inactive;
+            btn_style = menu_elems[i].style.inactive;
         }
 
         roundedBoxColor(renderer, r_x0, r_y0, r_x1, r_y1, 10, btn_style.backgroundColor);
 
         // Text handling
 
-        button_s = TTF_RenderUTF8_Blended(font, main_menu[i].title, btn_style.textColor);
+        button_s = TTF_RenderUTF8_Blended(font, menu_elems[i].title, btn_style.textColor);
         button_t = SDL_CreateTextureFromSurface(renderer, button_s);
 
         loc.x = r_x0 + (buttons_frame.w - button_s -> w) / 2;
@@ -88,6 +82,20 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
     return selected_menu_elem;
 }
 
-void draw_menu_highscores(SDL_Renderer *renderer, TTF_Font *num_font, int x0, int y0, int x1, int y1);
+int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1, int mouse_x, int mouse_y, bool mouse_down){
+    const int count_menu_elems = 3;
+    menu_item menu_elems[] = {
+        {0, "Play", menu_button},
+        {1, "High scores", menu_button},
+        {2, "Exit", menu_button},
+    };
 
-void draw_menu_play(SDL_Renderer *renderer, TTF_Font *num_font, int x0, int y0, int x1, int y1);
+    // Draw frame and return choice
+    return draw_menu_items(renderer, font, x0, y0, x1, y1, mouse_x, mouse_y, mouse_down, menu_elems, count_menu_elems);
+}
+
+void draw_menu_play(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1) {
+
+}
+
+void draw_menu_highscores(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1);
