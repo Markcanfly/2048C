@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include "style.h"
 
 typedef struct tabla {
     int **dynarr;
@@ -21,7 +22,7 @@ void free_tabla(tabla *to_free);
 
 void print_tabla(tabla *to_print);
 
-void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int x0, int y0, int x1, int y1);
+void draw_tiles(const struct render_params render_data, tabla *to_draw);
 
 bool lost(tabla *to_check);
 

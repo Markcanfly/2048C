@@ -45,13 +45,13 @@ void print_tabla(tabla *to_print) {
     }
 }
 
-void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int x0, int y0, int x1, int y1) {
+void draw_tiles(const struct render_params render_data, tabla *to_draw) {
     int size_x = to_draw -> size_x;
     int size_y = to_draw -> size_y;
     int **fields = to_draw -> dynarr;
 
-    const int width = x1 - x0;
-    const int height = y1 - y0;
+    const int width = render_data.x1 - render_data.x0;
+    const int height = render_data.y1 - render_data.y0;
 
     // Declare variables needed for Text rendering
     SDL_Surface *num_s;
@@ -64,10 +64,10 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
         for (int x = 0; x < size_x; x++) {
             if (fields[y][x] != 0) {
                 // Create frame coords
-                int x0_ = x0 + (width / size_x) * x;
-                int y0_ = y0 + (height / size_y) * y;
-                int x1_ = x0 + (height / size_x) * (x + 1);
-                int y1_ = y0 + (height / size_y) * (y + 1);
+                int x0_ = render_data.x0 + (width / size_x) * x;
+                int y0_ = render_data.y0 + (height / size_y) * y;
+                int x1_ = render_data.x0 + (height / size_x) * (x + 1);
+                int y1_ = render_data.y0 + (height / size_y) * (y + 1);
 
                 // Get colors and create box
                 int number = fields[y][x];
@@ -76,20 +76,20 @@ void draw_tiles(SDL_Renderer *renderer, tabla *to_draw, TTF_Font *num_font, int 
 
 
 
-                roundedBoxColor(renderer, x0_, y0_, x1_, y1_, 10, this_tile.backgroundColor);
+                roundedBoxColor(render_data.renderer, x0_, y0_, x1_, y1_, 10, this_tile.backgroundColor);
 
                 // Text rendering
 
                 itoa(number, num_char, 10); // Int to char array
-                num_s = TTF_RenderUTF8_Blended(num_font, num_char, this_tile.textColor);
-                num_t = SDL_CreateTextureFromSurface(renderer, num_s);
+                num_s = TTF_RenderUTF8_Blended(render_data.font, num_char, this_tile.textColor);
+                num_t = SDL_CreateTextureFromSurface(render_data.renderer, num_s);
 
                 loc.x = (x1_ + x0_) / 2 - (num_s -> w / 2);
                 loc.y = (y1_ + y0_) / 2 - (num_s -> h / 2);
                 loc.w = num_s -> w;
                 loc.h = num_s -> h;
 
-                SDL_RenderCopy(renderer, num_t, NULL, &loc);
+                SDL_RenderCopy(render_data.renderer, num_t, NULL, &loc);
             }
         }
     }

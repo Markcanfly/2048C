@@ -11,7 +11,6 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO concentrate the window details to one struct
     TODO save game to file
     TODO highscore table
     TODO move logging, undo
@@ -45,7 +44,6 @@ void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prende
     *prenderer = renderer;
 }
 
-
 int main(int argc, char *argv[]) {
 
     srand(time(NULL));
@@ -57,7 +55,8 @@ int main(int argc, char *argv[]) {
     SDL_Window *window;
     SDL_Renderer *renderer;
 
-    // Open font
+    sdl_init(WINSIZE_X, WINSIZE_X, &window, &renderer);
+
     TTF_Init();
     TTF_Font *font = TTF_OpenFont("arial.ttf", 32);
     if (!font) {
@@ -65,7 +64,15 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    sdl_init(WINSIZE_X, WINSIZE_X, &window, &renderer);
+
+    const struct render_params render_data = {
+        .renderer = renderer,
+        .x0 = 0,
+        .y0 = 0,
+        .x1 = WINSIZE_X,
+        .y1 = WINSIZE_Y,
+        font = font
+    };
 
     bool quit = false;
     bool quit_game = true;
@@ -82,7 +89,7 @@ int main(int argc, char *argv[]) {
 
                 // Draw tiles
 
-                draw_tiles(renderer, uj_tabla, font, 0, 0, WINSIZE_X, WINSIZE_Y);
+                draw_tiles(render_data, uj_tabla);
                 SDL_RenderPresent(renderer);
 
                 SDL_Event game_event;
@@ -99,7 +106,7 @@ int main(int argc, char *argv[]) {
                             case SDLK_ESCAPE:
                                 quit_game = true;
                                 // Show previous after quitting game
-                                draw_menu_play(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, 0, 0, false);
+                                draw_menu_play(render_data, 0, 0, false);
                                 SDL_RenderPresent(renderer);
                                 break;
                         }
@@ -115,13 +122,14 @@ int main(int argc, char *argv[]) {
             }
 
             int choice; // Store the menu option choice here
-            choice = handle_menu_interaction(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, &quit_play_select, &draw_menu_play);
+            choice = handle_menu_interaction(render_data, &quit_play_select, &draw_menu_play);
             switch (choice) {
                 case 0:
                     quit_game = false;
                     break;
-                case 1:
-                    quit_play_select = true;
+                case 2:
+                    quit_play_select= true;
+                    //  add draw main play here
                     break;
             }
             SDL_RenderPresent(renderer);
@@ -130,7 +138,7 @@ int main(int argc, char *argv[]) {
         }
 
         int choice = -1; // Store the menu option choice here
-        choice = handle_menu_interaction(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, &quit, &draw_menu_main);
+        choice = handle_menu_interaction(render_data, &quit, &draw_menu_main);
 
         switch (choice) {
             case -1:
@@ -138,7 +146,7 @@ int main(int argc, char *argv[]) {
                 break;
             case 0:
                 quit_play_select = false;
-                draw_menu_play(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, 0, 0, false);
+                draw_menu_play(render_data, 0, 0, false);
                 break;
             case 1:
                 // High score
