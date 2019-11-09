@@ -11,7 +11,7 @@
 
 
 /*  -- TODO list - ordered by priority --
-
+    TODO concentrate the window details to one struct
     TODO save game to file
     TODO highscore table
     TODO move logging, undo
@@ -69,95 +69,85 @@ int main(int argc, char *argv[]) {
 
     bool quit = false;
     bool quit_game = true;
+    bool quit_play_select = true;
     while (!quit) {
 
-        while (!quit_game) {
-            SDL_RenderClear(renderer);
+        while (!quit_play_select) {
 
-            // Game background
-            boxColor(renderer, 0, 0, WINSIZE_X, WINSIZE_Y, 0xD2B48CFF);
+            while (!quit_game) {
+                SDL_RenderClear(renderer);
 
-            // Draw tiles
+                // Game background
+                boxColor(renderer, 0, 0, WINSIZE_X, WINSIZE_Y, 0xD2B48CFF);
 
-            draw_tiles(renderer, uj_tabla, font, 0, 0, WINSIZE_X, WINSIZE_Y);
-            SDL_RenderPresent(renderer);
+                // Draw tiles
 
-            SDL_Event game_event;
-            SDL_WaitEvent(&game_event);
+                draw_tiles(renderer, uj_tabla, font, 0, 0, WINSIZE_X, WINSIZE_Y);
+                SDL_RenderPresent(renderer);
 
-            switch (game_event.type) {
+                SDL_Event game_event;
+                SDL_WaitEvent(&game_event);
 
-                case SDL_KEYUP:
-                    switch (game_event.key.keysym.sym) {
-                        case SDLK_LEFT: push_left(uj_tabla); break;
-                        case SDLK_RIGHT: push_right(uj_tabla); break;
-                        case SDLK_UP: push_up(uj_tabla); break;
-                        case SDLK_DOWN: push_down(uj_tabla); break;
-                        case SDLK_ESCAPE:
-                            quit_game = true;
-                            // Show menu after quitting game
-                            draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, 0, 0, false);
-                            SDL_RenderPresent(renderer);
-                            break;
-                    }
-                    printf("---------\n");
-                    print_tabla(uj_tabla);
-                    break;
+                switch (game_event.type) {
 
-                case SDL_QUIT:
-                    quit_game = true;
-                    quit = true;
-                    break;
-            }
-        }
+                    case SDL_KEYUP:
+                        switch (game_event.key.keysym.sym) {
+                            case SDLK_LEFT: push_left(uj_tabla); break;
+                            case SDLK_RIGHT: push_right(uj_tabla); break;
+                            case SDLK_UP: push_up(uj_tabla); break;
+                            case SDLK_DOWN: push_down(uj_tabla); break;
+                            case SDLK_ESCAPE:
+                                quit_game = true;
+                                // Show previous after quitting game
+                                draw_menu_play(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, 0, 0, false);
+                                SDL_RenderPresent(renderer);
+                                break;
+                        }
+                        printf("---------\n");
+                        print_tabla(uj_tabla);
+                        break;
 
-        SDL_Event event;
-        SDL_WaitEvent(&event);
-
-
-        int choice = -1; // Store the menu option choice here
-        int mouse_x;
-        int mouse_y;
-        int clicked = false;
-        int keyup = false;
-
-        switch (event.type) {
-            case SDL_MOUSEMOTION:
-                mouse_x = event.motion.x;
-                mouse_y = event.motion.y;
-                break;
-            case SDL_MOUSEBUTTONDOWN:
-                mouse_x = event.button.x;
-                mouse_y = event.button.y;
-                clicked = true;
-                break;
-            case SDL_MOUSEBUTTONUP:
-                mouse_x = event.button.x;
-                mouse_y = event.button.y;
-                clicked = true;
-                keyup = true;
-                break;
-            case SDL_KEYDOWN:
-                switch (event.key.keysym.sym) {
-                    case SDLK_ESCAPE: quit = true; break;
+                    case SDL_QUIT:
+                        quit_game = true;
+                        quit = true;
+                        break;
                 }
-                break;
-        }
-        SDL_RenderClear(renderer);
-        choice = draw_menu_main(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, mouse_x, mouse_y, clicked);
-        if (clicked & keyup) {
+            }
+
+            int choice; // Store the menu option choice here
+            choice = handle_menu_interaction(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, &quit_play_select, &draw_menu_play);
             switch (choice) {
                 case 0:
                     quit_game = false;
                     break;
                 case 1:
-                    // High score
-                    break;
-                case 2:
-                    quit = true;
+                    quit_play_select = true;
                     break;
             }
+            SDL_RenderPresent(renderer);
+
+
         }
+
+        int choice = -1; // Store the menu option choice here
+        choice = handle_menu_interaction(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, &quit, &draw_menu_main);
+
+        switch (choice) {
+            case -1:
+                // Do nothing, no choice made
+                break;
+            case 0:
+                quit_play_select = false;
+                draw_menu_play(renderer, font, 0, 0, WINSIZE_X, WINSIZE_Y, 0, 0, false);
+                break;
+            case 1:
+                // High score
+                break;
+            case 2:
+                quit = true;
+                break;
+        }
+
         SDL_RenderPresent(renderer);
 
     }

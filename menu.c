@@ -12,6 +12,52 @@ struct button_style menu_button = {
     .down = {{249, 246, 242, 255}, 0xF2B179FF}
 };
 
+int handle_menu_interaction(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1, bool *quit, int (*draw_this_menu)(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1, int mouse_x, int mouse_y, bool mouse_down)) {
+    int mouse_x;
+    int mouse_y;
+    int choice;
+    bool clicked = false;
+    bool keyup = false;
+
+
+
+    SDL_Event event;
+    SDL_WaitEvent(&event);
+
+    switch (event.type) {
+        case SDL_MOUSEMOTION:
+            mouse_x = event.motion.x;
+            mouse_y = event.motion.y;
+            break;
+        case SDL_MOUSEBUTTONDOWN:
+            mouse_x = event.button.x;
+            mouse_y = event.button.y;
+            clicked = true;
+            break;
+        case SDL_MOUSEBUTTONUP:
+            mouse_x = event.button.x;
+            mouse_y = event.button.y;
+            clicked = true;
+            keyup = true;
+            break;
+        case SDL_KEYDOWN:
+            switch (event.key.keysym.sym) {
+                case SDLK_ESCAPE: *quit = true; break;
+            }
+            break;
+    }
+    SDL_RenderClear(renderer);
+    /*
+    Draw menu with appropriate button states,
+    then return choice on KEYUP or -1 otherwise.
+    */
+    choice = draw_this_menu(renderer, font, x0, y0, x1, y1, mouse_x, mouse_y, clicked);
+    if (keyup)
+        return choice;
+
+    return -1;
+}
+
 int draw_menu_items(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1, int mouse_x, int mouse_y, bool mouse_down, menu_item menu_elems[], int count_menu_elems) {
     /*
     Takes cursor position, sets the appropriate style of each button,
@@ -94,8 +140,16 @@ int draw_menu_main(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x
     return draw_menu_items(renderer, font, x0, y0, x1, y1, mouse_x, mouse_y, mouse_down, menu_elems, count_menu_elems);
 }
 
-void draw_menu_play(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1) {
+int draw_menu_play(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1, int mouse_x, int mouse_y, bool mouse_down) {
+    const int count_menu_elems = 2;
+    menu_item menu_elems[] = {
+        {0, "Continue", menu_button},
+        {1, "New game", menu_button},
+        {2, "Back", menu_button},
+    };
 
+    // Draw frame and return choice
+    return draw_menu_items(renderer, font, x0, y0, x1, y1, mouse_x, mouse_y, mouse_down, menu_elems, count_menu_elems);
 }
 
-void draw_menu_highscores(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1);
+int draw_menu_highscores(SDL_Renderer *renderer, TTF_Font *font, int x0, int y0, int x1, int y1);
