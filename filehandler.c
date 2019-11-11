@@ -15,6 +15,11 @@ tabla *load_save() {
 
     FILE *save_file = fopen("mentes/tabla.txt","r");
 
+    if (save_file == NULL) {
+        printf("Error, couldn't open file.")
+        return create_tabla(4, 4, 3);
+    }
+
     int score, size_x, size_y;
     fscanf(save_file,"%d", &score);
     fscanf(save_file, "%d", &size_x);
@@ -40,4 +45,19 @@ tabla *load_save() {
     new_tabla -> size_y = size_y;
 
     return new_tabla;
+}
+
+void store_save(const tabla *to_store) {
+    /*
+    Takes a tabla object and writes its data to file.
+    */
+    FILE *save = fopen("mentes/tabla.txt");
+
+    if (save == NULL) {
+        printf("Error, couldn't open file.")
+        return;
+    }
+
+
+
 }

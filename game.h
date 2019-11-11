@@ -6,6 +6,7 @@
 #include "style.h"
 
 typedef struct tabla {
+    int score;
     int **dynarr;
     int size_x;
     int size_y;

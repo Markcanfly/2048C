@@ -16,6 +16,7 @@ tabla *create_tabla(int size_x, int size_y, int start_tiles) {
     }
 
     tabla* new_tabla = malloc(sizeof(tabla));
+    new_tabla -> score = 0;
     new_tabla -> dynarr = nums;
     new_tabla -> size_x = size_x;
     new_tabla -> size_y = size_y;

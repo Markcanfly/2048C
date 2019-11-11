@@ -7,7 +7,7 @@
 
 tabla *load_save();
 
-void store_save(tabla to_store);
+void store_save(const tabla *to_store);
 
 //void load_highscores();
 
