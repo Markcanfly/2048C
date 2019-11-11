@@ -8,6 +8,7 @@
 #include "game.h"
 #include "push_tiles.h"
 #include "menu.h"
+#include "filehandler.h"
 
 
 /*  -- TODO list - ordered by priority --
@@ -48,7 +49,8 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL));
 
-    tabla *uj_tabla = create_tabla(4, 4, 3);
+//    tabla *uj_tabla = create_tabla(4, 4, 3);
+    tabla *uj_tabla = load_save();
     print_tabla(uj_tabla);
 
 
