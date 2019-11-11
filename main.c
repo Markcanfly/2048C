@@ -12,7 +12,6 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO fix pressing back does not render
     TODO highscore table
     TODO move logging, undo
     TODO animations
@@ -135,8 +134,8 @@ int main(int argc, char *argv[]) {
                     quit_game = false;
                     break;
                 case 2:
-                    quit_play_select= true;
-                    //  add draw main play here
+                    quit_play_select = true;
+                    draw_menu_main(render_data, 0, 0, false);
                     break;
             }
             SDL_RenderPresent(renderer);
