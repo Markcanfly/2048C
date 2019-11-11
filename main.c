@@ -13,11 +13,11 @@
 
 /*  -- TODO list - ordered by priority --
     TODO fix pressing back does not render
-    TODO save game to file
     TODO highscore table
     TODO move logging, undo
     TODO animations
-    TODO proper GUI
+    TODO ask before overwriting previous save
+    TODO Only show 'continue' button if save file exists
 */
 
 // Hyperparameters
@@ -50,7 +50,6 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL));
 
-//    tabla *uj_tabla = create_tabla(4, 4, 3);
     tabla *uj_tabla = load_save();
     print_tabla(uj_tabla);
 
@@ -128,6 +127,11 @@ int main(int argc, char *argv[]) {
             choice = handle_menu_interaction(render_data, &quit_play_select, &draw_menu_play);
             switch (choice) {
                 case 0:
+                    quit_game = false;
+                    break;
+                case 1: // New game
+                    free_tabla(uj_tabla);
+                    uj_tabla = create_tabla(4, 4, 3);
                     quit_game = false;
                     break;
                 case 2:
