@@ -12,6 +12,7 @@
 
 
 /*  -- TODO list - ordered by priority --
+    TODO fix pressing back does not render
     TODO save game to file
     TODO highscore table
     TODO move logging, undo

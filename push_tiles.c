@@ -63,6 +63,8 @@ void push_up(tabla *to_push) {
         add_random(to_push);
     if (lost(to_push))
         printf("Game lost.");
+    // Save to file
+    store_save(to_push);
 }
 void push_down(tabla *to_push) {
     int size_x = to_push -> size_x;
@@ -117,6 +119,8 @@ void push_down(tabla *to_push) {
         add_random(to_push);
     if (lost(to_push))
         printf("Game lost.");
+    // Save to file
+    store_save(to_push);
 }
 void push_left(tabla *to_push) {
     int size_x = to_push -> size_x;
@@ -172,6 +176,8 @@ void push_left(tabla *to_push) {
         add_random(to_push);
     if (lost(to_push))
         printf("Game lost.");
+    // Save to file
+    store_save(to_push);
 }
 void push_right(tabla *to_push) {
     int size_x = to_push -> size_x;
@@ -228,6 +234,8 @@ void push_right(tabla *to_push) {
         add_random(to_push);
     if (lost(to_push))
         printf("Game lost.");
+    // Save to file
+    store_save(to_push);
 }
 
 void add_random(tabla *to_add) {

@@ -15,7 +15,7 @@ tabla *load_save() {
     FILE *save_file = fopen("mentes/tabla.txt", "r");
 
     if (save_file == NULL) {
-        printf("Error, couldn't open file.")
+        printf("Error, couldn't open file.");
         return create_tabla(4, 4, 3);
     }
 
@@ -37,6 +37,7 @@ tabla *load_save() {
             fscanf(save_file, "%d", &nums[y][x]);
         }
     }
+    fclose(save_file);
 
     tabla* new_tabla = malloc(sizeof(tabla));
     new_tabla -> dynarr = nums;
@@ -50,20 +51,26 @@ void store_save(const tabla *to_store) {
     /*
     Takes a tabla object and writes its data to file.
     */
-    FILE *save = fopen("mentes/tabla.txt", "w");
+    FILE *save_file = fopen("mentes/tabla.txt", "w");
 
-    if (save == NULL) {
-        printf("Error, couldn't open file.")
+    if (save_file == NULL) {
+        printf("Error, couldn't open file.");
         return;
     }
 
+
     // Write out metadata
-    fprintf("%d\n%d\n%d\n", to_store -> score, to_store -> size_x, to_store -> size_y);
+    fprintf(save_file, "%d\n%d\n%d\n", to_store -> score, to_store -> size_x, to_store -> size_y);
     // Write gamestate to file
-    for (int y = 0; y < to_store -> size_x; y++) {
-        for (int x = 0; x < size_x; x++) {
-            fscanf(save_file, "%d", &nums[y][x]);
+
+    for (int y = 0; y < to_store -> size_y; y++) {
+        fprintf(save_file, " %d", to_store -> dynarr[y][0]); // First elem
+        for (int x = 1; x < to_store -> size_x; x++) {
+            fprintf(save_file, " %d", to_store -> dynarr[y][x]);
         }
+        fprintf(save_file, "\n");
     }
+
+    fclose(save_file);
 
 }
