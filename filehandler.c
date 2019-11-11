@@ -8,12 +8,11 @@ tabla *load_save() {
     Score
     SIZE_X
     SIZE_Y
-
     `SIZE_Y` Rows and `SIZE_X` columns of numbers, separated with a space
     */
 
 
-    FILE *save_file = fopen("mentes/tabla.txt","r");
+    FILE *save_file = fopen("mentes/tabla.txt", "r");
 
     if (save_file == NULL) {
         printf("Error, couldn't open file.")
@@ -33,7 +32,7 @@ tabla *load_save() {
         nums[y] = nums[0] + y*size_x;
     }
 
-    for (int y = 0; y < size_x; y++) {
+    for (int y = 0; y < size_y; y++) {
         for (int x = 0; x < size_x; x++) {
             fscanf(save_file, "%d", &nums[y][x]);
         }
@@ -51,13 +50,20 @@ void store_save(const tabla *to_store) {
     /*
     Takes a tabla object and writes its data to file.
     */
-    FILE *save = fopen("mentes/tabla.txt");
+    FILE *save = fopen("mentes/tabla.txt", "w");
 
     if (save == NULL) {
         printf("Error, couldn't open file.")
         return;
     }
 
-
+    // Write out metadata
+    fprintf("%d\n%d\n%d\n", to_store -> score, to_store -> size_x, to_store -> size_y);
+    // Write gamestate to file
+    for (int y = 0; y < to_store -> size_x; y++) {
+        for (int x = 0; x < size_x; x++) {
+            fscanf(save_file, "%d", &nums[y][x]);
+        }
+    }
 
 }
