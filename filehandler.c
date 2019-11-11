@@ -40,6 +40,7 @@ tabla *load_save() {
     fclose(save_file);
 
     tabla* new_tabla = malloc(sizeof(tabla));
+    new_tabla -> score = score;
     new_tabla -> dynarr = nums;
     new_tabla -> size_x = size_x;
     new_tabla -> size_y = size_y;

@@ -38,6 +38,8 @@ void print_tabla(tabla *to_print) {
     int x = to_print -> size_x;
     int y = to_print -> size_y;
 
+    printf("Score: %d\n", to_print -> score);
+
     for (int y_i = 0; y_i < y; y_i++) {
         for (int x_i = 0; x_i < x; x_i++) {
             printf("%d ", to_print -> dynarr[y_i][x_i]);

@@ -13,6 +13,8 @@ void push_up(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    int *score = &to_push -> score;
+
     bool valid_move = false;
     bool just_merged[size_y]; // Store for each val if it's just been merged
 
@@ -39,6 +41,7 @@ void push_up(tabla *to_push) {
                         *near_num += *num;
                         *num = 0;
                         just_merged[i] = true;
+                        *score += *near_num;
 
                         // Win check
                         if (*near_num == 2048)
@@ -70,6 +73,7 @@ void push_down(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    int *score = &to_push -> score;
     bool valid_move = false;
     bool just_merged[size_y]; // Store for each val if it's just been merged
 
@@ -95,6 +99,7 @@ void push_down(tabla *to_push) {
                     *near_num += *num;
                     *num = 0;
                     just_merged[i] = true;
+                    *score += *near_num;
 
                     // Win check
                     if (*near_num == 2048)
@@ -126,6 +131,7 @@ void push_left(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    int *score = &to_push -> score;
     bool valid_move = false;
     bool just_merged[size_x]; // Store for each val if it's just been merged
 
@@ -152,6 +158,7 @@ void push_left(tabla *to_push) {
                         just_merged[i] = true;
                         *near_num += *num;
                         *num = 0;
+                        *score += *near_num;
 
                         // Win check
                         if (*near_num == 2048)
@@ -183,6 +190,7 @@ void push_right(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
+    int *score = &to_push -> score;
     bool valid_move = false;
     bool just_merged[size_x]; // Store for each val if it's just been merged
 
@@ -210,6 +218,7 @@ void push_right(tabla *to_push) {
                         *near_num += *num;
                         *num = 0;
                         just_merged[i] = true;
+                        *score += *near_num;
 
                         // Win check
                         if (*near_num == 2048)
