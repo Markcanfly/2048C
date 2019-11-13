@@ -97,8 +97,8 @@ void draw_game_controls(const struct render_params render_data, tabla *to_draw) 
     SDL_Texture *score_t;
     char score_char[33]; // large buffer to handle large score
 
-    const SDL_Color text_color = {119, 110, 101, 255};
-    const Uint32 background_color = 0xEEE4DAFF;
+    const SDL_Color text_color = {0, 0, 0, 255};
+    const Uint32 background_color = 0xFFFFFFFF;
 
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, background_color);
 

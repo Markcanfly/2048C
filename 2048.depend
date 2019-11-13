@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1573661949 source:c:\users\mark\documents\workspace\2048\game.c
+1573663153 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -26,7 +26,7 @@
 	"push_tiles.h"
 	"game.h"
 
-1573663050 source:c:\users\mark\documents\workspace\2048\main.c
+1573663218 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
