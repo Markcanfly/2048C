@@ -8,6 +8,14 @@
 #include "game.h"
 #include "push_tiles.h"
 
+
+/**
+* \brief Pseudo-constructor for a tabla object
+* \param x and y sizes of tabla, number of random start tiles
+* Dynamically create a clean new tabla object and return a pointer to it.
+* Uses the parameter start_tiles to determine how many initial random tiles to add.
+* \return new tabla pointer
+*/
 tabla *create_tabla(int size_x, int size_y, int start_tiles) {
     int **nums = (int **) malloc(size_y * sizeof(int));
     nums[0] = (int *) calloc(size_x * size_y, sizeof(int)); // filled with 0s
@@ -28,12 +36,23 @@ tabla *create_tabla(int size_x, int size_y, int start_tiles) {
     return new_tabla;
 }
 
+/**
+* \brief Free a tabla object
+* Takes a pointer to a tabla object and
+* frees the inner dynamic 2D array, then the object itself
+*/
 void free_tabla(tabla *to_free) {
     free(to_free -> dynarr[0]);
     free(to_free -> dynarr);
     free(to_free);
 }
 
+/**
+* \brief Print tabla object to console
+* Takes a tabla object and prints a representation to stdout,
+* including the current score and numbers contained.
+* For debugging purposes only.
+*/
 void print_tabla(tabla *to_print) {
     int x = to_print -> size_x;
     int y = to_print -> size_y;
@@ -48,7 +67,35 @@ void print_tabla(tabla *to_print) {
     }
 }
 
+void draw_game(const struct render_params render_data, tabla *to_draw) {
+    /**
+    * \brief Draws all game elements
+    * This function separates the renderer
+    * into the playing field, which is the bottom square
+    * (the height of which is the width of the renderer)
+    * and a rectangle above which fills the remaining space.
+    * Then uses the precise functions to draw the score,
+    * and the playing field respectively.
+    */
+    struct render_params game_rp = render_data;
+    game_rp.y0 = game_rp.y1 - (game_rp.x1 - game_rp.x0); // height=width and fill bottom
+    struct render_params controls_rp = render_data;
+    controls_rp.y1 = game_rp.y0;
+
+    //draw_game_controls(controls_rp, to_draw);
+    draw_tiles(game_rp, to_draw);
+
+
+
+}
+
+void draw_game_controls(const struct render_params render_data, tabla *to_draw);
+
 void draw_tiles(const struct render_params render_data, tabla *to_draw) {
+    /*
+    Takes a tabla object and draws
+    the tiles in it into a square frame.
+    */
     int size_x = to_draw -> size_x;
     int size_y = to_draw -> size_y;
     int **fields = to_draw -> dynarr;

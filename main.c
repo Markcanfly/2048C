@@ -12,17 +12,19 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO highscore table
+    TODO highscore table + highscore shown in game
     TODO move logging, undo
+    TODO game creator++
+        TODO ability to create field of arbitrary size
+        TODO ask before overwriting previous save
+        TODO Only show 'continue' button if save file exists
     TODO animations
-    TODO ask before overwriting previous save
-    TODO Only show 'continue' button if save file exists
 */
 
 // Hyperparameters
 
 const int WINSIZE_X = 400;
-const int WINSIZE_Y = 400;
+const int WINSIZE_Y = 500;
 
 void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prenderer) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -56,7 +58,7 @@ int main(int argc, char *argv[]) {
     SDL_Window *window;
     SDL_Renderer *renderer;
 
-    sdl_init(WINSIZE_X, WINSIZE_X, &window, &renderer);
+    sdl_init(WINSIZE_X, WINSIZE_Y, &window, &renderer);
 
     TTF_Init();
     TTF_Font *font = TTF_OpenFont("arial.ttf", 32);
@@ -90,7 +92,7 @@ int main(int argc, char *argv[]) {
 
                 // Draw tiles
 
-                draw_tiles(render_data, uj_tabla);
+                draw_game(render_data, uj_tabla);
                 SDL_RenderPresent(renderer);
 
                 SDL_Event game_event;

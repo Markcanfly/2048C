@@ -23,6 +23,10 @@ void free_tabla(tabla *to_free);
 
 void print_tabla(tabla *to_print);
 
+void draw_game(const struct render_params render_data, tabla *to_draw);
+
+void draw_game_controls(const struct render_params render_data, tabla *to_draw);
+
 void draw_tiles(const struct render_params render_data, tabla *to_draw);
 
 bool lost(tabla *to_check);
