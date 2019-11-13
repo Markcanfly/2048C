@@ -82,14 +82,36 @@ void draw_game(const struct render_params render_data, tabla *to_draw) {
     struct render_params controls_rp = render_data;
     controls_rp.y1 = game_rp.y0;
 
-    //draw_game_controls(controls_rp, to_draw);
+    draw_game_controls(controls_rp, to_draw);
     draw_tiles(game_rp, to_draw);
 
 
 
 }
 
-void draw_game_controls(const struct render_params render_data, tabla *to_draw);
+void draw_game_controls(const struct render_params render_data, tabla *to_draw) {
+    SDL_Surface *score_s;
+    SDL_Texture *score_t;
+    char score_char[33]; // large buffer to handle large score
+
+    const SDL_Color text_color = {0, 0, 0, 255};
+    const Uint32 background_color = 0xFFFFFFFF;
+
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, background_color);
+
+    SDL_Rect loc = { 0, 0, 0, 0 };
+
+    itoa(to_draw -> score, score_char, 10);
+    score_s = TTF_RenderUTF8_Blended(render_data.font, score_char, text_color);
+    score_t = SDL_CreateTextureFromSurface(render_data.renderer, score_s);
+    loc.x = (render_data.x1 - render_data.x0) / 2 - (score_s -> w / 2);
+    loc.y = (render_data.y1 - render_data.y0) / 2 - (score_s -> h / 2);
+    loc.w = score_s -> w;
+    loc.h = score_s -> h;
+
+    SDL_RenderCopy(render_data.renderer, score_t, NULL, &loc);
+
+}
 
 void draw_tiles(const struct render_params render_data, tabla *to_draw) {
     /*
@@ -123,8 +145,6 @@ void draw_tiles(const struct render_params render_data, tabla *to_draw) {
                 int number = fields[y][x];
 
                 rect_style this_tile = getTile(number);
-
-
 
                 roundedBoxColor(render_data.renderer, x0_, y0_, x1_, y1_, 10, this_tile.backgroundColor);
 

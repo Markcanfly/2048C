@@ -13,6 +13,7 @@
 
 /*  -- TODO list - ordered by priority --
     TODO highscore table + highscore shown in game
+    TODO separate out text drawing into function
     TODO move logging, undo
     TODO game creator++
         TODO ability to create field of arbitrary size
