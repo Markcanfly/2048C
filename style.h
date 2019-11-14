@@ -23,4 +23,6 @@ struct button_style {
 
 rect_style getTile(int tile_num);
 
+void draw_text_to_center(SDL_Renderer *renderer, int x0, int y0, int x1, int y1, char *text, TTF_Font *font, SDL_Color text_color);
+
 #endif // STYLE_H_INCLUDED

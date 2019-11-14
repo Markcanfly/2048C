@@ -1,9 +1,12 @@
 #include "style.h"
 #include <math.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
-/* Global array of vals for styling
-    the index in the array is the log2(n) of the tile num,
-    except when it's >2048, in which case it's 0 (black).
+/**
+* Global array of vals for styling of the tiles
+* the index in the array is the log2(n) of the tile num,
+* except when it's >2048, in which case it's 0 (black).
 */
 rect_style tiles[12] = {
     {{0, 0, 0, 255}, 0xFFFFFFFF}, // super
@@ -26,3 +29,20 @@ rect_style getTile(int tile_num) {
 
     return tiles[(int) log2(tile_num)];
 }
+
+void draw_text_to_center(SDL_Renderer *renderer, int x0, int y0, int x1, int y1, char *text, TTF_Font *font, SDL_Color text_color) {
+    SDL_Surface *text_s;
+    SDL_Texture *text_t;
+
+    SDL_Rect loc = { 0, 0, 0, 0 };
+
+    text_s = TTF_RenderUTF8_Blended(font, text, text_color);
+    text_t = SDL_CreateTextureFromSurface(renderer, text_s);
+    loc.x = (x1 - x0) / 2 - (text_s -> w / 2);
+    loc.y = (y1 - y0) / 2 - (text_s -> h / 2);
+    loc.w = text_s -> w;
+    loc.h = text_s -> h;
+
+    SDL_RenderCopy(renderer, text_t, NULL, &loc);
+}
+

@@ -93,8 +93,6 @@ void draw_game_controls(const struct render_params render_data, tabla *to_draw) 
     /**
     * \brief Draws the current score to the specified render location
     */
-    SDL_Surface *score_s;
-    SDL_Texture *score_t;
     char score_char[33]; // large buffer to handle large score
 
     const SDL_Color text_color = {119, 110, 101, 255};
@@ -102,17 +100,8 @@ void draw_game_controls(const struct render_params render_data, tabla *to_draw) 
 
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, background_color);
 
-    SDL_Rect loc = { 0, 0, 0, 0 };
-
     itoa(to_draw -> score, score_char, 10);
-    score_s = TTF_RenderUTF8_Blended(render_data.font, score_char, text_color);
-    score_t = SDL_CreateTextureFromSurface(render_data.renderer, score_s);
-    loc.x = (render_data.x1 - render_data.x0) / 2 - (score_s -> w / 2);
-    loc.y = (render_data.y1 - render_data.y0) / 2 - (score_s -> h / 2);
-    loc.w = score_s -> w;
-    loc.h = score_s -> h;
-
-    SDL_RenderCopy(render_data.renderer, score_t, NULL, &loc);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, score_char, render_data.font, text_color);
 
 }
 
