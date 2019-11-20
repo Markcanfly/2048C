@@ -76,12 +76,6 @@ int draw_menu_items(const struct render_params render_data, int mouse_x, int mou
         frame_height / 2
     };
 
-    // Text surface
-    SDL_Surface *button_s;
-    SDL_Texture *button_t;
-    SDL_Rect loc = { 0, 0, 0, 0 };
-
-
     // Draw each menu item
 
     for (int i = 0; i < count_menu_elems; i++) {
@@ -108,20 +102,8 @@ int draw_menu_items(const struct render_params render_data, int mouse_x, int mou
         roundedBoxColor(render_data.renderer, r_x0, r_y0, r_x1, r_y1, 10, btn_style.backgroundColor);
 
         // Text handling
-
-        button_s = TTF_RenderUTF8_Blended(render_data.font, menu_elems[i].title, btn_style.textColor);
-        button_t = SDL_CreateTextureFromSurface(render_data.renderer, button_s);
-
-        loc.x = r_x0 + (buttons_frame.w - button_s -> w) / 2;
-        loc.y = r_y0 + (btn_height - button_s -> h) / 2;
-        loc.w = button_s -> w;
-        loc.h = button_s -> h;
-
-        SDL_RenderCopy(render_data.renderer, button_t, NULL, &loc);
+        draw_text_to_center(render_data.renderer, r_x0, r_y0, r_x1, r_y1, menu_elems[i].title, render_data.font, btn_style.textColor);
     }
-
-    SDL_FreeSurface(button_s);
-    SDL_DestroyTexture(button_t);
 
     return selected_menu_elem;
 }

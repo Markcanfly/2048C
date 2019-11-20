@@ -117,12 +117,7 @@ void draw_tiles(const struct render_params render_data, tabla *to_draw) {
     const int width = render_data.x1 - render_data.x0;
     const int height = render_data.y1 - render_data.y0;
 
-    // Declare variables needed for Text rendering
-    SDL_Surface *num_s;
-    SDL_Texture *num_t;
     char num_char[5]; // Size 5 buffer (max val is 8192)
-    SDL_Rect loc = { 0, 0, 0, 0 };
-
 
     for (int y = 0; y < size_y; y++) {
         for (int x = 0; x < size_x; x++) {
@@ -140,26 +135,13 @@ void draw_tiles(const struct render_params render_data, tabla *to_draw) {
 
                 roundedBoxColor(render_data.renderer, x0_, y0_, x1_, y1_, 10, this_tile.backgroundColor);
 
-                // Text rendering
-
                 itoa(number, num_char, 10); // Int to char array
-                num_s = TTF_RenderUTF8_Blended(render_data.font, num_char, this_tile.textColor);
-                num_t = SDL_CreateTextureFromSurface(render_data.renderer, num_s);
 
-                loc.x = (x1_ + x0_) / 2 - (num_s -> w / 2);
-                loc.y = (y1_ + y0_) / 2 - (num_s -> h / 2);
-                loc.w = num_s -> w;
-                loc.h = num_s -> h;
-
-                SDL_RenderCopy(render_data.renderer, num_t, NULL, &loc);
+                // Text rendering
+                draw_text_to_center(render_data.renderer, x0_, y0_, x1_, y1_, num_char, render_data.font, this_tile.textColor);
             }
         }
     }
-
-    SDL_FreeSurface(num_s);
-    SDL_DestroyTexture(num_t);
-
-
 
 }
 

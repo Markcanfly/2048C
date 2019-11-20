@@ -38,8 +38,8 @@ void draw_text_to_center(SDL_Renderer *renderer, int x0, int y0, int x1, int y1,
 
     text_s = TTF_RenderUTF8_Blended(font, text, text_color);
     text_t = SDL_CreateTextureFromSurface(renderer, text_s);
-    loc.x = (x1 - x0) / 2 - (text_s -> w / 2);
-    loc.y = (y1 - y0) / 2 - (text_s -> h / 2);
+    loc.x = (x1 + x0) / 2 - (text_s -> w / 2);
+    loc.y = (y1 + y0) / 2 - (text_s -> h / 2);
     loc.w = text_s -> w;
     loc.h = text_s -> h;
 

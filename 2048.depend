@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1573664664 source:c:\users\mark\documents\workspace\2048\game.c
+1574249587 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -43,7 +43,7 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1573664601 source:c:\users\mark\documents\workspace\2048\style.c
+1574250849 source:c:\users\mark\documents\workspace\2048\style.c
 	"style.h"
 	<math.h>
 	<SDL2/SDL.h>
@@ -55,7 +55,7 @@
 	<SDL2/SDL_ttf.h>
 	"style.h"
 
-1573315031 source:c:\users\mark\documents\workspace\2048\menu.c
+1574251176 source:c:\users\mark\documents\workspace\2048\menu.c
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
