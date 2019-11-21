@@ -4,6 +4,7 @@
 #include <SDL2/SDL_ttf.h>
 #include "menu.h"
 #include "style.h"
+#include "text_input.h"
 
 // Global style for menu buttons
 struct button_style menu_button = {
@@ -130,6 +131,19 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 
     // Draw frame and return choice
     return draw_menu_items(render_data, mouse_x, mouse_y, mouse_down, menu_elems, count_menu_elems);
+}
+
+bool draw_menu_new_game(const struct render_params render_data, char *dest, int len) {
+    SDL_Rect input_rect = { 0, 0, 0, 0 };
+
+    input_rect.x = 100;
+    input_rect.y = 100;
+    input_rect.w = 300;
+    input_rect.h = 300;
+
+    bool successful = input_text(dest, 51, input_rect, background_color, menu_text_color, render_data.font, render_data.renderer);
+
+    return successful;
 }
 
 int draw_menu_highscores(const struct render_params render_data);

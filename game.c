@@ -3,11 +3,11 @@
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include "style.h"
 #include "game.h"
 #include "push_tiles.h"
-
 
 /**
 * \brief Pseudo-constructor for a tabla object
@@ -16,7 +16,7 @@
 * Uses the parameter start_tiles to determine how many initial random tiles to add.
 * \return new tabla pointer
 */
-tabla *create_tabla(int size_x, int size_y, int start_tiles) {
+tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles) {
     int **nums = (int **) malloc(size_y * sizeof(int));
     nums[0] = (int *) calloc(size_x * size_y, sizeof(int)); // filled with 0s
     for (int y = 1; y < size_y; y++) {
@@ -24,6 +24,8 @@ tabla *create_tabla(int size_x, int size_y, int start_tiles) {
     }
 
     tabla* new_tabla = malloc(sizeof(tabla));
+
+    strcpy(new_tabla -> name, name);
     new_tabla -> score = 0;
     new_tabla -> dynarr = nums;
     new_tabla -> size_x = size_x;

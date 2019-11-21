@@ -1,10 +1,12 @@
 #include "filehandler.h"
 #include "game.h"
+#include <string.h>
 
 tabla *load_save() {
     /*
     Expects a tabla file in the following format:
 
+    Name
     Score
     SIZE_X
     SIZE_Y
@@ -16,10 +18,11 @@ tabla *load_save() {
 
     if (save_file == NULL) {
         printf("Error, couldn't open file.");
-        return create_tabla(4, 4, 3);
+        return create_tabla("Default", 4, 4, 3);
     }
-
+    char name[51];
     int score, size_x, size_y;
+    fgets(name, 51, save_file);
     fscanf(save_file,"%d", &score);
     fscanf(save_file, "%d", &size_x);
     fscanf(save_file, "%d", &size_y);
@@ -40,6 +43,8 @@ tabla *load_save() {
     fclose(save_file);
 
     tabla* new_tabla = malloc(sizeof(tabla));
+
+    strcpy(new_tabla -> name, name);
     new_tabla -> score = score;
     new_tabla -> dynarr = nums;
     new_tabla -> size_x = size_x;
@@ -61,11 +66,11 @@ void store_save(const tabla *to_store) {
 
 
     // Write out metadata
-    fprintf(save_file, "%d\n%d\n%d\n", to_store -> score, to_store -> size_x, to_store -> size_y);
+    fprintf(save_file, "%s\n%d\n%d\n%d\n", to_store -> name, to_store -> score, to_store -> size_x, to_store -> size_y);
     // Write gamestate to file
 
     for (int y = 0; y < to_store -> size_y; y++) {
-        fprintf(save_file, " %d", to_store -> dynarr[y][0]); // First elem
+        fprintf(save_file, "%d", to_store -> dynarr[y][0]); // First elem
         for (int x = 1; x < to_store -> size_x; x++) {
             fprintf(save_file, " %d", to_store -> dynarr[y][x]);
         }

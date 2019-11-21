@@ -12,8 +12,11 @@
 
 
 /*  -- TODO list - ordered by priority --
+    TODO fix text input
+        TODO fix style
+        TODO ask to overwrite
     TODO highscore table
-    TODO separate out text drawing into function
+    TODO implement debugmalloc
     TODO move logging, undo
     TODO game creator++
         TODO ability to create field of arbitrary size
@@ -81,6 +84,7 @@ int main(int argc, char *argv[]) {
     bool quit = false;
     bool quit_game = true;
     bool quit_play_select = true;
+    bool create_newgame = false;
     while (!quit) {
 
         while (!quit_play_select) {
@@ -132,8 +136,7 @@ int main(int argc, char *argv[]) {
                     quit_game = false;
                     break;
                 case 1: // New game
-                    free_tabla(uj_tabla);
-                    uj_tabla = create_tabla(4, 4, 3);
+                    create_newgame = true;
                     quit_game = false;
                     break;
                 case 2:
@@ -141,6 +144,20 @@ int main(int argc, char *argv[]) {
                     draw_menu_main(render_data, 0, 0, false);
                     break;
             }
+
+            if (create_newgame) {
+                char name[51];
+                SDL_RenderClear(renderer);
+                bool successful_input = draw_menu_new_game(render_data, name, 51);
+                if (successful_input) {
+                    free_tabla(uj_tabla);
+                    uj_tabla = create_tabla(name, 4, 4, 3);
+                    create_newgame = false;
+                    quit_game = false; // Enter game
+                }
+
+            }
+
             SDL_RenderPresent(renderer);
 
 

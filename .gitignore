@@ -11,6 +11,6 @@ push_tiles.c.save-failed
 push_tiles.h.save-failed
 style.c.save-failed
 style.h.save-failed
-bin/
-obj/
-mentes/
+bin
+obj
+mentes

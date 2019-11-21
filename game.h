@@ -6,6 +6,7 @@
 #include "style.h"
 
 typedef struct tabla {
+    char name[51];
     int score;
     int **dynarr;
     int size_x;
@@ -17,7 +18,7 @@ typedef struct coord {
     int y;
 } coord;
 
-tabla *create_tabla(int size_x, int size_y, int start_tiles);
+tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles);
 
 void free_tabla(tabla *to_free);
 

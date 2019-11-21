@@ -21,6 +21,8 @@ int draw_menu_main(const struct render_params render_data, int mouse_x, int mous
 
 int draw_menu_play(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down);
 
+bool draw_menu_new_game(const struct render_params render_data, char *dest, int len);
+
 int draw_menu_highscores(const struct render_params render_data);
 
 #endif // MENU_H_INCLUDED

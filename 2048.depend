@@ -1,16 +1,17 @@
 # depslib dependency file v1.0
-1574249587 source:c:\users\mark\documents\workspace\2048\game.c
+1574363214 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
 	<stdbool.h>
 	<stdlib.h>
+	<string.h>
 	<stdio.h>
 	"style.h"
 	"game.h"
 	"push_tiles.h"
 
-1573587949 c:\users\mark\documents\workspace\2048\game.h
+1574362943 c:\users\mark\documents\workspace\2048\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	"style.h"
@@ -18,7 +19,7 @@
 1572206383 c:\users\mark\documents\workspace\2048\push_tiles.h
 	"game.h"
 
-1573664515 source:c:\users\mark\documents\workspace\2048\push_tiles.c
+1574360738 source:c:\users\mark\documents\workspace\2048\push_tiles.c
 	<stdlib.h>
 	<stdbool.h>
 	<stdio.h>
@@ -26,7 +27,7 @@
 	"push_tiles.h"
 	"game.h"
 
-1573663218 source:c:\users\mark\documents\workspace\2048\main.c
+1574364000 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -39,29 +40,30 @@
 	"menu.h"
 	"filehandler.h"
 
-1573664598 c:\users\mark\documents\workspace\2048\style.h
+1574344713 c:\users\mark\documents\workspace\2048\style.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574250849 source:c:\users\mark\documents\workspace\2048\style.c
+1574344696 source:c:\users\mark\documents\workspace\2048\style.c
 	"style.h"
 	<math.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1573314866 c:\users\mark\documents\workspace\2048\menu.h
+1574361886 c:\users\mark\documents\workspace\2048\menu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
 	"style.h"
 
-1574251176 source:c:\users\mark\documents\workspace\2048\menu.c
+1574363831 source:c:\users\mark\documents\workspace\2048\menu.c
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
 	"menu.h"
 	"style.h"
+	"text_input.h"
 
 1573313833 c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
@@ -75,12 +77,119 @@
 	"push_tiles.h"
 	"menu.h"
 
-1573483657 c:\users\mark\documents\workspace\2048\filehandler.h
+1574364057 c:\users\mark\documents\workspace\2048\filehandler.h
 	<stdio.h>
 	"filehandler.c"
 	"game.h"
 
-1573485820 c:\users\mark\documents\workspace\2048\filehandler.c
+1574363876 c:\users\mark\documents\workspace\2048\filehandler.c
 	"filehandler.h"
 	"game.h"
+	<string.h>
+
+1574363214 source:c:\users\mark\desktop\supersafebiztment\game.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdbool.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"style.h"
+	"game.h"
+	"push_tiles.h"
+
+1574344713 c:\users\mark\desktop\supersafebiztment\style.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+
+1574362943 c:\users\mark\desktop\supersafebiztment\game.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	"style.h"
+
+1572206383 c:\users\mark\desktop\supersafebiztment\push_tiles.h
+	"game.h"
+
+1574364000 source:c:\users\mark\desktop\supersafebiztment\main.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdbool.h>
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	"game.h"
+	"push_tiles.h"
+	"menu.h"
+	"filehandler.h"
+
+1574361886 c:\users\mark\desktop\supersafebiztment\menu.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	"style.h"
+
+1574364057 c:\users\mark\desktop\supersafebiztment\filehandler.h
+	<stdio.h>
+	"filehandler.c"
+	"game.h"
+
+1574363876 c:\users\mark\desktop\supersafebiztment\filehandler.c
+	"filehandler.h"
+	"game.h"
+	<string.h>
+
+1574363831 source:c:\users\mark\desktop\supersafebiztment\menu.c
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	"menu.h"
+	"style.h"
+	"text_input.h"
+
+1574360738 source:c:\users\mark\desktop\supersafebiztment\push_tiles.c
+	<stdlib.h>
+	<stdbool.h>
+	<stdio.h>
+	<string.h>
+	"push_tiles.h"
+	"game.h"
+
+1574344696 source:c:\users\mark\desktop\supersafebiztment\style.c
+	"style.h"
+	<math.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+
+1574362233 c:\users\mark\desktop\supersafebiztment\textinput.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+
+1574362233 c:\users\mark\desktop\supersafebiztment\text_input.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+
+1574362327 source:c:\users\mark\desktop\supersafebiztment\text_input.c
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<stdbool.h>
+	<string.h>
+	<stdlib.h>
+	"text_input.h"
+
+1574362233 c:\users\mark\documents\workspace\2048\text_input.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+
+1574362327 source:c:\users\mark\documents\workspace\2048\text_input.c
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<stdbool.h>
+	<string.h>
+	<stdlib.h>
+	"text_input.h"
 

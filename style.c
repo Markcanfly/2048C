@@ -23,6 +23,10 @@ rect_style tiles[12] = {
     {{249, 246, 242, 255}, 0xEDC22EFF} // 2048
 };
 
+// Global menu styling
+SDL_Color background_color = {238, 228, 218, 255};
+SDL_Color menu_text_color = {119, 110, 101, 255};
+
 rect_style getTile(int tile_num) {
     if (tile_num > 2048)
         return tiles[0];
