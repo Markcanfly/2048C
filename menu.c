@@ -136,10 +136,10 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 bool draw_menu_new_game(const struct render_params render_data, char *dest, int len) {
     SDL_Rect input_rect = { 0, 0, 0, 0 };
 
-    input_rect.x = 100;
-    input_rect.y = 100;
-    input_rect.w = 300;
-    input_rect.h = 300;
+    input_rect.x = render_data.x0 + (render_data.x1 - render_data.x0) / 4;
+    input_rect.y = render_data.y0 + (render_data.y1 - render_data.y0) / 2;
+    input_rect.w = (render_data.x1 - render_data.x0) / 2;
+    input_rect.h = 40; // const, because the text loaded is a constant size
 
     bool successful = input_text(dest, 51, input_rect, background_color, menu_text_color, render_data.font, render_data.renderer);
 

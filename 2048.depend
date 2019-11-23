@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574363214 source:c:\users\mark\documents\workspace\2048\game.c
+1574364317 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -11,7 +11,7 @@
 	"game.h"
 	"push_tiles.h"
 
-1574362943 c:\users\mark\documents\workspace\2048\game.h
+1574364317 c:\users\mark\documents\workspace\2048\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	"style.h"
@@ -27,7 +27,7 @@
 	"push_tiles.h"
 	"game.h"
 
-1574364000 source:c:\users\mark\documents\workspace\2048\main.c
+1574512534 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -40,23 +40,23 @@
 	"menu.h"
 	"filehandler.h"
 
-1574344713 c:\users\mark\documents\workspace\2048\style.h
+1574364317 c:\users\mark\documents\workspace\2048\style.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574344696 source:c:\users\mark\documents\workspace\2048\style.c
+1574364317 source:c:\users\mark\documents\workspace\2048\style.c
 	"style.h"
 	<math.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574361886 c:\users\mark\documents\workspace\2048\menu.h
+1574364317 c:\users\mark\documents\workspace\2048\menu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
 	"style.h"
 
-1574363831 source:c:\users\mark\documents\workspace\2048\menu.c
+1574511527 source:c:\users\mark\documents\workspace\2048\menu.c
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
@@ -82,7 +82,7 @@
 	"filehandler.c"
 	"game.h"
 
-1574363876 c:\users\mark\documents\workspace\2048\filehandler.c
+1574364317 c:\users\mark\documents\workspace\2048\filehandler.c
 	"filehandler.h"
 	"game.h"
 	<string.h>
@@ -180,11 +180,11 @@
 	<stdlib.h>
 	"text_input.h"
 
-1574362233 c:\users\mark\documents\workspace\2048\text_input.h
+1574364317 c:\users\mark\documents\workspace\2048\text_input.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574362327 source:c:\users\mark\documents\workspace\2048\text_input.c
+1574512074 source:c:\users\mark\documents\workspace\2048\text_input.c
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL2_gfxPrimitives.h>

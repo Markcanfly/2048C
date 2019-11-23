@@ -152,10 +152,11 @@ int main(int argc, char *argv[]) {
                 if (successful_input) {
                     free_tabla(uj_tabla);
                     uj_tabla = create_tabla(name, 4, 4, 3);
-                    create_newgame = false;
                     quit_game = false; // Enter game
+                } else {
+                    SDL_RenderClear(renderer);
                 }
-
+                create_newgame = false;
             }
 
             SDL_RenderPresent(renderer);

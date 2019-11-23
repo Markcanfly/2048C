@@ -81,6 +81,8 @@ bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, S
                             break;
                         }
                     } while(true);
+                } else if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    kilep = true;
                 }
                 if (event.key.keysym.sym == SDLK_RETURN) {
                     enter = true;
@@ -105,7 +107,6 @@ bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, S
             case SDL_QUIT:
                 /* visszatesszuk a sorba ezt az eventet, mert
                  * sok mindent nem tudunk vele kezdeni */
-                SDL_PushEvent(&event);
                 kilep = true;
                 break;
         }
@@ -113,5 +114,6 @@ bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, S
 
     /* igaz jelzi a helyes beolvasast; = ha enter miatt allt meg a ciklus */
     SDL_StopTextInput();
+    printf(enter ? "enter pressed\n" : "enter not pressed\n");
     return enter;
 }
