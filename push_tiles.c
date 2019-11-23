@@ -4,6 +4,7 @@
 #include <string.h>
 #include "push_tiles.h"
 #include "game.h"
+#include "debugmalloc.h"
 
 int my_rand(int from, int to) {
     return rand() % (to - from) + from;

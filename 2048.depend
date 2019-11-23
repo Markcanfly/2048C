@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574364317 source:c:\users\mark\documents\workspace\2048\game.c
+1574515434 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -10,6 +10,7 @@
 	"style.h"
 	"game.h"
 	"push_tiles.h"
+	"debugmalloc.h"
 
 1574364317 c:\users\mark\documents\workspace\2048\game.h
 	<SDL2/SDL.h>
@@ -27,7 +28,7 @@
 	"push_tiles.h"
 	"game.h"
 
-1574513648 source:c:\users\mark\documents\workspace\2048\main.c
+1574515449 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -39,6 +40,7 @@
 	"push_tiles.h"
 	"menu.h"
 	"filehandler.h"
+	"debugmalloc.h"
 
 1574364317 c:\users\mark\documents\workspace\2048\style.h
 	<SDL2/SDL.h>
@@ -56,7 +58,7 @@
 	<SDL2/SDL_ttf.h>
 	"style.h"
 
-1574514901 source:c:\users\mark\documents\workspace\2048\menu.c
+1574515005 source:c:\users\mark\documents\workspace\2048\menu.c
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
@@ -82,9 +84,10 @@
 	"filehandler.c"
 	"game.h"
 
-1574364317 c:\users\mark\documents\workspace\2048\filehandler.c
+1574515984 c:\users\mark\documents\workspace\2048\filehandler.c
 	"filehandler.h"
 	"game.h"
+	"debugmalloc.h"
 	<string.h>
 
 1574363214 source:c:\users\mark\desktop\supersafebiztment\game.c
@@ -192,4 +195,19 @@
 	<string.h>
 	<stdlib.h>
 	"text_input.h"
+
+1574515427 c:\users\mark\documents\workspace\2048\debugmalloc.h
+	<stdbool.h>
+	"debugmalloc-impl.h"
+
+1574515421 c:\users\mark\documents\workspace\2048\debugmalloc-impl.h
+	<stdbool.h>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdarg.h>
+	<process.h>
+	<unistd.h>
 

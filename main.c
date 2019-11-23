@@ -9,11 +9,11 @@
 #include "push_tiles.h"
 #include "menu.h"
 #include "filehandler.h"
+#include "debugmalloc.h"
 
 
 /*  -- TODO list - ordered by priority --
     TODO highscore table
-    TODO implement debugmalloc
     TODO move logging, undo
     TODO check win and loss
     TODO game creator++

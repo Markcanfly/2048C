@@ -8,6 +8,7 @@
 #include "style.h"
 #include "game.h"
 #include "push_tiles.h"
+#include "debugmalloc.h"
 
 /**
 * \brief Pseudo-constructor for a tabla object

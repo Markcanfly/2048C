@@ -1,5 +1,6 @@
 #include "filehandler.h"
 #include "game.h"
+#include "debugmalloc.h"
 #include <string.h>
 
 tabla *load_save() {
