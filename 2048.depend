@@ -27,7 +27,7 @@
 	"push_tiles.h"
 	"game.h"
 
-1574512534 source:c:\users\mark\documents\workspace\2048\main.c
+1574513648 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -56,7 +56,7 @@
 	<SDL2/SDL_ttf.h>
 	"style.h"
 
-1574511527 source:c:\users\mark\documents\workspace\2048\menu.c
+1574514901 source:c:\users\mark\documents\workspace\2048\menu.c
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
@@ -184,7 +184,7 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574512074 source:c:\users\mark\documents\workspace\2048\text_input.c
+1574513418 source:c:\users\mark\documents\workspace\2048\text_input.c
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL2_gfxPrimitives.h>

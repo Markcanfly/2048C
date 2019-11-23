@@ -113,7 +113,7 @@ int draw_menu_main(const struct render_params render_data, int mouse_x, int mous
     const int count_menu_elems = 3;
     menu_item menu_elems[] = {
         {0, "Play", menu_button},
-        {1, "High scores", menu_button},
+        {1, "High Scores", menu_button},
         {2, "Exit", menu_button},
     };
 
@@ -125,7 +125,7 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
     const int count_menu_elems = 3;
     menu_item menu_elems[] = {
         {0, "Continue", menu_button},
-        {1, "New game", menu_button},
+        {1, "New Game", menu_button},
         {2, "Back", menu_button},
     };
 
@@ -134,6 +134,25 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 }
 
 bool draw_menu_new_game(const struct render_params render_data, char *dest, int len) {
+
+    // Draw user prompt
+
+    int l[4]; // Location of text to draw to, in the format 'x0 y0 x1 y1'
+
+    l[0] = render_data.x0 + (render_data.x1 - render_data.x0) / 4;
+    l[1] = render_data.y0 + (render_data.y1 - render_data.y0) / 8;
+    l[2] = render_data.x0 + ((render_data.x1 - render_data.x0) / 4) * 3;
+    l[3] = render_data.y0 + (render_data.y1 - render_data.y0) / 8;
+
+    draw_text_to_center(render_data.renderer,l[0], l[1], l[2], l[3] * 2, "New Game", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer,l[0], l[1], l[2], l[3] * 6, "Your name:", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer,l[0], l[1] * 3, l[2], l[3] * 7, "(overwrites save)", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer,l[0], l[1] * 6, l[2], l[3] * 8, "Press ESC to go Back", render_data.font, menu_text_color);
+
+    SDL_RenderPresent(render_data.renderer);
+
+    // Draw text input field
+
     SDL_Rect input_rect = { 0, 0, 0, 0 };
 
     input_rect.x = render_data.x0 + (render_data.x1 - render_data.x0) / 4;

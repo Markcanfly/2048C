@@ -12,17 +12,12 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO fix text input
-        TODO fix style
-        TODO ask to overwrite
     TODO highscore table
     TODO implement debugmalloc
     TODO move logging, undo
+    TODO check win and loss
     TODO game creator++
         TODO ability to create field of arbitrary size
-        TODO ask before overwriting previous save
-        TODO Only show 'continue' button if save file exists
-    TODO animations
 */
 
 // Hyperparameters
