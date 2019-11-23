@@ -80,10 +80,14 @@ int main(int argc, char *argv[]) {
     bool quit_game = true;
     bool quit_play_select = true;
     bool create_newgame = false;
+
+    // ENTER Event Loop Controlled Menu
     while (!quit) {
 
+        // ENTER Event Loop Controlled Selector
         while (!quit_play_select) {
 
+            // ENTER Game
             while (!quit_game) {
                 SDL_RenderClear(renderer);
 
@@ -98,8 +102,8 @@ int main(int argc, char *argv[]) {
                 SDL_Event game_event;
                 SDL_WaitEvent(&game_event);
 
+                // Get user input
                 switch (game_event.type) {
-
                     case SDL_KEYUP:
                         switch (game_event.key.keysym.sym) {
                             case SDLK_LEFT: push_left(uj_tabla); break;
@@ -124,7 +128,11 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-            int choice; // Store the menu option choice here
+            /*
+            ENTER Play menu
+            */
+
+            int choice = -1; // Store the menu option choice here
             choice = handle_menu_interaction(render_data, &quit_play_select, &draw_menu_play);
             switch (choice) {
                 case 0:
@@ -141,8 +149,10 @@ int main(int argc, char *argv[]) {
             }
 
             if (create_newgame) {
-                char name[51];
+                // New Game pressed
+                char name[51]; // buffer
                 SDL_RenderClear(renderer);
+                // Draw prompt and parse text in one func, then return status code (true/false)
                 bool successful_input = draw_menu_new_game(render_data, name, 51);
                 if (successful_input) {
                     free_tabla(uj_tabla);
@@ -151,11 +161,10 @@ int main(int argc, char *argv[]) {
                 } else {
                     SDL_RenderClear(renderer);
                 }
-                create_newgame = false;
+                create_newgame = false; // avoid looping back here without user choice
             }
 
             SDL_RenderPresent(renderer);
-
 
         }
 

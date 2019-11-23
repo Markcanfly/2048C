@@ -6,13 +6,21 @@
 #include "style.h"
 #include "text_input.h"
 
-// Global style for menu buttons
-struct button_style menu_button = {
+/**
+* \brief Global style for menu buttons
+*/
+const struct button_style menu_button = {
     .inactive = {{119, 110, 101, 255}, 0xEEE4DAFF},
     .hover = {{119, 110, 101, 255}, 0xEDE0C8FF},
     .down = {{249, 246, 242, 255}, 0xF2B179FF}
 };
 
+/**
+* \brief Button-based menu handler
+* \param render_data render hyperparameters
+* \param quit bool pointer to store whether or not to quit the current menu event loop
+* \param draw_this_menu function pointer pointing to the appropriate draw_{menu_name} function
+*/
 int handle_menu_interaction(const struct render_params render_data, bool *quit, int (*draw_this_menu)(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down)) {
     int mouse_x;
     int mouse_y;
@@ -58,7 +66,7 @@ int handle_menu_interaction(const struct render_params render_data, bool *quit, 
 }
 
 int draw_menu_items(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, menu_item menu_elems[], int count_menu_elems) {
-    /*
+    /**
     Takes cursor position, sets the appropriate style of each button,
     draws the frame, and returns the id of the menu item
     that the cursor's hovering above.

@@ -4,11 +4,11 @@
 #include <SDL2/SDL_ttf.h>
 
 /**
-* Global array of vals for styling of the tiles
-* the index in the array is the log2(n) of the tile num,
+* \brief Global array of vals for styling of the tiles.
+* The index in the array is the log2(n) of the tile num,
 * except when it's >2048, in which case it's 0 (black).
 */
-rect_style tiles[12] = {
+const rect_style tiles[12] = {
     {{0, 0, 0, 255}, 0xFFFFFFFF}, // super
     {{119, 110, 101, 255}, 0xEEE4DAFF}, // 2
     {{119, 110, 101, 255}, 0xEDE0C8FF}, // 4
@@ -23,10 +23,17 @@ rect_style tiles[12] = {
     {{249, 246, 242, 255}, 0xEDC22EFF} // 2048
 };
 
-// Global menu styling
-SDL_Color background_color = {238, 228, 218, 255};
-SDL_Color menu_text_color = {119, 110, 101, 255};
+/**
+* \brief Global styles
+*/
+const SDL_Color background_color = {238, 228, 218, 255};
+const SDL_Color menu_text_color = {119, 110, 101, 255};
 
+/**
+* \brief Get appropriate styling for a number
+* \param tile_num The number on a tile
+* \return A rect_style object containing the text and background color for a tile.
+*/
 rect_style getTile(int tile_num) {
     if (tile_num > 2048)
         return tiles[0];
@@ -34,6 +41,14 @@ rect_style getTile(int tile_num) {
     return tiles[(int) log2(tile_num)];
 }
 
+/**
+* \brief Draw a string
+* \param renderer
+* \param x0,y0,x1,y1 frame
+* \param text Text to draw
+* \param font pointer to a TTF_Font to draw with
+* \param text_color SDL_Color to draw with
+*/
 void draw_text_to_center(SDL_Renderer *renderer, int x0, int y0, int x1, int y1, char *text, TTF_Font *font, SDL_Color text_color) {
     SDL_Surface *text_s;
     SDL_Texture *text_t;

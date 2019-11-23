@@ -1,0 +1,22 @@
+C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Font' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'The' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Max' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:15: warning: The following parameters of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer) are not documented:
+  parameter 'dest'
+  parameter 'hossz'
+  parameter 'teglalap'
+  parameter 'hatter'
+  parameter 'szoveg'
+  parameter 'font'
+  parameter 'renderer'
+C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Font' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'The' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Max' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.h:7: warning: The following parameters of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer) are not documented:
+  parameter 'dest'
+  parameter 'hossz'
+  parameter 'teglalap'
+  parameter 'hatter'
+  parameter 'szoveg'
+  parameter 'font'
+  parameter 'renderer'

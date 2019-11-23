@@ -12,7 +12,10 @@
 
 /**
 * \brief Pseudo-constructor for a tabla object
-* \param x and y sizes of tabla, number of random start tiles
+* \param name The name of the player
+* \param size_x The horizontal size of the tabla
+* \param size_y The vertical size of the tabla
+* \param start_tiles The number of random start tiles to add to the field.
 * Dynamically create a clean new tabla object and return a pointer to it.
 * Uses the parameter start_tiles to determine how many initial random tiles to add.
 * \return new tabla pointer
@@ -41,8 +44,7 @@ tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles) {
 
 /**
 * \brief Free a tabla object
-* Takes a pointer to a tabla object and
-* frees the inner dynamic 2D array, then the object itself
+* \param to_free pointer to a tabla object
 */
 void free_tabla(tabla *to_free) {
     free(to_free -> dynarr[0]);
@@ -52,6 +54,7 @@ void free_tabla(tabla *to_free) {
 
 /**
 * \brief Print tabla object to console
+* \param to_print pointer to a tabla object
 * Takes a tabla object and prints a representation to stdout,
 * including the current score and numbers contained.
 * For debugging purposes only.
@@ -73,6 +76,8 @@ void print_tabla(tabla *to_print) {
 void draw_game(const struct render_params render_data, tabla *to_draw) {
     /**
     * \brief Draws all game elements
+    * \param render_data rendering hyperparameters
+    * \param to_draw pointer to a tabla object
     * This function separates the renderer
     * into the playing field, which is the bottom square
     * (the height of which is the width of the renderer)
@@ -88,13 +93,14 @@ void draw_game(const struct render_params render_data, tabla *to_draw) {
     draw_game_controls(controls_rp, to_draw);
     draw_tiles(game_rp, to_draw);
 
-
-
 }
 
 void draw_game_controls(const struct render_params render_data, tabla *to_draw) {
     /**
-    * \brief Draws the current score to the specified render location
+    * \brief Draw score to render loc
+    * \param render_data rendering hyperparameters
+    * \param to_draw pointer to a tabla object
+    * Draws the current score to the specified render location
     */
     char score_char[33]; // large buffer to handle large score
 
@@ -110,8 +116,11 @@ void draw_game_controls(const struct render_params render_data, tabla *to_draw) 
 
 void draw_tiles(const struct render_params render_data, tabla *to_draw) {
     /**
-    * \brief Takes a tabla object and draws the tiles in it into a square frame.
-    * \param render parameters, tabla
+    * \brief Draw the tiles into a square frame
+    * \param render_data rendering hyperparameters
+    * \param to_draw pointer to a tabla object
+    * Takes a tabla object and draws each tile into a frame
+    * specified by the render_params struct.
     */
     int size_x = to_draw -> size_x;
     int size_y = to_draw -> size_y;
@@ -149,6 +158,11 @@ void draw_tiles(const struct render_params render_data, tabla *to_draw) {
 }
 
 bool lost(tabla* to_check) {
+    /**
+    * \brief Check if game is lost
+    * \param to_check pointer to a tabla object
+    * Checks the whole field if there are any possible valid moves left.
+    */
     int size_x = to_check -> size_x;
     int size_y = to_check -> size_y;
     int **fields = to_check -> dynarr;

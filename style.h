@@ -15,8 +15,8 @@ struct render_params {
     TTF_Font *font;
 };
 
-extern SDL_Color background_color;
-extern SDL_Color menu_text_color;
+extern const SDL_Color background_color;
+extern const SDL_Color menu_text_color;
 
 struct button_style {
     rect_style inactive;
