@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574515434 source:c:\users\mark\documents\workspace\2048\game.c
+1574518878 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -12,23 +12,25 @@
 	"push_tiles.h"
 	"debugmalloc.h"
 
-1574364317 c:\users\mark\documents\workspace\2048\game.h
+1574594577 c:\users\mark\documents\workspace\2048\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
+	<stdbool.h>
 	"style.h"
 
 1572206383 c:\users\mark\documents\workspace\2048\push_tiles.h
 	"game.h"
 
-1574360738 source:c:\users\mark\documents\workspace\2048\push_tiles.c
+1574516146 source:c:\users\mark\documents\workspace\2048\push_tiles.c
 	<stdlib.h>
 	<stdbool.h>
 	<stdio.h>
 	<string.h>
 	"push_tiles.h"
 	"game.h"
+	"debugmalloc.h"
 
-1574515449 source:c:\users\mark\documents\workspace\2048\main.c
+1574699036 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -41,12 +43,13 @@
 	"menu.h"
 	"filehandler.h"
 	"debugmalloc.h"
+	"highscores.h"
 
-1574364317 c:\users\mark\documents\workspace\2048\style.h
+1574520657 c:\users\mark\documents\workspace\2048\style.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574364317 source:c:\users\mark\documents\workspace\2048\style.c
+1574520623 source:c:\users\mark\documents\workspace\2048\style.c
 	"style.h"
 	<math.h>
 	<SDL2/SDL.h>
@@ -58,7 +61,7 @@
 	<SDL2/SDL_ttf.h>
 	"style.h"
 
-1574515005 source:c:\users\mark\documents\workspace\2048\menu.c
+1574520691 source:c:\users\mark\documents\workspace\2048\menu.c
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
@@ -79,16 +82,15 @@
 	"push_tiles.h"
 	"menu.h"
 
-1574364057 c:\users\mark\documents\workspace\2048\filehandler.h
-	<stdio.h>
-	"filehandler.c"
+1574699692 c:\users\mark\documents\workspace\2048\filehandler.h
 	"game.h"
+	"highscores.h"
 
-1574515984 c:\users\mark\documents\workspace\2048\filehandler.c
+1574594417 c:\users\mark\documents\workspace\2048\filehandler.c
+	<string.h>
 	"filehandler.h"
 	"game.h"
 	"debugmalloc.h"
-	<string.h>
 
 1574363214 source:c:\users\mark\desktop\supersafebiztment\game.c
 	<SDL2/SDL.h>
@@ -210,4 +212,24 @@
 	<stdarg.h>
 	<process.h>
 	<unistd.h>
+
+1574700254 source:c:\users\mark\documents\workspace\2048\highscores.c
+	<string.h>
+	"debugmalloc.h"
+	"highscores.h"
+
+1574699818 c:\users\mark\documents\workspace\2048\highscores.h
+
+1574699679 source:c:\users\mark\documents\workspace\2048\filehandler.c
+	<string.h>
+	"filehandler.h"
+	"game.h"
+	"debugmalloc.h"
+	"highscores.h"
+	<stdio.h>
+
+1574594609 c:\users\mark\documents\workspace\2048\highscores.c
+	<string.h>
+	"debugmalloc.h"
+	"highscores.h"
 

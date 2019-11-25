@@ -1,7 +1,9 @@
+#include <string.h>
 #include "filehandler.h"
 #include "game.h"
 #include "debugmalloc.h"
-#include <string.h>
+#include "highscores.h"
+#include <stdio.h>
 
 /**
 * \brief Load the saved gamestate from a static location
@@ -18,7 +20,7 @@ tabla *load_save() {
     FILE *save_file = fopen("mentes/tabla.txt", "r");
 
     if (save_file == NULL) {
-        printf("Error, couldn't open file.");
+        printf("Error! Couldn't open save file for reading.\n");
         return create_tabla("Default", 4, 4, 3);
     }
     char name[51];
@@ -66,7 +68,7 @@ void store_save(const tabla *to_store) {
     FILE *save_file = fopen("mentes/tabla.txt", "w");
 
     if (save_file == NULL) {
-        printf("Error, couldn't open file.");
+        printf("Error! Couldn't open save file for writing.");
         return;
     }
 
@@ -84,5 +86,56 @@ void store_save(const tabla *to_store) {
     }
 
     fclose(save_file);
+
+}
+
+/**
+* \brief Load the saved highscores from a static location
+* Load the saved highscores from *%workingdir%/mentes/highscores.txt*
+* Expects the following format on each line:
+* {score}-{field_size}-{name}
+*/
+HS_Node *load_highscores() {
+    FILE *hs_file = fopen("mentes/highscores.txt", "r");
+
+    if (hs_file == NULL) {
+        printf("Error! Couldn't open highscore file for reading.\n");
+        return NULL;
+    }
+
+    char line[255]; //254 character long buffer
+    int score, field_size;
+    char *name;
+    HS_Node *first = NULL;
+    while (fgets(line, 255, hs_file) != NULL) {
+        // Get data from each line
+        score = atoi(strtok(line, "-"));
+        field_size = atoi(strtok(NULL, "-"));
+        name = strtok(strtok(NULL, "-"), "\n"); // Tokenize then strip newline
+        add_highscore(&first, name, field_size, score);
+    }
+
+    return first;
+}
+
+/**
+* \brief Store the saved highscores to a static location
+* Write the saved highscores to *%workingdir%/mentes/highscores.txt*
+* Uses the following format on each line:
+* {score}-{field_size}-{name}
+*/
+void store_highscores(HS_Node *to_store) {
+    FILE *hs_file = fopen("mentes/highscores.txt", "w");
+
+    if (hs_file == NULL) {
+        printf("Error! Couldn't open highscore file for writing.\n");
+        return NULL;
+    }
+
+    for (HS_Node *c = to_store; c != NULL; c = c -> next) {
+        fprintf(hs_file, "%d-%d-%s\n", c -> score, c -> field_size, c -> name);
+    }
+
+    fclose(hs_file);
 
 }

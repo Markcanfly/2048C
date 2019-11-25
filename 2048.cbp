@@ -46,10 +46,20 @@
 			<Add library="dxguid" />
 			<Add directory="$(#sdl2.lib)" />
 		</Linker>
+		<Unit filename="debugmalloc-impl.h" />
+		<Unit filename="debugmalloc.h" />
+		<Unit filename="filehandler.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="filehandler.h" />
 		<Unit filename="game.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="game.h" />
+		<Unit filename="highscores.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="highscores.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

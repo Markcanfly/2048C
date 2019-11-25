@@ -10,6 +10,7 @@
 #include "menu.h"
 #include "filehandler.h"
 #include "debugmalloc.h"
+#include "highscores.h"
 
 
 /*  -- TODO list - ordered by priority --
@@ -48,7 +49,8 @@ void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prende
 
 int main(int argc, char *argv[]) {
 
-    srand(time(NULL));
+    HS_Node *hs_first = load_highscores(); // TESTING
+    debug_print_HS(hs_first);
 
     tabla *uj_tabla = load_save();
     print_tabla(uj_tabla);
@@ -190,9 +192,10 @@ int main(int argc, char *argv[]) {
         SDL_RenderPresent(renderer);
 
     }
-
+    debug_print_HS(hs_first);
     free_tabla(uj_tabla);
     TTF_CloseFont(font);
+    free_highscores(&hs_first);
     SDL_Quit();
     return 0;
 }
