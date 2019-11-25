@@ -5,12 +5,13 @@
 #include "push_tiles.h"
 #include "game.h"
 #include "debugmalloc.h"
+#include "highscores.h"
 
 int my_rand(int from, int to) {
     return rand() % (to - from) + from;
 }
 
-void push_up(tabla *to_push) {
+void push_up(tabla *to_push, HS_Node *hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -69,8 +70,9 @@ void push_up(tabla *to_push) {
         printf("Game lost.");
     // Save to file
     store_save(to_push);
+    add_checked_highscore(&hs_node, to_push -> name, to_push -> size_x, to_push -> score);
 }
-void push_down(tabla *to_push) {
+void push_down(tabla *to_push, HS_Node *hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -127,8 +129,9 @@ void push_down(tabla *to_push) {
         printf("Game lost.");
     // Save to file
     store_save(to_push);
+    add_checked_highscore(&hs_node, to_push -> name, to_push -> size_x, to_push -> score);
 }
-void push_left(tabla *to_push) {
+void push_left(tabla *to_push, HS_Node *hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -186,8 +189,9 @@ void push_left(tabla *to_push) {
         printf("Game lost.");
     // Save to file
     store_save(to_push);
+    add_checked_highscore(&hs_node, to_push -> name, to_push -> size_x, to_push -> score);
 }
-void push_right(tabla *to_push) {
+void push_right(tabla *to_push, HS_Node *hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -246,6 +250,7 @@ void push_right(tabla *to_push) {
         printf("Game lost.");
     // Save to file
     store_save(to_push);
+    add_checked_highscore(&hs_node, to_push -> name, to_push -> size_x, to_push -> score);
 }
 
 void add_random(tabla *to_add) {

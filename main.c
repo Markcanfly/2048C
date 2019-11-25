@@ -108,10 +108,10 @@ int main(int argc, char *argv[]) {
                 switch (game_event.type) {
                     case SDL_KEYUP:
                         switch (game_event.key.keysym.sym) {
-                            case SDLK_LEFT: push_left(uj_tabla); break;
-                            case SDLK_RIGHT: push_right(uj_tabla); break;
-                            case SDLK_UP: push_up(uj_tabla); break;
-                            case SDLK_DOWN: push_down(uj_tabla); break;
+                            case SDLK_LEFT: push_left(uj_tabla, hs_first); break;
+                            case SDLK_RIGHT: push_right(uj_tabla, hs_first); break;
+                            case SDLK_UP: push_up(uj_tabla, hs_first); break;
+                            case SDLK_DOWN: push_down(uj_tabla, hs_first); break;
                             case SDLK_ESCAPE:
                                 quit_game = true;
                                 // Show previous after quitting game
@@ -193,6 +193,7 @@ int main(int argc, char *argv[]) {
 
     }
     debug_print_HS(hs_first);
+    store_highscores(hs_first);
     free_tabla(uj_tabla);
     TTF_CloseFont(font);
     free_highscores(&hs_first);
