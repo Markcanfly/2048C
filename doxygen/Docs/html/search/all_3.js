@@ -3,7 +3,7 @@ var searchData=
   ['down_6',['down',['../structbutton__style.html#a39eebb96739571f67684a63246c640a7',1,'button_style']]],
   ['draw_5fgame_7',['draw_game',['../game_8c.html#a8013098b19bf36fcd571e3a37b4cc5a5',1,'draw_game(const struct render_params render_data, tabla *to_draw):&#160;game.c'],['../game_8h.html#a8013098b19bf36fcd571e3a37b4cc5a5',1,'draw_game(const struct render_params render_data, tabla *to_draw):&#160;game.c']]],
   ['draw_5fgame_5fcontrols_8',['draw_game_controls',['../game_8c.html#a4248d0f55db58ebbb53e0d52fe141104',1,'draw_game_controls(const struct render_params render_data, tabla *to_draw):&#160;game.c'],['../game_8h.html#a4248d0f55db58ebbb53e0d52fe141104',1,'draw_game_controls(const struct render_params render_data, tabla *to_draw):&#160;game.c']]],
-  ['draw_5fmenu_5fhighscores_9',['draw_menu_highscores',['../menu_8h.html#ae500a5b22eb3ae8983fb8a1b0239d1b7',1,'menu.h']]],
+  ['draw_5fmenu_5fhighscores_9',['draw_menu_highscores',['../menu_8h.html#ae4938be2cb1989cf92091cdd41e57a67',1,'menu.h']]],
   ['draw_5fmenu_5fitems_10',['draw_menu_items',['../menu_8h.html#a5150e3d0424f969afd704d56449b638d',1,'menu.h']]],
   ['draw_5fmenu_5fmain_11',['draw_menu_main',['../menu_8h.html#afb50b0464c57a6ccd576c34d25b54c4b',1,'menu.h']]],
   ['draw_5fmenu_5fnew_5fgame_12',['draw_menu_new_game',['../menu_8h.html#a41be1f10a10af70f26854a025521d057',1,'menu.h']]],

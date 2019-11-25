@@ -14,7 +14,6 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO highscore table
     TODO move logging, undo
     TODO check win and loss
     TODO game creator++
@@ -80,6 +79,7 @@ int main(int argc, char *argv[]) {
 
     bool quit = false;
     bool quit_game = true;
+    bool quit_highscores = true;
     bool quit_play_select = true;
     bool create_newgame = false;
 
@@ -170,6 +170,18 @@ int main(int argc, char *argv[]) {
 
         }
 
+        // ENTER High Scores screen
+        while (!quit_highscores) {
+            int exit = handle_menu_hs_interaction(render_data, &quit_highscores, hs_first);
+            switch (exit) {
+                case 0:
+                    quit_highscores = true;
+                    draw_menu_main(render_data, 0, 0, false);
+                    SDL_RenderPresent(renderer);
+                    break;
+            }
+        }
+
         int choice = -1; // Store the menu option choice here
         choice = handle_menu_interaction(render_data, &quit, &draw_menu_main);
 
@@ -183,6 +195,8 @@ int main(int argc, char *argv[]) {
                 break;
             case 1:
                 // High score
+                draw_menu_highscores(render_data, 0, 0, false, hs_first);
+                quit_highscores = false;
                 break;
             case 2:
                 quit = true;

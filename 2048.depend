@@ -32,7 +32,7 @@
 	"debugmalloc.h"
 	"highscores.h"
 
-1574700778 source:c:\users\mark\documents\workspace\2048\main.c
+1574705209 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -57,17 +57,19 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574364317 c:\users\mark\documents\workspace\2048\menu.h
+1574705035 c:\users\mark\documents\workspace\2048\menu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
 	"style.h"
+	"highscores.h"
 
-1574520691 source:c:\users\mark\documents\workspace\2048\menu.c
-	<stdbool.h>
+1574705022 source:c:\users\mark\documents\workspace\2048\menu.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
+	<stdbool.h>
+	<stdlib.h>
 	"menu.h"
 	"style.h"
 	"text_input.h"

@@ -124,8 +124,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae91ee8d14067dcf5c36f5a9c21d8a8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41be1f10a10af70f26854a025521d057"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a41be1f10a10af70f26854a025521d057">draw_menu_new_game</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, char *dest, int len)</td></tr>
 <tr class="separator:a41be1f10a10af70f26854a025521d057"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae500a5b22eb3ae8983fb8a1b0239d1b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#ae500a5b22eb3ae8983fb8a1b0239d1b7">draw_menu_highscores</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data)</td></tr>
-<tr class="separator:ae500a5b22eb3ae8983fb8a1b0239d1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4938be2cb1989cf92091cdd41e57a67"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#ae4938be2cb1989cf92091cdd41e57a67">draw_menu_highscores</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, HS_Node *hs_node)</td></tr>
+<tr class="separator:ae4938be2cb1989cf92091cdd41e57a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a0739c473ac989e64db3888f85247ff67"></a>
@@ -143,8 +143,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae500a5b22eb3ae8983fb8a1b0239d1b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae500a5b22eb3ae8983fb8a1b0239d1b7">&#9670;&nbsp;</a></span>draw_menu_highscores()</h2>
+<a id="ae4938be2cb1989cf92091cdd41e57a67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4938be2cb1989cf92091cdd41e57a67">&#9670;&nbsp;</a></span>draw_menu_highscores()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -153,8 +153,18 @@ Functions</h2></td></tr>
           <td class="memname">int draw_menu_highscores </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
-          <td class="paramname"><em>render_data</em></td><td>)</td>
+          <td class="paramname"><em>render_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">HS_Node *&#160;</td>
+          <td class="paramname"><em>hs_node</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -367,7 +377,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="menu_8h.html">menu.h</a></li>
-    <li class="footer">Generated on Sat Nov 23 2019 15:52:03 for 2048 by
+    <li class="footer">Generated on Mon Nov 25 2019 18:02:58 for 2048 by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

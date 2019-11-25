@@ -5,6 +5,7 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <SDL2/SDL_ttf.h>
 #include "style.h"
+#include "highscores.h"
 
 
 typedef struct menu_item {
@@ -23,6 +24,8 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 
 bool draw_menu_new_game(const struct render_params render_data, char *dest, int len);
 
-int draw_menu_highscores(const struct render_params render_data);
+int handle_menu_hs_interaction(const struct render_params render_data, bool *quit, HS_Node *hs_node);
+
+int draw_menu_highscores(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, HS_Node *hs_node);
 
 #endif // MENU_H_INCLUDED

@@ -1,7 +1,8 @@
-#include <stdbool.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <SDL2/SDL_ttf.h>
+#include <stdbool.h>
+#include <stdlib.h>
 #include "menu.h"
 #include "style.h"
 #include "text_input.h"
@@ -173,4 +174,111 @@ bool draw_menu_new_game(const struct render_params render_data, char *dest, int 
     return successful;
 }
 
-int draw_menu_highscores(const struct render_params render_data);
+/**
+* \brief Exit-only interaction handler for high scores
+*/
+int handle_menu_hs_interaction(const struct render_params render_data, bool *quit, HS_Node *hs_node) {
+    int mouse_x;
+    int mouse_y;
+    int choice;
+    bool clicked = false;
+    bool keyup = false;
+
+    SDL_Event event;
+    SDL_WaitEvent(&event);
+
+    switch (event.type) {
+        case SDL_MOUSEMOTION:
+            mouse_x = event.motion.x;
+            mouse_y = event.motion.y;
+            break;
+        case SDL_MOUSEBUTTONDOWN:
+            mouse_x = event.button.x;
+            mouse_y = event.button.y;
+            clicked = true;
+            break;
+        case SDL_MOUSEBUTTONUP:
+            mouse_x = event.button.x;
+            mouse_y = event.button.y;
+            clicked = true;
+            keyup = true;
+            break;
+        case SDL_KEYDOWN:
+            switch (event.key.keysym.sym) {
+                case SDLK_ESCAPE: *quit = true; break;
+            }
+            break;
+    }
+    SDL_RenderClear(render_data.renderer);
+    /*
+    Draw menu with appropriate button states,
+    then return choice on KEYUP or -1 otherwise.
+    */
+    choice = draw_menu_highscores(render_data, mouse_x, mouse_y, clicked, hs_node);
+    if (keyup)
+        return choice;
+
+    return -1;
+}
+
+/**
+* \brief Draw the **High Scores** menu
+* Show the Top 10 highest scores across the board
+*/
+int draw_menu_highscores(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, HS_Node *hs_node) {
+
+    int i = 10;
+    // Set drawing parameters
+    const int table_height = (render_data.y1 - render_data.y0);
+    const int cell = table_height / i;
+    const int name_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 10; // Margin for name
+    const int name_x1 = render_data.x0 + (render_data.x1 - render_data.x0) / 2;
+    const int field_size_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 2 + 5;
+    const int field_size_x1 = render_data.x0 + ((render_data.x1 - render_data.x0) / 8) * 5;
+    const int score_x0 = render_data.x0 + ((render_data.x1 - render_data.x0) / 8) * 5 + 5;
+    const int score_x1 = render_data.x1 - 5;
+
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF); // Background
+    for (HS_Node *c = hs_node; c != NULL && i > 0; c = c -> next) {
+        // Draw data
+        draw_text_to_center(render_data.renderer, name_x0, cell * (10-i), name_x1, cell * (10 - (i - 1)), c -> name, render_data.font, menu_text_color);
+        char field_size_text[3]; // buffer for 2-digit numbers for the field size
+        char score_text[12]; // buffer for 11 digit score
+        itoa(c -> field_size, field_size_text, 10);
+        itoa(c -> score, score_text, 10);
+        draw_text_to_center(render_data.renderer, field_size_x0, cell * (10-i), field_size_x1, cell * (10 - (i - 1)), field_size_text, render_data.font, menu_text_color);
+        draw_text_to_center(render_data.renderer, score_x0, cell * (10-i), score_x1, cell * (10 - (i - 1)), score_text, render_data.font, menu_text_color);
+        i--;
+    }
+
+    // Draw exit button
+    int button_height = (render_data.y1 - render_data.y0) / 8;
+    int r_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 4;
+    int r_y0 = render_data.y1 - button_height;
+    int r_x1 = render_data.x1 - (render_data.x1 - render_data.x0) / 4;
+    int r_y1 = render_data.y1;
+
+    rect_style btn_style;
+    menu_item exit_button = { 0, "Exit", menu_button };
+    int selected_menu_elem = -1;
+
+    if (r_x0 <= mouse_x && mouse_x <= r_x1 && r_y0 <= mouse_y && mouse_y <= r_y1) {
+        selected_menu_elem = 0;
+        if (mouse_down) {
+            btn_style = exit_button.style.down;
+        } else {
+            btn_style = exit_button.style.hover;
+        }
+    } else {
+        btn_style = exit_button.style.inactive;
+    }
+
+    roundedBoxColor(render_data.renderer, r_x0, r_y0, r_x1, r_y1, 10, btn_style.backgroundColor);
+
+    // Text handling
+    draw_text_to_center(render_data.renderer, r_x0, r_y0, r_x1, r_y1, exit_button.title, render_data.font, btn_style.textColor);
+
+    SDL_RenderPresent(render_data.renderer);
+
+    return selected_menu_elem;
+}
