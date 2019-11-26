@@ -17,7 +17,7 @@
     TODO move logging, undo
     TODO check win and loss
     TODO game creator++
-        TODO ability to create field of arbitrary size
+        TODO add fieldsize click ui
     TODO revise game manager to single function
 */
 
@@ -107,7 +107,7 @@ int main(int argc, char *argv[]) {
 
                 // Get user input
                 switch (game_event.type) {
-                    case SDL_KEYUP:
+                    case SDL_KEYDOWN:
                         switch (game_event.key.keysym.sym) {
                             case SDLK_LEFT: push_left(uj_tabla, &hs_first); break;
                             case SDLK_RIGHT: push_right(uj_tabla, &hs_first); break;
@@ -157,7 +157,7 @@ int main(int argc, char *argv[]) {
                 SDL_RenderClear(renderer);
                 // Draw prompt and parse text in one func, then return status code (true/false)
                 int tabla_size = handle_menu_newgame_interaction(render_data, name, 51); // Inner while loop
-                if (tabla_size != -1) {
+                if (tabla_size > 0) {
                     free_tabla(uj_tabla);
                     uj_tabla = create_tabla(name, tabla_size, tabla_size, tabla_size - 1);
                     quit_game = false; // Enter game

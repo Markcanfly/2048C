@@ -111,8 +111,15 @@ void add_highscore(HS_Node **first, char *name, int field_size, int score) {
 * if so, delete that, then add a new node one to the appropriate place in the linked list.
 */
 void add_checked_highscore(HS_Node **first, char *name, int field_size, int score) {
-    del_highscore(first, name, field_size);
-    add_highscore(first, name, field_size, score);
+    HS_Node *found = find_node(*first, name, field_size);
+    if (found) { //nulptrcheck && scorecheck
+        if (found -> score < score) {
+            del_highscore(first, name, field_size);
+            add_highscore(first, name, field_size, score);
+        }
+    } else {
+        add_highscore(first, name, field_size, score);
+    }
 }
 
 void debug_print_HS(HS_Node *node) {

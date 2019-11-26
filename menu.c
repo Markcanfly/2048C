@@ -150,6 +150,7 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 int handle_menu_newgame_interaction(const struct render_params render_data, char *name, int len) {
     bool successful = draw_menu_choose_name(render_data, name, len);
     bool quit_fs = false;
+    bool esc = false;
     int field_size = 4;
     if (successful) {
         // Handle field size selection
@@ -183,7 +184,7 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
                     break;
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym) {
-                        case SDLK_ESCAPE: quit_fs = true; successful = false; break;
+                        case SDLK_ESCAPE: quit_fs = true; esc = true; break;
                         case SDLK_LEFT: field_size--; break;
                         case SDLK_RIGHT: field_size++; break;
                         case SDLK_RETURN: quit_fs = true;
@@ -194,14 +195,25 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
             choice = draw_menu_choose_fieldsize(render_data, mouse_x, mouse_y, clicked, &field_size, name);
             SDL_RenderPresent(render_data.renderer);
 
-            if (keyup && choice > 0 && successful)
-                return choice;
+            if (keyup) {
+                switch (choice) {
+                    case 0:
+                        field_size--;
+                        break;
+                    case 1:
+                        field_size++;
+                        break;
+                    case 2:
+                        quit_fs = true;
+                        break;
+                }
+            }
         }
     } else {
         return -1;
     }
 
-    return field_size;
+    return esc ? -1 : field_size;
 }
 
 bool draw_menu_choose_name(const struct render_params render_data, char *dest, int len) {
@@ -240,8 +252,14 @@ int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF); // Background
     char fs_str[3];
     itoa(*field_size, fs_str, 10);
-    draw_text_to_center(render_data.renderer, 100, 100, 300, 300, fs_str, render_data.font, menu_text_color);
+
+    draw_text_to_center(render_data.renderer, render_data.x0, 50, render_data.x1, 250, "Select game size", render_data.font, menu_text_color);
+    if (*field_size < 1)
+        draw_text_to_center(render_data.renderer, render_data.x0, 80, render_data.x1, 280, "0 <", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, 100, render_data.x1, 300, fs_str, render_data.font, menu_text_color);
+
     return 0;
+
 }
 
 /**
