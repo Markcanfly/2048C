@@ -22,7 +22,11 @@ int draw_menu_main(const struct render_params render_data, int mouse_x, int mous
 
 int draw_menu_play(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down);
 
-bool draw_menu_new_game(const struct render_params render_data, char *dest, int len);
+int handle_menu_newgame_interaction(const struct render_params render_data, char *name, int len);
+
+bool draw_menu_choose_name(const struct render_params render_data, char *dest, int len);
+
+int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, int *field_size, char *name);
 
 int handle_menu_hs_interaction(const struct render_params render_data, bool *quit, HS_Node *hs_node);
 

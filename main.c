@@ -18,6 +18,7 @@
     TODO check win and loss
     TODO game creator++
         TODO ability to create field of arbitrary size
+    TODO revise game manager to single function
 */
 
 // Hyperparameters
@@ -108,10 +109,10 @@ int main(int argc, char *argv[]) {
                 switch (game_event.type) {
                     case SDL_KEYUP:
                         switch (game_event.key.keysym.sym) {
-                            case SDLK_LEFT: push_left(uj_tabla, hs_first); break;
-                            case SDLK_RIGHT: push_right(uj_tabla, hs_first); break;
-                            case SDLK_UP: push_up(uj_tabla, hs_first); break;
-                            case SDLK_DOWN: push_down(uj_tabla, hs_first); break;
+                            case SDLK_LEFT: push_left(uj_tabla, &hs_first); break;
+                            case SDLK_RIGHT: push_right(uj_tabla, &hs_first); break;
+                            case SDLK_UP: push_up(uj_tabla, &hs_first); break;
+                            case SDLK_DOWN: push_down(uj_tabla, &hs_first); break;
                             case SDLK_ESCAPE:
                                 quit_game = true;
                                 // Show previous after quitting game
@@ -155,10 +156,10 @@ int main(int argc, char *argv[]) {
                 char name[51]; // buffer
                 SDL_RenderClear(renderer);
                 // Draw prompt and parse text in one func, then return status code (true/false)
-                bool successful_input = draw_menu_new_game(render_data, name, 51);
-                if (successful_input) {
+                int tabla_size = handle_menu_newgame_interaction(render_data, name, 51); // Inner while loop
+                if (tabla_size != -1) {
                     free_tabla(uj_tabla);
-                    uj_tabla = create_tabla(name, 4, 4, 3);
+                    uj_tabla = create_tabla(name, tabla_size, tabla_size, tabla_size - 1);
                     quit_game = false; // Enter game
                 } else {
                     SDL_RenderClear(renderer);

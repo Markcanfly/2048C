@@ -18,11 +18,11 @@
 	<stdbool.h>
 	"style.h"
 
-1574700597 c:\users\mark\documents\workspace\2048\push_tiles.h
+1574774167 c:\users\mark\documents\workspace\2048\push_tiles.h
 	"game.h"
 	"highscores.h"
 
-1574700738 source:c:\users\mark\documents\workspace\2048\push_tiles.c
+1574774169 source:c:\users\mark\documents\workspace\2048\push_tiles.c
 	<stdlib.h>
 	<stdbool.h>
 	<stdio.h>
@@ -32,7 +32,7 @@
 	"debugmalloc.h"
 	"highscores.h"
 
-1574705209 source:c:\users\mark\documents\workspace\2048\main.c
+1574768260 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -57,14 +57,14 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574705035 c:\users\mark\documents\workspace\2048\menu.h
+1574769376 c:\users\mark\documents\workspace\2048\menu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
 	"style.h"
 	"highscores.h"
 
-1574705022 source:c:\users\mark\documents\workspace\2048\menu.c
+1574770242 source:c:\users\mark\documents\workspace\2048\menu.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -217,7 +217,7 @@
 	<process.h>
 	<unistd.h>
 
-1574700254 source:c:\users\mark\documents\workspace\2048\highscores.c
+1574773146 source:c:\users\mark\documents\workspace\2048\highscores.c
 	<string.h>
 	"debugmalloc.h"
 	"highscores.h"

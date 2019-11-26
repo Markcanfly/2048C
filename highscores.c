@@ -41,18 +41,20 @@ HS_Node *find_previous_node(HS_Node *first, const char *name, const int field_si
 * \param field_size The field size we're looking to delete the node for
 */
 void del_highscore(HS_Node **first, const char *name, const int field_size) {
-    if (strcmp((*first) -> name, name) == 0 && (*first) -> field_size == field_size) {
-        // Check if the first object is the one needed to be deleted
-        HS_Node *new_first = (*first) -> next;
-        free(*first);
-        *first = new_first;
-    } else {
-        // Otherwise delete the required object
-        HS_Node *node = find_previous_node(*first, name, field_size);
-        if (node) { // is not null
-            HS_Node *new_next = node -> next -> next;
-            free(node -> next);
-            node -> next = new_next;
+    if (*first != NULL) {
+        if (strcmp((*first) -> name, name) == 0 && (*first) -> field_size == field_size) {
+            // Check if the first object is the one needed to be deleted
+            HS_Node *new_first = (*first) -> next;
+            free(*first);
+            *first = new_first;
+        } else {
+            // Otherwise delete the required object
+            HS_Node *node = find_previous_node(*first, name, field_size);
+            if (node) { // is not null
+                HS_Node *new_next = node -> next -> next;
+                free(node -> next);
+                node -> next = new_next;
+            }
         }
     }
 }
