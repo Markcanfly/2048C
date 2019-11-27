@@ -113,7 +113,7 @@ HS_Node *load_highscores() {
         field_size = atoi(strtok(NULL, "-"));
         name = strtok(strtok(NULL, "-"), "\n"); // Tokenize then strip newline
         if (name != NULL && field_size != 0)
-            add_highscore(&first, name, field_size, score);
+            add_checked_highscore(&first, name, field_size, score);
     }
 
     return first;

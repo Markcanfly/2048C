@@ -253,10 +253,15 @@ int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse
     char fs_str[3];
     itoa(*field_size, fs_str, 10);
 
+    // Text
     draw_text_to_center(render_data.renderer, render_data.x0, 50, render_data.x1, 250, "Select game size", render_data.font, menu_text_color);
     if (*field_size < 1)
         draw_text_to_center(render_data.renderer, render_data.x0, 80, render_data.x1, 280, "0 <", render_data.font, menu_text_color);
     draw_text_to_center(render_data.renderer, render_data.x0, 100, render_data.x1, 300, fs_str, render_data.font, menu_text_color);
+
+    // Draw buttons
+
+
 
     return 0;
 

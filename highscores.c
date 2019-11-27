@@ -60,6 +60,16 @@ void del_highscore(HS_Node **first, const char *name, const int field_size) {
 }
 
 /**
+* \brief Deletes a node, given the node before it
+* \param previous The node directly before the one to be deleted.
+*/
+void del_node(HS_Node *previous) {
+    HS_Node *next = previous -> next -> next;
+    free(previous -> next);
+    previous -> next = next;
+}
+
+/**
 * \brief Add a highscore
 * \param first Pointer pointer pointing to the first node of our list
 * \param name The name we're looking to delete the node for
@@ -111,10 +121,10 @@ void add_highscore(HS_Node **first, char *name, int field_size, int score) {
 * if so, delete that, then add a new node one to the appropriate place in the linked list.
 */
 void add_checked_highscore(HS_Node **first, char *name, int field_size, int score) {
-    HS_Node *found = find_node(*first, name, field_size);
-    if (found) { //nulptrcheck && scorecheck
-        if (found -> score < score) {
-            del_highscore(first, name, field_size);
+    HS_Node *found_prev = find_previous_node(*first, name, field_size);
+    if (found_prev) { //nulptrcheck && scorecheck
+        if (found_prev -> score < score) {
+            del_node(found_prev);
             add_highscore(first, name, field_size, score);
         }
     } else {
