@@ -376,3 +376,15 @@ int draw_menu_highscores(const struct render_params render_data, int mouse_x, in
 
     return selected_menu_elem;
 }
+
+void draw_win_splash(const struct render_params render_data) {
+    // Semi-transparent background
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48C88);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, "Congratulations! Game won.", render_data.font, menu_text_color);
+}
+
+void draw_lose_splash(const struct render_params render_data) {
+    // Semi-transparent background
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48C88);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, "Game over!", render_data.font, menu_text_color);
+}

@@ -14,6 +14,7 @@
 
 
 /*  -- TODO list - ordered by priority --
+    TODO constrain field size
     TODO move logging, undo
     TODO check win and loss
     TODO game creator++
@@ -96,23 +97,32 @@ int main(int argc, char *argv[]) {
         // ENTER Event Loop Controlled Selector
         while (!quit_play_select) {
 
+            // Game state controller variable
+            int game_status = 0; // 0: nothing | 1: won | -1: lost
             // ENTER Game
             while (!quit_game) {
-                SDL_RenderClear(renderer);
 
                 // Game background
                 boxColor(renderer, 0, 0, WINSIZE_X, WINSIZE_Y, 0xD2B48CFF);
 
                 // Draw tiles
-
                 draw_game(render_data, uj_tabla);
+
+                // Game event handling
+                switch (game_status) {
+                    case 1:
+                        draw_win_splash(render_data);
+                        break;
+                    case -1:
+                        draw_lose_splash(render_data);
+                        quit_game = true;
+                        break;
+                }
+
                 SDL_RenderPresent(renderer);
 
                 SDL_Event game_event;
                 SDL_WaitEvent(&game_event);
-
-                // Game state
-                int game_status; // 0: nothing | 1: won | -1: lost
 
                 // Get user input
                 switch (game_event.type) {
@@ -138,8 +148,6 @@ int main(int argc, char *argv[]) {
                         quit = true;
                         break;
                 }
-
-                // Win splash / lose splash
 
             }
 

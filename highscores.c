@@ -65,7 +65,7 @@ void del_highscore(HS_Node **first, const char *name, const int field_size) {
 * \brief Deletes a node, given the node before it
 * \param previous The node directly before the one to be deleted.
 */
-void del_node(HS_Node *previous) {
+void del_node_after(HS_Node *previous) {
     HS_Node *next = previous -> next -> next;
     free(previous -> next);
     previous -> next = next;
@@ -131,7 +131,7 @@ void add_checked_highscore(HS_Node **first, char *name, int field_size, int scor
             (*first) -> score = score;
             return;
         } else if (strcmp((*first) -> name, name) == 0 && (*first) -> field_size == field_size && (*first) -> score > score) {
-            // The first element is the same plyaer and fieldsize, but higher score
+            // The first element is the same player and fieldsize, but higher score
             // -> do NOTHING, quit function
             return;
         }
@@ -139,8 +139,8 @@ void add_checked_highscore(HS_Node **first, char *name, int field_size, int scor
     // Check others
     HS_Node *found_prev = find_previous_node(*first, name, field_size);
     if (found_prev) { //nulptrcheck && scorecheck
-        if (found_prev -> score < score) {
-            del_node(found_prev);
+        if (found_prev -> next -> score < score) {
+            del_node_after(found_prev);
             add_highscore(first, name, field_size, score);
         }
     } else {

@@ -18,7 +18,7 @@ HS_Node *find_previous_node(HS_Node *first, const char *name, const int field_si
 
 void del_highscore(HS_Node **first, const char *name, const int field_size);
 
-void del_node(HS_Node *previous);
+void del_node_after(HS_Node *previous);
 
 void add_highscore(HS_Node **first, char *name, int field_size, int score);
 

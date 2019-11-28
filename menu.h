@@ -32,4 +32,8 @@ int handle_menu_hs_interaction(const struct render_params render_data, bool *qui
 
 int draw_menu_highscores(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, HS_Node *hs_node);
 
+void draw_win_splash(const struct render_params render_data);
+
+void draw_lose_splash(const struct render_params render_data);
+
 #endif // MENU_H_INCLUDED
