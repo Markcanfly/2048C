@@ -388,5 +388,6 @@ void draw_win_splash(const struct render_params render_data) {
 void draw_lose_splash(const struct render_params render_data) {
     // Semi-transparent background
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48C88);
-    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, "Game over!", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1 - 40, "Game over!", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0 + 40, render_data.x1, render_data.y1, "Press ESC to exit", render_data.font, menu_text_color);
 }
