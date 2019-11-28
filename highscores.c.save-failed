@@ -26,11 +26,12 @@ HS_Node *find_node(HS_Node *first, const char *name, const int field_size) {
 * \param field_size The field size we're looking to find
 */
 HS_Node *find_previous_node(HS_Node *first, const char *name, const int field_size) {
-    if (first != NULL) {
-        for (HS_Node *current = first; current -> next != NULL; current = current -> next) {
-            if (strcmp(current -> next -> name, name) == 0 && current -> next -> field_size == field_size)
-                return current;
-        }
+    if (first == NULL)
+        return NULL;
+
+    for (HS_Node *current = first; current -> next != NULL; current = current -> next) {
+        if (strcmp(current -> next -> name, name) == 0 && current -> next -> field_size == field_size)
+            return current;
     }
     // Not found
     return NULL;
@@ -124,24 +125,26 @@ void add_highscore(HS_Node **first, char *name, int field_size, int score) {
 */
 void add_checked_highscore(HS_Node **first, char *name, int field_size, int score) {
     if (*first != NULL) {
-        // Highscore metadata check + score check
-        if (strcmp((*first) -> name, name) == 0 && (*first) -> field_size == field_size && (*first) -> score <= score) {
-            // The first element is the same player and fieldsize, but lower score -> update score
-            (*first) -> score = score;
-            return;
-        }
-    }
-    // Check others
-    HS_Node *found_prev = find_previous_node(*first, name, field_size);
-    if (found_prev) { //nulptrcheck && scorecheck
-        if (found_prev -> score < score) {
-            del_node(found_prev);
+        // Check the first
+        if ((strcmp(*first -> name, name) == 0) && *first -> field_size == field_size && *first -> score < score) {
+            // Remove first if highest score of player is there and current score is small
+            HS_Node *temp_next = *first -> next;
+            free(*first);
+            *first = temp_next;
+            // Add
+            add_highscore(first, name, field_size, score);
+
+        // Check the others
+        HS_Node *found_prev = find_previous_node(*first, name, field_size);
+        if (found_prev) { //nulptrcheck && scorecheck
+            if (found_prev -> score < score) {
+                del_node(found_prev);
+                add_highscore(first, name, field_size, score);
+            }
+        } else {
             add_highscore(first, name, field_size, score);
         }
-    } else {
-        add_highscore(first, name, field_size, score);
     }
-
 }
 
 void debug_print_HS(HS_Node *node) {

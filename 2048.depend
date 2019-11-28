@@ -57,14 +57,14 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 
-1574769376 c:\users\mark\documents\workspace\2048\menu.h
+1574939321 c:\users\mark\documents\workspace\2048\menu.h
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
 	"style.h"
 	"highscores.h"
 
-1574855545 source:c:\users\mark\documents\workspace\2048\menu.c
+1574939321 source:c:\users\mark\documents\workspace\2048\menu.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -217,12 +217,12 @@
 	<process.h>
 	<unistd.h>
 
-1574792793 source:c:\users\mark\documents\workspace\2048\highscores.c
+1574940953 source:c:\users\mark\documents\workspace\2048\highscores.c
 	<string.h>
 	"debugmalloc.h"
 	"highscores.h"
 
-1574855902 c:\users\mark\documents\workspace\2048\highscores.h
+1574856028 c:\users\mark\documents\workspace\2048\highscores.h
 
 1574855727 source:c:\users\mark\documents\workspace\2048\filehandler.c
 	<string.h>
