@@ -34,7 +34,7 @@
 	"debugmalloc.h"
 	"highscores.h"
 
-1574959914 source:c:\users\mark\documents\workspace\2048\main.c
+1574962483 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -67,7 +67,7 @@
 	"style.h"
 	"highscores.h"
 
-1574961684 source:c:\users\mark\documents\workspace\2048\menu.c
+1574962436 source:c:\users\mark\documents\workspace\2048\menu.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>

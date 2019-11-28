@@ -186,8 +186,8 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym) {
                         case SDLK_ESCAPE: quit_fs = true; esc = true; break;
-                        case SDLK_LEFT: field_size--; break;
-                        case SDLK_RIGHT: field_size++; break;
+                        case SDLK_LEFT: if (field_size > 1) field_size--; break;
+                        case SDLK_RIGHT: if (field_size < 10) field_size++; break;
                         case SDLK_RETURN: quit_fs = true;
                     }
                     break;
@@ -256,9 +256,11 @@ int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse
 
     // Text
     draw_text_to_center(render_data.renderer, render_data.x0, 50, render_data.x1, 250, "Select game size", render_data.font, menu_text_color);
-    if (*field_size < 1)
-        draw_text_to_center(render_data.renderer, render_data.x0, 80, render_data.x1, 280, "0 <", render_data.font, menu_text_color);
+    if (*field_size <= 1 || *field_size >= 10)
+        draw_text_to_center(render_data.renderer, render_data.x0, 200, render_data.x1, 350, "1 < x < 10", render_data.font, menu_text_color);
     draw_text_to_center(render_data.renderer, render_data.x0, 100, render_data.x1, 300, fs_str, render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, 100, render_data.x1, 400, "<   >", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, 300, render_data.x1, 400, "Press ESC to go Back", render_data.font, menu_text_color);
 
     // Draw buttons
 

@@ -14,12 +14,7 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO constrain field size
     TODO move logging, undo
-    TODO check win and loss
-    TODO game creator++
-        TODO add fieldsize click ui
-    TODO revise game manager to single function
 */
 
 // Hyperparameters
@@ -163,7 +158,6 @@ int main(int argc, char *argv[]) {
                     break;
                 case 1: // New game
                     create_newgame = true;
-                    quit_game = false;
                     break;
                 case 2:
                     quit_play_select = true;
@@ -177,7 +171,7 @@ int main(int argc, char *argv[]) {
                 SDL_RenderClear(renderer);
                 // Draw prompt and parse text in one func, then return status code (true/false)
                 int tabla_size = handle_menu_newgame_interaction(render_data, name, 51); // Inner while loop
-                if (tabla_size > 0) {
+                if (tabla_size > 1 && tabla_size < 10) {
                     free_tabla(uj_tabla);
                     uj_tabla = create_tabla(name, tabla_size, tabla_size, tabla_size - 1);
                     quit_game = false; // Enter game
