@@ -26,6 +26,7 @@ tabla *load_save() {
     char name[51];
     int score, size_x, size_y;
     fgets(name, 51, save_file);
+    strtok(name, "\n");
     fscanf(save_file,"%d", &score);
     fscanf(save_file, "%d", &size_x);
     fscanf(save_file, "%d", &size_y);

@@ -98,6 +98,7 @@ int move_game(tabla *to_move, HS_Node **hs_node, char dir) {
     switch (move_state) {
         case -1:
             // Game won
+            add_checked_highscore(hs_node, to_move -> name, to_move -> size_x, to_move -> score);
             return 1;
             break;
         case 0:
