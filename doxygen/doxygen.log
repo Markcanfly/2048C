@@ -1,7 +1,11 @@
-C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Font' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
-C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'The' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
-C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Max' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
-C:/Users/Mark/Documents/workspace/2048/text_input.c:15: warning: The following parameters of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer) are not documented:
+C:/Users/Mark/Documents/workspace/2048/game.c:81: warning: The following parameters of move_game(tabla *to_move, HS_Node **hs_node, char dir) are not documented:
+  parameter 'hs_node'
+C:/Users/Mark/Documents/workspace/2048/game.h:29: warning: The following parameters of move_game(tabla *to_move, HS_Node **hs_node, char dir) are not documented:
+  parameter 'hs_node'
+C:/Users/Mark/Documents/workspace/2048/text_input.c:10: warning: argument 'Font' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:10: warning: argument 'The' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:10: warning: argument 'Max' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:16: warning: The following parameters of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer) are not documented:
   parameter 'dest'
   parameter 'hossz'
   parameter 'teglalap'
@@ -9,9 +13,9 @@ C:/Users/Mark/Documents/workspace/2048/text_input.c:15: warning: The following p
   parameter 'szoveg'
   parameter 'font'
   parameter 'renderer'
-C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Font' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
-C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'The' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
-C:/Users/Mark/Documents/workspace/2048/text_input.c:9: warning: argument 'Max' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:10: warning: argument 'Font' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:10: warning: argument 'The' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
+C:/Users/Mark/Documents/workspace/2048/text_input.c:10: warning: argument 'Max' of command @param is not found in the argument list of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)
 C:/Users/Mark/Documents/workspace/2048/text_input.h:7: warning: The following parameters of input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer) are not documented:
   parameter 'dest'
   parameter 'hossz'

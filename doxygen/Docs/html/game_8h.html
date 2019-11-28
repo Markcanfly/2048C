@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('game_8h.html','');});
 <div class="textblock"><code>#include &lt;SDL2/SDL.h&gt;</code><br />
 <code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;highscores.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="style_8h_source.html">style.h</a>&quot;</code><br />
 </div>
 <p><a href="game_8h_source.html">Go to the source code of this file.</a></p>
@@ -127,6 +128,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1420b24fa62e3371e167a2e3b3f931ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a1420b24fa62e3371e167a2e3b3f931ac">print_tabla</a> (<a class="el" href="structtabla.html">tabla</a> *to_print)</td></tr>
 <tr class="memdesc:a1420b24fa62e3371e167a2e3b3f931ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print tabla object to console.  <a href="game_8h.html#a1420b24fa62e3371e167a2e3b3f931ac">More...</a><br /></td></tr>
 <tr class="separator:a1420b24fa62e3371e167a2e3b3f931ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5fef432f92387b9802cd0a88fbbff1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#ad5fef432f92387b9802cd0a88fbbff1f">move_game</a> (<a class="el" href="structtabla.html">tabla</a> *to_move, HS_Node **hs_node, char dir)</td></tr>
+<tr class="memdesc:ad5fef432f92387b9802cd0a88fbbff1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game move handler.  <a href="game_8h.html#ad5fef432f92387b9802cd0a88fbbff1f">More...</a><br /></td></tr>
+<tr class="separator:ad5fef432f92387b9802cd0a88fbbff1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a8013098b19bf36fcd571e3a37b4cc5a5">draw_game</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, <a class="el" href="structtabla.html">tabla</a> *to_draw)</td></tr>
 <tr class="separator:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4248d0f55db58ebbb53e0d52fe141104"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8h.html#a4248d0f55db58ebbb53e0d52fe141104">draw_game_controls</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, <a class="el" href="structtabla.html">tabla</a> *to_draw)</td></tr>
@@ -373,6 +377,49 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad5fef432f92387b9802cd0a88fbbff1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5fef432f92387b9802cd0a88fbbff1f">&#9670;&nbsp;</a></span>move_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int move_game </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structtabla.html">tabla</a> *&#160;</td>
+          <td class="paramname"><em>to_move</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HS_Node **&#160;</td>
+          <td class="paramname"><em>hs_node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Game move handler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_move</td><td>pointer to a tabla object </td></tr>
+    <tr><td class="paramname">dir</td><td>The direction to move, ['L', 'R', 'U', 'D'] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a1420b24fa62e3371e167a2e3b3f931ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1420b24fa62e3371e167a2e3b3f931ac">&#9670;&nbsp;</a></span>print_tabla()</h2>
 
@@ -405,7 +452,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="game_8h.html">game.h</a></li>
-    <li class="footer">Generated on Mon Nov 25 2019 18:02:57 for 2048 by
+    <li class="footer">Generated on Thu Nov 28 2019 18:38:53 for 2048 by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

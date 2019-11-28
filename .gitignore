@@ -3,4 +3,4 @@ mentes/
 bin/
 obj/
 .exe
-doxygen
+doxygen/

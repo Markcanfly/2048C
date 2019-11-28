@@ -15,6 +15,7 @@
 
 /*  -- TODO list - ordered by priority --
     TODO move logging, undo
+    TODO fix highscore file structure - put name in front
 */
 
 // Hyperparameters

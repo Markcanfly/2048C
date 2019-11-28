@@ -67,13 +67,17 @@ int handle_menu_interaction(const struct render_params render_data, bool *quit, 
     return -1;
 }
 
+/**
+* \brief Draw menu buttons and get the selected button
+* \param render_data
+* \param menu_elems menu_item array with the buttons to be displayed and their ID-s
+* Draws each button provided via the menu_elems array, and returns the ID of the
+* button the user is currently hovering their mouse above.
+* \return ID of selected menu
+*/
 int draw_menu_items(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, menu_item menu_elems[], int count_menu_elems) {
-    /**
-    Takes cursor position, sets the appropriate style of each button,
-    draws the frame, and returns the id of the menu item
-    that the cursor's hovering above.
-    */
 
+    // Background
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF);
 
     int selected_menu_elem = -1;
@@ -119,6 +123,9 @@ int draw_menu_items(const struct render_params render_data, int mouse_x, int mou
     return selected_menu_elem;
 }
 
+/**
+* \brief Main menu
+*/
 int draw_menu_main(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down){
     const int count_menu_elems = 3;
     menu_item menu_elems[] = {
@@ -131,6 +138,9 @@ int draw_menu_main(const struct render_params render_data, int mouse_x, int mous
     return draw_menu_items(render_data, mouse_x, mouse_y, mouse_down, menu_elems, count_menu_elems);
 }
 
+/**
+* \brief Draw 'Play' submenu
+*/
 int draw_menu_play(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down) {
     const int count_menu_elems = 3;
     menu_item menu_elems[] = {
@@ -217,6 +227,13 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
     return esc ? -1 : field_size;
 }
 
+/**
+* \brief Draw the name chooser and get text input
+* \param render_data render_params object
+* \param dest Character array pointer to store the text input at
+* \param len Maximum length of text to read
+* \return success boolean
+*/
 bool draw_menu_choose_name(const struct render_params render_data, char *dest, int len) {
 
     // Draw user prompt
@@ -249,6 +266,9 @@ bool draw_menu_choose_name(const struct render_params render_data, char *dest, i
     return successful;
 }
 
+/**
+* \brief Draw fieldsize chooser UI
+*/
 int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, int *field_size, char *name) {
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF); // Background
     char fs_str[3];
@@ -379,6 +399,9 @@ int draw_menu_highscores(const struct render_params render_data, int mouse_x, in
     return selected_menu_elem;
 }
 
+/**
+* \brief Draw simple win message
+*/
 void draw_win_splash(const struct render_params render_data) {
     // Semi-transparent background
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48C88);
@@ -387,6 +410,9 @@ void draw_win_splash(const struct render_params render_data) {
     // draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0 + 80, render_data.x1, render_data.y1, "Press any key to continue.", render_data.font, menu_text_color);
 }
 
+/**
+* \brief Draw simple lost message
+*/
 void draw_lose_splash(const struct render_params render_data) {
     // Semi-transparent background
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48C88);

@@ -82,16 +82,16 @@ int move_game(tabla *to_move, HS_Node **hs_node, char dir) {
     int move_state; // -1: game won | 0: valid move | 1: invalid move
     switch (dir) {
         case 'L':
-            move_state = push_left(to_move, hs_node);
+            move_state = push_left(to_move);
             break;
         case 'R':
-            move_state = push_right(to_move, hs_node);
+            move_state = push_right(to_move);
             break;
         case 'U':
-            move_state = push_up(to_move, hs_node);
+            move_state = push_up(to_move);
             break;
         case 'D':
-            move_state = push_down(to_move, hs_node);
+            move_state = push_down(to_move);
             break;
     }
 

@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('menu_8h.html','');});
 <code>#include &lt;SDL2/SDL2_gfxPrimitives.h&gt;</code><br />
 <code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="style_8h_source.html">style.h</a>&quot;</code><br />
+<code>#include &quot;highscores.h&quot;</code><br />
 </div>
 <p><a href="menu_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -122,10 +123,20 @@ Functions</h2></td></tr>
 <tr class="separator:afb50b0464c57a6ccd576c34d25b54c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae91ee8d14067dcf5c36f5a9c21d8a8e8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#ae91ee8d14067dcf5c36f5a9c21d8a8e8">draw_menu_play</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, int mouse_x, int mouse_y, bool mouse_down)</td></tr>
 <tr class="separator:ae91ee8d14067dcf5c36f5a9c21d8a8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41be1f10a10af70f26854a025521d057"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a41be1f10a10af70f26854a025521d057">draw_menu_new_game</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, char *dest, int len)</td></tr>
-<tr class="separator:a41be1f10a10af70f26854a025521d057"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4938be2cb1989cf92091cdd41e57a67"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#ae4938be2cb1989cf92091cdd41e57a67">draw_menu_highscores</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, HS_Node *hs_node)</td></tr>
-<tr class="separator:ae4938be2cb1989cf92091cdd41e57a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae06ca51bb0cae65bfa2af657576060c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#ae06ca51bb0cae65bfa2af657576060c9">handle_menu_newgame_interaction</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, char *name, int len)</td></tr>
+<tr class="separator:ae06ca51bb0cae65bfa2af657576060c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab69c58c2d27aba236ef0eb17d18afae9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#ab69c58c2d27aba236ef0eb17d18afae9">draw_menu_choose_name</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, char *dest, int len)</td></tr>
+<tr class="separator:ab69c58c2d27aba236ef0eb17d18afae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07887491add2ec1eb579fc7f9e3def5f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a07887491add2ec1eb579fc7f9e3def5f">draw_menu_choose_fieldsize</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, int mouse_x, int mouse_y, bool mouse_down, int *field_size, char *name)</td></tr>
+<tr class="separator:a07887491add2ec1eb579fc7f9e3def5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a874c564037c2eed7c0e75c1b0c2d4261"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a874c564037c2eed7c0e75c1b0c2d4261">handle_menu_hs_interaction</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, bool *quit, HS_Node *hs_node)</td></tr>
+<tr class="separator:a874c564037c2eed7c0e75c1b0c2d4261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09397ebd34c5d65509188f55a18779be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a09397ebd34c5d65509188f55a18779be">draw_menu_highscores</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, int mouse_x, int mouse_y, bool mouse_down, HS_Node *hs_node)</td></tr>
+<tr class="separator:a09397ebd34c5d65509188f55a18779be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a672a79f44db76f6710a26b45d294302f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a672a79f44db76f6710a26b45d294302f">draw_win_splash</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data)</td></tr>
+<tr class="separator:a672a79f44db76f6710a26b45d294302f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74417508495b391bd3a6e1921e4b5faa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8h.html#a74417508495b391bd3a6e1921e4b5faa">draw_lose_splash</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data)</td></tr>
+<tr class="separator:a74417508495b391bd3a6e1921e4b5faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a0739c473ac989e64db3888f85247ff67"></a>
@@ -143,8 +154,112 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae4938be2cb1989cf92091cdd41e57a67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4938be2cb1989cf92091cdd41e57a67">&#9670;&nbsp;</a></span>draw_menu_highscores()</h2>
+<a id="a74417508495b391bd3a6e1921e4b5faa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74417508495b391bd3a6e1921e4b5faa">&#9670;&nbsp;</a></span>draw_lose_splash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_lose_splash </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
+          <td class="paramname"><em>render_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07887491add2ec1eb579fc7f9e3def5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07887491add2ec1eb579fc7f9e3def5f">&#9670;&nbsp;</a></span>draw_menu_choose_fieldsize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int draw_menu_choose_fieldsize </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
+          <td class="paramname"><em>render_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mouse_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mouse_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>mouse_down</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>field_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab69c58c2d27aba236ef0eb17d18afae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab69c58c2d27aba236ef0eb17d18afae9">&#9670;&nbsp;</a></span>draw_menu_choose_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool draw_menu_choose_name </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
+          <td class="paramname"><em>render_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09397ebd34c5d65509188f55a18779be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09397ebd34c5d65509188f55a18779be">&#9670;&nbsp;</a></span>draw_menu_highscores()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,6 +269,24 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
           <td class="paramname"><em>render_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mouse_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mouse_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>mouse_down</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -263,40 +396,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a41be1f10a10af70f26854a025521d057"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41be1f10a10af70f26854a025521d057">&#9670;&nbsp;</a></span>draw_menu_new_game()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool draw_menu_new_game </td>
-          <td>(</td>
-          <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
-          <td class="paramname"><em>render_data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ae91ee8d14067dcf5c36f5a9c21d8a8e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae91ee8d14067dcf5c36f5a9c21d8a8e8">&#9670;&nbsp;</a></span>draw_menu_play()</h2>
 
@@ -326,6 +425,58 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>mouse_down</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a672a79f44db76f6710a26b45d294302f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a672a79f44db76f6710a26b45d294302f">&#9670;&nbsp;</a></span>draw_win_splash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_win_splash </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
+          <td class="paramname"><em>render_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a874c564037c2eed7c0e75c1b0c2d4261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a874c564037c2eed7c0e75c1b0c2d4261">&#9670;&nbsp;</a></span>handle_menu_hs_interaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int handle_menu_hs_interaction </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
+          <td class="paramname"><em>render_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>quit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HS_Node *&#160;</td>
+          <td class="paramname"><em>hs_node</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -371,13 +522,47 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ae06ca51bb0cae65bfa2af657576060c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae06ca51bb0cae65bfa2af657576060c9">&#9670;&nbsp;</a></span>handle_menu_newgame_interaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int handle_menu_newgame_interaction </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structrender__params.html">render_params</a>&#160;</td>
+          <td class="paramname"><em>render_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="menu_8h.html">menu.h</a></li>
-    <li class="footer">Generated on Mon Nov 25 2019 18:02:58 for 2048 by
+    <li class="footer">Generated on Thu Nov 28 2019 18:38:53 for 2048 by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

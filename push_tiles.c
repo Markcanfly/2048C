@@ -11,7 +11,7 @@ int my_rand(int from, int to) {
     return rand() % (to - from) + from;
 }
 
-int push_up(tabla *to_push, HS_Node **hs_node) {
+int push_up(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -74,7 +74,7 @@ int push_up(tabla *to_push, HS_Node **hs_node) {
     // Invalid move
     return 1;
 }
-int push_down(tabla *to_push, HS_Node **hs_node) {
+int push_down(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -137,7 +137,7 @@ int push_down(tabla *to_push, HS_Node **hs_node) {
     // Invalid move
     return 1;
 }
-int push_left(tabla *to_push, HS_Node **hs_node) {
+int push_left(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -201,7 +201,7 @@ int push_left(tabla *to_push, HS_Node **hs_node) {
     // Invalid move
     return 1;
 }
-int push_right(tabla *to_push, HS_Node **hs_node) {
+int push_right(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;

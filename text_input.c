@@ -7,21 +7,28 @@
 #include "text_input.h"
 #include "debugmalloc.h"
 
-/** \brief Beolvas egy szoveget a billentyuzetrol.
- * \param Font used to draw the text, render
- * \param The array used to store the text
- * \param Max length of text to read
- * \return true if successful, otherwise false
- */
-bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer) {
+/** \brief Reads text input from the keyboard.
+* \param dest Char array pointer to store the input at
+* \param len Max length of text
+* \param rectangle SDL_Rect object to draw to
+* \param background SDL_Color
+* \param text_color SDL_Color
+* \param font The TTF_Font object pointer to draw the text with
+* \param renderer The SDL_Renderer pointer to draw to
+* \return true if successful, otherwise false
+*
+* Source: https://infoc.eet.bme.hu
+*/
+bool input_text(char *dest, size_t len, SDL_Rect rectangle, SDL_Color background, SDL_Color text_color, TTF_Font *font, SDL_Renderer *renderer) {
+
     /* Ez tartalmazza az aktualis szerkesztest */
     char composition[SDL_TEXTEDITINGEVENT_TEXT_SIZE];
     composition[0] = '\0';
     /* Ezt a kirajzolas kozben hasznaljuk */
-    char textandcomposition[hossz + SDL_TEXTEDITINGEVENT_TEXT_SIZE + 1];
+    char textandcomposition[len + SDL_TEXTEDITINGEVENT_TEXT_SIZE + 1];
     /* Max hasznalhato szelesseg */
-    int maxw = teglalap.w - 2;
-    int maxh = teglalap.h - 2;
+    int maxw = rectangle.w - 2;
+    int maxh = rectangle.h - 2;
 
     dest[0] = '\0';
 
@@ -31,8 +38,8 @@ bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, S
     SDL_StartTextInput();
     while (!kilep && !enter) {
         /* doboz kirajzolasa */
-        boxRGBA(renderer, teglalap.x, teglalap.y, teglalap.x + teglalap.w - 1, teglalap.y + teglalap.h - 1, hatter.r, hatter.g, hatter.b, 255);
-        rectangleRGBA(renderer, teglalap.x, teglalap.y, teglalap.x + teglalap.w - 1, teglalap.y + teglalap.h - 1, szoveg.r, szoveg.g, szoveg.b, 255);
+        boxRGBA(renderer, rectangle.x, rectangle.y, rectangle.x + rectangle.w - 1, rectangle.y + rectangle.h - 1, background.r, background.g, background.b, 255);
+        rectangleRGBA(renderer, rectangle.x, rectangle.y, rectangle.x + rectangle.w - 1, rectangle.y + rectangle.h - 1, text_color.r, text_color.g, text_color.b, 255);
 
 
         /* szoveg kirajzolasa */
@@ -40,9 +47,9 @@ bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, S
         strcpy(textandcomposition, dest);
         strcat(textandcomposition, composition);
         if (textandcomposition[0] != '\0') {
-            SDL_Surface *felirat = TTF_RenderUTF8_Blended(font, textandcomposition, szoveg);
+            SDL_Surface *felirat = TTF_RenderUTF8_Blended(font, textandcomposition, text_color);
             SDL_Texture *felirat_t = SDL_CreateTextureFromSurface(renderer, felirat);
-            SDL_Rect cel = { teglalap.x, teglalap.y, felirat->w < maxw ? felirat->w : maxw, felirat->h < maxh ? felirat->h : maxh };
+            SDL_Rect cel = { rectangle.x, rectangle.y, felirat->w < maxw ? felirat->w : maxw, felirat->h < maxh ? felirat->h : maxh };
             SDL_RenderCopy(renderer, felirat_t, NULL, &cel);
             SDL_FreeSurface(felirat);
             SDL_DestroyTexture(felirat_t);
@@ -52,7 +59,7 @@ bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, S
         }
         /* kurzor kirajzolasa */
         if (w < maxw) {
-            vlineRGBA(renderer, teglalap.x + w + 2, teglalap.y + 2, teglalap.y + teglalap.h - 3, szoveg.r, szoveg.g, szoveg.b, 192);
+            vlineRGBA(renderer, rectangle.x + w + 2, rectangle.y + 2, rectangle.y + rectangle.h - 3, text_color.r, text_color.g, text_color.b, 192);
         }
         /* megjeleniti a képernyon az eddig rajzoltakat */
         SDL_RenderPresent(renderer);
@@ -94,7 +101,7 @@ bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, S
 
             /* A feldolgozott szoveg bemenete */
             case SDL_TEXTINPUT:
-                if (strlen(dest) + strlen(event.text.text) < hossz) {
+                if (strlen(dest) + strlen(event.text.text) < len) {
                     strcat(dest, event.text.text);
                 }
 
