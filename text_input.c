@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "text_input.h"
+#include "debugmalloc.h"
 
 /** \brief Beolvas egy szoveget a billentyuzetrol.
  * \param Font used to draw the text, render

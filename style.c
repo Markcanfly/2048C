@@ -1,7 +1,8 @@
-#include "style.h"
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include "style.h"
+#include "debugmalloc.h"
 
 /**
 * \brief Global array of vals for styling of the tiles.

@@ -66,7 +66,7 @@
 	"style.h"
 	"highscores.h"
 
-1574939321 source:c:\users\mark\documents\workspace\2048\menu.c
+1574944812 source:c:\users\mark\documents\workspace\2048\menu.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -75,6 +75,7 @@
 	"menu.h"
 	"style.h"
 	"text_input.h"
+	"debugmalloc.h"
 
 1573313833 c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
@@ -226,7 +227,7 @@
 
 1574856028 c:\users\mark\documents\workspace\2048\highscores.h
 
-1574855727 source:c:\users\mark\documents\workspace\2048\filehandler.c
+1574944644 source:c:\users\mark\documents\workspace\2048\filehandler.c
 	<string.h>
 	"filehandler.h"
 	"game.h"

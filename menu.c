@@ -6,6 +6,7 @@
 #include "menu.h"
 #include "style.h"
 #include "text_input.h"
+#include "debugmalloc.h"
 
 /**
 * \brief Global style for menu buttons
