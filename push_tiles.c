@@ -11,7 +11,7 @@ int my_rand(int from, int to) {
     return rand() % (to - from) + from;
 }
 
-bool push_up(tabla *to_push, HS_Node **hs_node) {
+int push_up(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -67,7 +67,7 @@ bool push_up(tabla *to_push, HS_Node **hs_node) {
 
     return valid_move;
 }
-bool push_down(tabla *to_push, HS_Node **hs_node) {
+int push_down(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -121,7 +121,7 @@ bool push_down(tabla *to_push, HS_Node **hs_node) {
 
     return valid_move;
 }
-bool push_left(tabla *to_push, HS_Node **hs_node) {
+int push_left(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -176,7 +176,7 @@ bool push_left(tabla *to_push, HS_Node **hs_node) {
 
     return valid_move;
 }
-bool push_right(tabla *to_push, HS_Node **hs_node) {
+int push_right(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;

@@ -78,30 +78,45 @@ void print_tabla(tabla *to_print) {
 * \param to_move pointer to a tabla object
 * \param dir The direction to move, ['L', 'R', 'U', 'D']
 */
-void move_game(tabla *to_move, HS_Node **hs_node, char dir) {
-    bool valid_move;
+int move_game(tabla *to_move, HS_Node **hs_node, char dir) {
+    int move_state; // -1: game won | 0: valid move | 1: invalid move
     switch (dir) {
         case 'L':
-            valid_move = push_left(to_move, hs_node);
+            move_state = push_left(to_move, hs_node);
             break;
         case 'R':
-            valid_move = push_right(to_move, hs_node);
+            move_state = push_right(to_move, hs_node);
             break;
         case 'U':
-            valid_move = push_up(to_move, hs_node);
+            move_state = push_up(to_move, hs_node);
             break;
         case 'D':
-            valid_move = push_down(to_move, hs_node);
+            move_state = push_down(to_move, hs_node);
             break;
     }
-    if (valid_move)
-        add_random(to_move);
-    if (lost(to_move))
-        printf("Game lost.");
-    // Save to file
-    store_save(to_move);
-    add_checked_highscore(hs_node, to_move -> name, to_move -> size_x, to_move -> score);
 
+    switch (move_state) {
+        case -1:
+            // Game won
+            return 1;
+            break;
+        case 0:
+            // Valid move
+            add_random(to_move);
+            // Save state
+            store_save(to_move);
+            add_checked_highscore(hs_node, to_move -> name, to_move -> size_x, to_move -> score);
+        case 1:
+            // Invalid move
+            // do nothing
+            break;
+    }
+
+    if (lost(to_move))
+        return -1;
+
+    // If we got here, all is well, return 0
+    return 0;
 }
 
 void draw_game(const struct render_params render_data, tabla *to_draw) {

@@ -111,14 +111,17 @@ int main(int argc, char *argv[]) {
                 SDL_Event game_event;
                 SDL_WaitEvent(&game_event);
 
+                // Game state
+                int game_status; // 0: nothing | 1: won | -1: lost
+
                 // Get user input
                 switch (game_event.type) {
                     case SDL_KEYDOWN:
                         switch (game_event.key.keysym.sym) {
-                            case SDLK_LEFT: move_game(uj_tabla, &hs_first, 'L'); break;
-                            case SDLK_RIGHT: move_game(uj_tabla, &hs_first, 'R'); break;
-                            case SDLK_UP: move_game(uj_tabla, &hs_first, 'U'); break;
-                            case SDLK_DOWN: move_game(uj_tabla, &hs_first, 'D'); break;
+                            case SDLK_LEFT: game_status = move_game(uj_tabla, &hs_first, 'L'); break;
+                            case SDLK_RIGHT: game_status = move_game(uj_tabla, &hs_first, 'R'); break;
+                            case SDLK_UP: game_status = move_game(uj_tabla, &hs_first, 'U'); break;
+                            case SDLK_DOWN: game_status = move_game(uj_tabla, &hs_first, 'D'); break;
                             case SDLK_ESCAPE:
                                 quit_game = true;
                                 // Show previous after quitting game

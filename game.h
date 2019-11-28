@@ -26,7 +26,7 @@ void free_tabla(tabla *to_free);
 
 void print_tabla(tabla *to_print);
 
-void move_game(tabla *to_move, HS_Node **hs_node, char dir);
+int move_game(tabla *to_move, HS_Node **hs_node, char dir);
 
 void draw_game(const struct render_params render_data, tabla *to_draw);
 
