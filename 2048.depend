@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574942995 source:c:\users\mark\documents\workspace\2048\game.c
+1574944129 source:c:\users\mark\documents\workspace\2048\game.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -24,7 +24,7 @@
 	"game.h"
 	"highscores.h"
 
-1574942498 source:c:\users\mark\documents\workspace\2048\push_tiles.c
+1574944043 source:c:\users\mark\documents\workspace\2048\push_tiles.c
 	<stdlib.h>
 	<stdbool.h>
 	<stdio.h>
@@ -34,7 +34,7 @@
 	"debugmalloc.h"
 	"highscores.h"
 
-1574942592 source:c:\users\mark\documents\workspace\2048\main.c
+1574943137 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -219,7 +219,7 @@
 	<process.h>
 	<unistd.h>
 
-1574941214 source:c:\users\mark\documents\workspace\2048\highscores.c
+1574943643 source:c:\users\mark\documents\workspace\2048\highscores.c
 	<string.h>
 	"debugmalloc.h"
 	"highscores.h"

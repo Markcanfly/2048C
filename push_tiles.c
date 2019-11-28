@@ -16,8 +16,7 @@ int push_up(tabla *to_push, HS_Node **hs_node) {
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     int *score = &to_push -> score;
-
-    bool valid_move = false;
+    int move_state = 1;
     bool just_merged[size_y]; // Store for each val if it's just been merged
 
     for (int oszlop = 0; oszlop < size_x; oszlop++) {
@@ -35,7 +34,7 @@ int push_up(tabla *to_push, HS_Node **hs_node) {
                 } else if (*near_num == 0) {
                     *near_num = *num;
                     *num = 0;
-                    valid_move = true;
+                    move_state = 0;
                     i--;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
@@ -44,12 +43,12 @@ int push_up(tabla *to_push, HS_Node **hs_node) {
                         *num = 0;
                         just_merged[i] = true;
                         *score += *near_num;
+                        move_state = 0;
 
                         // Win check
                         if (*near_num == 2048)
-                            printf("Game won.");
+                            move_state = -1;
 
-                        valid_move = true;
                     } else {
                         just_merged[i] = false;
                     }
@@ -65,14 +64,14 @@ int push_up(tabla *to_push, HS_Node **hs_node) {
         }
     }
 
-    return valid_move;
+    return move_state;
 }
 int push_down(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     int *score = &to_push -> score;
-    bool valid_move = false;
+    int move_state = 1;
     bool just_merged[size_y]; // Store for each val if it's just been merged
 
     for (int oszlop = 0; oszlop < size_x; oszlop++) {
@@ -89,7 +88,7 @@ int push_down(tabla *to_push, HS_Node **hs_node) {
                 } else if (*near_num == 0) {
                     *near_num = *num;
                     *num = 0;
-                    valid_move = true;
+                    move_state = 0;
                     i++;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
@@ -99,11 +98,12 @@ int push_down(tabla *to_push, HS_Node **hs_node) {
                     just_merged[i] = true;
                     *score += *near_num;
 
+                    move_state = 0;
+
                     // Win check
                     if (*near_num == 2048)
-                        printf("Game won.");
+                        move_state = -1;
 
-                    valid_move = true;
                     } else {
                         just_merged[i] = false;
                     }
@@ -119,14 +119,14 @@ int push_down(tabla *to_push, HS_Node **hs_node) {
         }
     }
 
-    return valid_move;
+    return move_state;
 }
 int push_left(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     int *score = &to_push -> score;
-    bool valid_move = false;
+    int move_state = 1;
     bool just_merged[size_x]; // Store for each val if it's just been merged
 
     for (int sor = 0; sor < size_y; sor++) {
@@ -144,7 +144,7 @@ int push_left(tabla *to_push, HS_Node **hs_node) {
                 } else if (*near_num == 0) {
                     *near_num = *num;
                     *num = 0;
-                    valid_move = true;
+                    move_state = 0;
                     i--;
                     // Decrement, check last num
                 } else if (*near_num == *num) {
@@ -154,11 +154,12 @@ int push_left(tabla *to_push, HS_Node **hs_node) {
                         *num = 0;
                         *score += *near_num;
 
+                        move_state = 0;
+
                         // Win check
                         if (*near_num == 2048)
-                            printf("Game won.");
+                            move_state = -1;
 
-                        valid_move = true;
                     } else {
                         just_merged[i] = false;
                     }
@@ -174,14 +175,14 @@ int push_left(tabla *to_push, HS_Node **hs_node) {
         }
     }
 
-    return valid_move;
+    return move_state;
 }
 int push_right(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
     int *score = &to_push -> score;
-    bool valid_move = false;
+    int move_state = -1;
     bool just_merged[size_x]; // Store for each val if it's just been merged
 
     for (int sor = 0; sor < size_y; sor++) {
@@ -200,7 +201,7 @@ int push_right(tabla *to_push, HS_Node **hs_node) {
                     // Is 0, just push
                     *near_num = *num;
                     *num = 0;
-                    valid_move = true;
+                    move_state = 0;
                     i++;
                 } else if (*near_num == *num) {
                     // The same number => add
@@ -210,11 +211,12 @@ int push_right(tabla *to_push, HS_Node **hs_node) {
                         just_merged[i] = true;
                         *score += *near_num;
 
+                        move_state = 0;
+
                         // Win check
                         if (*near_num == 2048)
-                            printf("Game won.");
+                            move_state = -1;
 
-                        valid_move = true;
                     } else {
                         just_merged[i] = false;
                     }
@@ -230,7 +232,7 @@ int push_right(tabla *to_push, HS_Node **hs_node) {
         }
     }
 
-    return valid_move;
+    return move_state;
 }
 
 void add_random(tabla *to_add) {

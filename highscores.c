@@ -126,8 +126,13 @@ void add_checked_highscore(HS_Node **first, char *name, int field_size, int scor
     if (*first != NULL) {
         // Highscore metadata check + score check
         if (strcmp((*first) -> name, name) == 0 && (*first) -> field_size == field_size && (*first) -> score <= score) {
-            // The first element is the same player and fieldsize, but lower score -> update score
+            // The first element is the same player and fieldsize, but lower score
+            // -> update score
             (*first) -> score = score;
+            return;
+        } else if (strcmp((*first) -> name, name) == 0 && (*first) -> field_size == field_size && (*first) -> score > score) {
+            // The first element is the same plyaer and fieldsize, but higher score
+            // -> do NOTHING, quit function
             return;
         }
     }

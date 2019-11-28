@@ -219,8 +219,13 @@ int main(int argc, char *argv[]) {
         SDL_RenderPresent(renderer);
 
     }
+
     debug_print_HS(hs_first);
+
+    // Save highscores to file
     store_highscores(hs_first);
+
+    // Close files and free dynamically allocated memory
     free_tabla(uj_tabla);
     TTF_CloseFont(font);
     free_highscores(&hs_first);
