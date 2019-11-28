@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['score_47',['score',['../structtabla.html#a8735427cf6c6dbaed2bd1af70c23ef5d',1,'tabla']]],
-  ['sdl_5finit_48',['sdl_init',['../main_8c.html#a5836df6cc99a945fe20e63ed37803a39',1,'main.c']]],
-  ['size_5fx_49',['size_x',['../structtabla.html#a979a12fa4bf06a5fe96f31fce608c9cb',1,'tabla']]],
-  ['size_5fy_50',['size_y',['../structtabla.html#a727ae9f4c282b83c4e07f0f6dffa9bdd',1,'tabla']]],
-  ['style_51',['style',['../structmenu__item.html#af0b15683f960481da381784e3804f9cf',1,'menu_item']]],
-  ['style_2ec_52',['style.c',['../style_8c.html',1,'']]],
-  ['style_2eh_53',['style.h',['../style_8h.html',1,'']]]
+  ['real_5fmem_103',['real_mem',['../struct_debugmalloc_elem.html#a6dfb9ddf07222e1f3230af155ca9eb38',1,'DebugmallocElem']]],
+  ['realloc_104',['realloc',['../debugmalloc_8h.html#a54df243d89c451240697d7d3afb5663f',1,'debugmalloc.h']]],
+  ['rect_5fstyle_105',['rect_style',['../structrect__style.html',1,'rect_style'],['../style_8h.html#ad00da9090508da22a585cd75c6b7bbd2',1,'rect_style():&#160;style.h']]],
+  ['render_5fparams_106',['render_params',['../structrender__params.html',1,'']]],
+  ['renderer_107',['renderer',['../structrender__params.html#a62f9a7bbc2288ada6c0da00fb5d3469a',1,'render_params']]]
 ];

@@ -101,28 +101,33 @@ $(document).ready(function(){initNavTree('game_8c.html','');});
 <code>#include &quot;<a class="el" href="style_8h_source.html">style.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="push__tiles_8h_source.html">push_tiles.h</a>&quot;</code><br />
-<code>#include &quot;debugmalloc.h&quot;</code><br />
-</div>
-<p><a href="game_8c_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
+<code>#include &quot;<a class="el" href="debugmalloc_8h_source.html">debugmalloc.h</a>&quot;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9a23a77ec19c49584e7d330f9038f291"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtabla.html">tabla</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a9a23a77ec19c49584e7d330f9038f291">create_tabla</a> (char *name, int size_x, int size_y, int start_tiles)</td></tr>
 <tr class="memdesc:a9a23a77ec19c49584e7d330f9038f291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pseudo-constructor for a tabla object.  <a href="game_8c.html#a9a23a77ec19c49584e7d330f9038f291">More...</a><br /></td></tr>
 <tr class="separator:a9a23a77ec19c49584e7d330f9038f291"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f0b485351709ea6e12170077d6f2bf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a7f0b485351709ea6e12170077d6f2bf2">free_tabla</a> (<a class="el" href="structtabla.html">tabla</a> *to_free)</td></tr>
-<tr class="memdesc:a7f0b485351709ea6e12170077d6f2bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a tabla object Takes a pointer to a tabla object and frees the inner dynamic 2D array, then the object itself.  <a href="game_8c.html#a7f0b485351709ea6e12170077d6f2bf2">More...</a><br /></td></tr>
+<tr class="memdesc:a7f0b485351709ea6e12170077d6f2bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a tabla object.  <a href="game_8c.html#a7f0b485351709ea6e12170077d6f2bf2">More...</a><br /></td></tr>
 <tr class="separator:a7f0b485351709ea6e12170077d6f2bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1420b24fa62e3371e167a2e3b3f931ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a1420b24fa62e3371e167a2e3b3f931ac">print_tabla</a> (<a class="el" href="structtabla.html">tabla</a> *to_print)</td></tr>
-<tr class="memdesc:a1420b24fa62e3371e167a2e3b3f931ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print tabla object to console Takes a tabla object and prints a representation to stdout, including the current score and numbers contained. For debugging purposes only.  <a href="game_8c.html#a1420b24fa62e3371e167a2e3b3f931ac">More...</a><br /></td></tr>
+<tr class="memdesc:a1420b24fa62e3371e167a2e3b3f931ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print tabla object to console.  <a href="game_8c.html#a1420b24fa62e3371e167a2e3b3f931ac">More...</a><br /></td></tr>
 <tr class="separator:a1420b24fa62e3371e167a2e3b3f931ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5fef432f92387b9802cd0a88fbbff1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#ad5fef432f92387b9802cd0a88fbbff1f">move_game</a> (<a class="el" href="structtabla.html">tabla</a> *to_move, <a class="el" href="struct_h_s___node.html">HS_Node</a> **hs_node, char dir)</td></tr>
+<tr class="memdesc:ad5fef432f92387b9802cd0a88fbbff1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game move handler.  <a href="game_8c.html#ad5fef432f92387b9802cd0a88fbbff1f">More...</a><br /></td></tr>
+<tr class="separator:ad5fef432f92387b9802cd0a88fbbff1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a8013098b19bf36fcd571e3a37b4cc5a5">draw_game</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, <a class="el" href="structtabla.html">tabla</a> *to_draw)</td></tr>
+<tr class="memdesc:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws all game elements.  <a href="game_8c.html#a8013098b19bf36fcd571e3a37b4cc5a5">More...</a><br /></td></tr>
 <tr class="separator:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4248d0f55db58ebbb53e0d52fe141104"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a4248d0f55db58ebbb53e0d52fe141104">draw_game_controls</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, <a class="el" href="structtabla.html">tabla</a> *to_draw)</td></tr>
+<tr class="memdesc:a4248d0f55db58ebbb53e0d52fe141104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw score to render loc.  <a href="game_8c.html#a4248d0f55db58ebbb53e0d52fe141104">More...</a><br /></td></tr>
 <tr class="separator:a4248d0f55db58ebbb53e0d52fe141104"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37c04909feda06ba98e51c3451e023e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a37c04909feda06ba98e51c3451e023e7">draw_tiles</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, <a class="el" href="structtabla.html">tabla</a> *to_draw)</td></tr>
+<tr class="memdesc:a37c04909feda06ba98e51c3451e023e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the tiles into a square frame.  <a href="game_8c.html#a37c04909feda06ba98e51c3451e023e7">More...</a><br /></td></tr>
 <tr class="separator:a37c04909feda06ba98e51c3451e023e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a961b0c717864dd4780d2e1eb2d384cdc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a961b0c717864dd4780d2e1eb2d384cdc">lost</a> (<a class="el" href="structtabla.html">tabla</a> *to_check)</td></tr>
+<tr class="memdesc:a961b0c717864dd4780d2e1eb2d384cdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if game is lost.  <a href="game_8c.html#a961b0c717864dd4780d2e1eb2d384cdc">More...</a><br /></td></tr>
 <tr class="separator:a961b0c717864dd4780d2e1eb2d384cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -167,13 +172,14 @@ Functions</h2></td></tr>
 <p>Pseudo-constructor for a tabla object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>and y sizes of tabla, number of random start tiles Dynamically create a clean new tabla object and return a pointer to it. Uses the parameter start_tiles to determine how many initial random tiles to add. </td></tr>
+    <tr><td class="paramname">name</td><td>The name of the player </td></tr>
+    <tr><td class="paramname">size_x</td><td>The horizontal size of the tabla </td></tr>
+    <tr><td class="paramname">size_y</td><td>The vertical size of the tabla </td></tr>
+    <tr><td class="paramname">start_tiles</td><td>The number of random start tiles to add to the field. Dynamically create a clean new tabla object and return a pointer to it. Uses the parameter start_tiles to determine how many initial random tiles to add. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>new tabla pointer </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00020">20</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>
@@ -202,9 +208,22 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draws all game elements This function separates the renderer into the playing field, which is the bottom square (the height of which is the width of the renderer) and a rectangle above which fills the remaining space. Then uses the precise functions to draw the score, and the playing field respectively.</p>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00073">73</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p>Draws all game elements. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render_data</td><td>rendering hyperparameters </td></tr>
+    <tr><td class="paramname">to_draw</td><td>pointer to a tabla object This function separates the renderer into the playing field, which is the bottom square (the height of which is the width of the renderer) and a rectangle above which fills the remaining space. Then uses the precise functions to draw the score, and the playing field respectively. </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Draws all game elements </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render_data</td><td>rendering hyperparameters </td></tr>
+    <tr><td class="paramname">to_draw</td><td>pointer to a tabla object This function separates the renderer into the playing field, which is the bottom square (the height of which is the width of the renderer) and a rectangle above which fills the remaining space. Then uses the precise functions to draw the score, and the playing field respectively.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -233,9 +252,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Draws the current score to the specified render location</p>
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00095">95</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p>Draw score to render loc. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">render_data</td><td>rendering hyperparameters </td></tr>
+    <tr><td class="paramname">to_draw</td><td>pointer to a tabla object Draws the current score to the specified render location </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -264,14 +289,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Takes a tabla object and draws the tiles in it into a square frame. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Draw the tiles into a square frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">render</td><td>parameters, tabla</td></tr>
+    <tr><td class="paramname">render_data</td><td>rendering hyperparameters </td></tr>
+    <tr><td class="paramname">to_draw</td><td>pointer to a tabla object Takes a tabla object and draws each tile into a frame specified by the <a class="el" href="structrender__params.html" title="Rendering hyperparameters To be used as a shorthand for the (mostly) constants that are needed to dra...">render_params</a> struct. </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00111">111</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
 
 </div>
 </div>
@@ -291,9 +317,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Free a tabla object Takes a pointer to a tabla object and frees the inner dynamic 2D array, then the object itself. </p>
-
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00047">47</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p>Free a tabla object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_free</td><td>pointer to a tabla object </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -313,7 +343,56 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00151">151</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p>Check if game is lost. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_check</td><td>pointer to a tabla object Checks the whole field if there are any possible valid moves left. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad5fef432f92387b9802cd0a88fbbff1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5fef432f92387b9802cd0a88fbbff1f">&#9670;&nbsp;</a></span>move_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int move_game </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structtabla.html">tabla</a> *&#160;</td>
+          <td class="paramname"><em>to_move</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_h_s___node.html">HS_Node</a> **&#160;</td>
+          <td class="paramname"><em>hs_node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Game move handler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_move</td><td>pointer to a tabla object </td></tr>
+    <tr><td class="paramname">dir</td><td>The direction to move, ['L', 'R', 'U', 'D'] </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -333,9 +412,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print tabla object to console Takes a tabla object and prints a representation to stdout, including the current score and numbers contained. For debugging purposes only. </p>
-
-<p class="definition">Definition at line <a class="el" href="game_8c_source.html#l00059">59</a> of file <a class="el" href="game_8c_source.html">game.c</a>.</p>
+<p>Print tabla object to console. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_print</td><td>pointer to a tabla object Takes a tabla object and prints a representation to stdout, including the current score and numbers contained. For debugging purposes only. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -345,7 +428,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="game_8c.html">game.c</a></li>
-    <li class="footer">Generated on Sat Nov 23 2019 15:00:12 for 2048 by
+    <li class="footer">Generated on Thu Nov 28 2019 19:16:59 for 2048 by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

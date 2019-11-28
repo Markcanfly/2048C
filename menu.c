@@ -124,7 +124,7 @@ int draw_menu_items(const struct render_params render_data, int mouse_x, int mou
 }
 
 /**
-* \brief Main menu
+* \brief Draw the main menu
 */
 int draw_menu_main(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down){
     const int count_menu_elems = 3;

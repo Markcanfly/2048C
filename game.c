@@ -121,6 +121,17 @@ int move_game(tabla *to_move, HS_Node **hs_node, char dir) {
     return 0;
 }
 
+/**
+* \brief Draws all game elements
+* \param render_data rendering hyperparameters
+* \param to_draw pointer to a tabla object
+* This function separates the renderer
+* into the playing field, which is the bottom square
+* (the height of which is the width of the renderer)
+* and a rectangle above which fills the remaining space.
+* Then uses the precise functions to draw the score,
+* and the playing field respectively.
+*/
 void draw_game(const struct render_params render_data, tabla *to_draw) {
     /**
     * \brief Draws all game elements
@@ -143,13 +154,14 @@ void draw_game(const struct render_params render_data, tabla *to_draw) {
 
 }
 
+/**
+* \brief Draw score to render loc
+* \param render_data rendering hyperparameters
+* \param to_draw pointer to a tabla object
+* Draws the current score to the specified render location
+*/
 void draw_game_controls(const struct render_params render_data, tabla *to_draw) {
-    /**
-    * \brief Draw score to render loc
-    * \param render_data rendering hyperparameters
-    * \param to_draw pointer to a tabla object
-    * Draws the current score to the specified render location
-    */
+
     char score_char[33]; // large buffer to handle large score
 
     const SDL_Color text_color = {119, 110, 101, 255};
@@ -162,14 +174,15 @@ void draw_game_controls(const struct render_params render_data, tabla *to_draw) 
 
 }
 
+/**
+* \brief Draw the tiles into a square frame
+* \param render_data rendering hyperparameters
+* \param to_draw pointer to a tabla object
+* Takes a tabla object and draws each tile into a frame
+* specified by the render_params struct.
+*/
 void draw_tiles(const struct render_params render_data, tabla *to_draw) {
-    /**
-    * \brief Draw the tiles into a square frame
-    * \param render_data rendering hyperparameters
-    * \param to_draw pointer to a tabla object
-    * Takes a tabla object and draws each tile into a frame
-    * specified by the render_params struct.
-    */
+
     int size_x = to_draw -> size_x;
     int size_y = to_draw -> size_y;
     int **fields = to_draw -> dynarr;
@@ -205,12 +218,13 @@ void draw_tiles(const struct render_params render_data, tabla *to_draw) {
 
 }
 
+/**
+* \brief Check if game is lost
+* \param to_check pointer to a tabla object
+* Checks the whole field if there are any possible valid moves left.
+*/
 bool lost(tabla* to_check) {
-    /**
-    * \brief Check if game is lost
-    * \param to_check pointer to a tabla object
-    * Checks the whole field if there are any possible valid moves left.
-    */
+
     int size_x = to_check -> size_x;
     int size_y = to_check -> size_y;
     int **fields = to_check -> dynarr;
@@ -244,5 +258,3 @@ bool lost(tabla* to_check) {
     return true;
 
 }
-// TODO add renderer
-// TODO add gamestate-checker

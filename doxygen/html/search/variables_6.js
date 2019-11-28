@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name_119',['name',['../structtabla.html#ac6509acf23ce84a926531846837b5875',1,'tabla']]]
+  ['line_234',['line',['../struct_debugmalloc_elem.html#a95a2909f7fac1cbc7ebfdf5cd70c7837',1,'DebugmallocElem']]],
+  ['logfile_235',['logfile',['../struct_debugmalloc_data.html#aaeb43a3c1fa6ff02ae2e49f00083cc45',1,'DebugmallocData']]]
 ];

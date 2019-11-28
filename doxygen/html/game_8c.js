@@ -6,5 +6,6 @@ var game_8c =
     [ "draw_tiles", "game_8c.html#a37c04909feda06ba98e51c3451e023e7", null ],
     [ "free_tabla", "game_8c.html#a7f0b485351709ea6e12170077d6f2bf2", null ],
     [ "lost", "game_8c.html#a961b0c717864dd4780d2e1eb2d384cdc", null ],
+    [ "move_game", "game_8c.html#ad5fef432f92387b9802cd0a88fbbff1f", null ],
     [ "print_tabla", "game_8c.html#a1420b24fa62e3371e167a2e3b3f931ac", null ]
 ];

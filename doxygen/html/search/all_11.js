@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['y_65',['y',['../structcoord.html#a2b099692d87f98e4844b615136ca37fb',1,'coord']]],
-  ['y0_66',['y0',['../structrender__params.html#a8e40014019446549920b0a2e8a91ed9b',1,'render_params']]],
-  ['y1_67',['y1',['../structrender__params.html#a203576eded50b046993a0143ffc94d8e',1,'render_params']]]
+  ['winsize_5fx_126',['WINSIZE_X',['../main_8c.html#ab49e2a88627a8f4937c4cf645c32e633',1,'main.c']]],
+  ['winsize_5fy_127',['WINSIZE_Y',['../main_8c.html#a876d500543a1bd95184d110b2a1723b2',1,'main.c']]]
 ];

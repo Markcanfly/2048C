@@ -89,47 +89,70 @@ $(document).ready(function(){initNavTree('style_8h_source.html','');});
 <div class="title">style.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STYLE_H_INCLUDED</span></div>
+<a href="style_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STYLE_H_INCLUDED</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define STYLE_H_INCLUDED</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structrect__style.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrect__style.html">rect_style</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    SDL_Color textColor;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    Uint32 backgroundColor;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}<a class="code" href="structrect__style.html">rect_style</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structrender__params.html">   12</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structrender__params.html">render_params</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    SDL_Renderer *renderer;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">int</span> x0, y0, x1, y1;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    TTF_Font *font;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> SDL_Color background_color;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> SDL_Color menu_text_color;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structbutton__style.html">   21</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structbutton__style.html">button_style</a> {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="structrect__style.html">rect_style</a> inactive;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="structrect__style.html">rect_style</a> hover;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="structrect__style.html">rect_style</a> down;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<a class="code" href="structrect__style.html">rect_style</a> getTile(<span class="keywordtype">int</span> tile_num);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> draw_text_to_center(SDL_Renderer *renderer, <span class="keywordtype">int</span> x0, <span class="keywordtype">int</span> y0, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">char</span> *text, TTF_Font *font, SDL_Color text_color);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // STYLE_H_INCLUDED</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structrect__style.html">   12</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrect__style.html">rect_style</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structrect__style.html#a67b172fd6407d5706d394fa34e3fef1d">   13</a></span>&#160;    SDL_Color <a class="code" href="structrect__style.html#a67b172fd6407d5706d394fa34e3fef1d">textColor</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structrect__style.html#a5062cec02178be38f3ff5b34636d09b0">   14</a></span>&#160;    Uint32 <a class="code" href="structrect__style.html#a5062cec02178be38f3ff5b34636d09b0">backgroundColor</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}<a class="code" href="style_8h.html#ad00da9090508da22a585cd75c6b7bbd2">rect_style</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structrender__params.html">   22</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structrender__params.html">render_params</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structrender__params.html#a62f9a7bbc2288ada6c0da00fb5d3469a">   23</a></span>&#160;    SDL_Renderer *<a class="code" href="structrender__params.html#a62f9a7bbc2288ada6c0da00fb5d3469a">renderer</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structrender__params.html#a203576eded50b046993a0143ffc94d8e">   24</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structrender__params.html#a6d4eb484fba92e21c3167ec4655a082a">x0</a>, <a class="code" href="structrender__params.html#a8e40014019446549920b0a2e8a91ed9b">y0</a>, <a class="code" href="structrender__params.html#a92bcd46e4c9f96542a27c06fce58ea7a">x1</a>, <a class="code" href="structrender__params.html#a203576eded50b046993a0143ffc94d8e">y1</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structrender__params.html#ab43bf5c4fdd1f3617df90672f58e9e13">   25</a></span>&#160;    TTF_Font *<a class="code" href="structrender__params.html#ab43bf5c4fdd1f3617df90672f58e9e13">font</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> SDL_Color <a class="code" href="style_8h.html#a665014babd4a61b6153edf8809deed91">background_color</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> SDL_Color <a class="code" href="style_8h.html#a9202c6f4c9473b7e4c8f4b8bdb7d2b65">menu_text_color</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structbutton__style.html">   37</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structbutton__style.html">button_style</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structbutton__style.html#a7bb55f07042be559fc71892ec9bf3e70">   38</a></span>&#160;    <a class="code" href="structrect__style.html">rect_style</a> <a class="code" href="structbutton__style.html#a7bb55f07042be559fc71892ec9bf3e70">inactive</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structbutton__style.html#a1ef8ac95078b415357f9afa2c2ab7af2">   39</a></span>&#160;    <a class="code" href="structrect__style.html">rect_style</a> <a class="code" href="structbutton__style.html#a1ef8ac95078b415357f9afa2c2ab7af2">hover</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structbutton__style.html#a39eebb96739571f67684a63246c640a7">   40</a></span>&#160;    <a class="code" href="structrect__style.html">rect_style</a> <a class="code" href="structbutton__style.html#a39eebb96739571f67684a63246c640a7">down</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="structrect__style.html">rect_style</a> <a class="code" href="style_8h.html#a8df3a8c930797e814acdaceab5201e69">getTile</a>(<span class="keywordtype">int</span> tile_num);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="style_8h.html#a2ae8b7de5e3fa6067b565aa73ce8283e">draw_text_to_center</a>(SDL_Renderer *renderer, <span class="keywordtype">int</span> x0, <span class="keywordtype">int</span> y0, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <span class="keywordtype">char</span> *text, TTF_Font *font, SDL_Color text_color);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif // STYLE_H_INCLUDED</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astructrender__params_html"><div class="ttname"><a href="structrender__params.html">render_params</a></div><div class="ttdef"><b>Definition:</b> style.h:12</div></div>
-<div class="ttc" id="astructbutton__style_html"><div class="ttname"><a href="structbutton__style.html">button_style</a></div><div class="ttdef"><b>Definition:</b> style.h:21</div></div>
-<div class="ttc" id="astructrect__style_html"><div class="ttname"><a href="structrect__style.html">rect_style</a></div><div class="ttdef"><b>Definition:</b> style.h:7</div></div>
+<div class="ttc" id="adebugmalloc_8h_html"><div class="ttname"><a href="debugmalloc_8h.html">debugmalloc.h</a></div></div>
+<div class="ttc" id="astyle_8h_html"><div class="ttname"><a href="style_8h.html">style.h</a></div></div>
+<div class="ttc" id="astructbutton__style_html_a1ef8ac95078b415357f9afa2c2ab7af2"><div class="ttname"><a href="structbutton__style.html#a1ef8ac95078b415357f9afa2c2ab7af2">button_style::hover</a></div><div class="ttdeci">rect_style hover</div><div class="ttdef"><b>Definition:</b> style.h:39</div></div>
+<div class="ttc" id="astyle_8h_html_a665014babd4a61b6153edf8809deed91"><div class="ttname"><a href="style_8h.html#a665014babd4a61b6153edf8809deed91">background_color</a></div><div class="ttdeci">const SDL_Color background_color</div><div class="ttdoc">Global menu background color.</div><div class="ttdef"><b>Definition:</b> style.c:30</div></div>
+<div class="ttc" id="astyle_8h_html_a8df3a8c930797e814acdaceab5201e69"><div class="ttname"><a href="style_8h.html#a8df3a8c930797e814acdaceab5201e69">getTile</a></div><div class="ttdeci">rect_style getTile(int tile_num)</div><div class="ttdoc">Get appropriate styling for a number.</div><div class="ttdef"><b>Definition:</b> style.c:38</div></div>
+<div class="ttc" id="astructbutton__style_html_a39eebb96739571f67684a63246c640a7"><div class="ttname"><a href="structbutton__style.html#a39eebb96739571f67684a63246c640a7">button_style::down</a></div><div class="ttdeci">rect_style down</div><div class="ttdef"><b>Definition:</b> style.h:40</div></div>
+<div class="ttc" id="astructrender__params_html_a6d4eb484fba92e21c3167ec4655a082a"><div class="ttname"><a href="structrender__params.html#a6d4eb484fba92e21c3167ec4655a082a">render_params::x0</a></div><div class="ttdeci">int x0</div><div class="ttdef"><b>Definition:</b> style.h:24</div></div>
+<div class="ttc" id="astyle_8c_html_a8df3a8c930797e814acdaceab5201e69"><div class="ttname"><a href="style_8c.html#a8df3a8c930797e814acdaceab5201e69">getTile</a></div><div class="ttdeci">rect_style getTile(int tile_num)</div><div class="ttdoc">Get appropriate styling for a number.</div><div class="ttdef"><b>Definition:</b> style.c:38</div></div>
+<div class="ttc" id="astructrect__style_html_a67b172fd6407d5706d394fa34e3fef1d"><div class="ttname"><a href="structrect__style.html#a67b172fd6407d5706d394fa34e3fef1d">rect_style::textColor</a></div><div class="ttdeci">SDL_Color textColor</div><div class="ttdef"><b>Definition:</b> style.h:13</div></div>
+<div class="ttc" id="astyle_8h_html_a9202c6f4c9473b7e4c8f4b8bdb7d2b65"><div class="ttname"><a href="style_8h.html#a9202c6f4c9473b7e4c8f4b8bdb7d2b65">menu_text_color</a></div><div class="ttdeci">const SDL_Color menu_text_color</div><div class="ttdoc">Global menu text color.</div><div class="ttdef"><b>Definition:</b> style.c:31</div></div>
+<div class="ttc" id="astructrender__params_html"><div class="ttname"><a href="structrender__params.html">render_params</a></div><div class="ttdoc">Rendering hyperparameters To be used as a shorthand for the (mostly) constants that are needed to dra...</div><div class="ttdef"><b>Definition:</b> style.h:22</div></div>
+<div class="ttc" id="astructrender__params_html_a8e40014019446549920b0a2e8a91ed9b"><div class="ttname"><a href="structrender__params.html#a8e40014019446549920b0a2e8a91ed9b">render_params::y0</a></div><div class="ttdeci">int y0</div><div class="ttdef"><b>Definition:</b> style.h:24</div></div>
+<div class="ttc" id="astructrender__params_html_a203576eded50b046993a0143ffc94d8e"><div class="ttname"><a href="structrender__params.html#a203576eded50b046993a0143ffc94d8e">render_params::y1</a></div><div class="ttdeci">int y1</div><div class="ttdef"><b>Definition:</b> style.h:24</div></div>
+<div class="ttc" id="astructrender__params_html_a62f9a7bbc2288ada6c0da00fb5d3469a"><div class="ttname"><a href="structrender__params.html#a62f9a7bbc2288ada6c0da00fb5d3469a">render_params::renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition:</b> style.h:23</div></div>
+<div class="ttc" id="astyle_8h_html_a2ae8b7de5e3fa6067b565aa73ce8283e"><div class="ttname"><a href="style_8h.html#a2ae8b7de5e3fa6067b565aa73ce8283e">draw_text_to_center</a></div><div class="ttdeci">void draw_text_to_center(SDL_Renderer *renderer, int x0, int y0, int x1, int y1, char *text, TTF_Font *font, SDL_Color text_color)</div><div class="ttdoc">Draw a string.</div><div class="ttdef"><b>Definition:</b> style.c:53</div></div>
+<div class="ttc" id="astructbutton__style_html"><div class="ttname"><a href="structbutton__style.html">button_style</a></div><div class="ttdef"><b>Definition:</b> style.h:37</div></div>
+<div class="ttc" id="astyle_8c_html_a2ae8b7de5e3fa6067b565aa73ce8283e"><div class="ttname"><a href="style_8c.html#a2ae8b7de5e3fa6067b565aa73ce8283e">draw_text_to_center</a></div><div class="ttdeci">void draw_text_to_center(SDL_Renderer *renderer, int x0, int y0, int x1, int y1, char *text, TTF_Font *font, SDL_Color text_color)</div><div class="ttdoc">Draw a string.</div><div class="ttdef"><b>Definition:</b> style.c:53</div></div>
+<div class="ttc" id="astructrect__style_html_a5062cec02178be38f3ff5b34636d09b0"><div class="ttname"><a href="structrect__style.html#a5062cec02178be38f3ff5b34636d09b0">rect_style::backgroundColor</a></div><div class="ttdeci">Uint32 backgroundColor</div><div class="ttdef"><b>Definition:</b> style.h:14</div></div>
+<div class="ttc" id="astructbutton__style_html_a7bb55f07042be559fc71892ec9bf3e70"><div class="ttname"><a href="structbutton__style.html#a7bb55f07042be559fc71892ec9bf3e70">button_style::inactive</a></div><div class="ttdeci">rect_style inactive</div><div class="ttdef"><b>Definition:</b> style.h:38</div></div>
+<div class="ttc" id="astructrect__style_html"><div class="ttname"><a href="structrect__style.html">rect_style</a></div><div class="ttdoc">Text &amp; background color struct Structure used to store the visual properties of a rectangle with text...</div><div class="ttdef"><b>Definition:</b> style.h:12</div></div>
+<div class="ttc" id="astyle_8c_html_a9202c6f4c9473b7e4c8f4b8bdb7d2b65"><div class="ttname"><a href="style_8c.html#a9202c6f4c9473b7e4c8f4b8bdb7d2b65">menu_text_color</a></div><div class="ttdeci">const SDL_Color menu_text_color</div><div class="ttdoc">Global menu text color.</div><div class="ttdef"><b>Definition:</b> style.c:31</div></div>
+<div class="ttc" id="astructrender__params_html_ab43bf5c4fdd1f3617df90672f58e9e13"><div class="ttname"><a href="structrender__params.html#ab43bf5c4fdd1f3617df90672f58e9e13">render_params::font</a></div><div class="ttdeci">TTF_Font * font</div><div class="ttdef"><b>Definition:</b> style.h:25</div></div>
+<div class="ttc" id="astyle_8c_html_a665014babd4a61b6153edf8809deed91"><div class="ttname"><a href="style_8c.html#a665014babd4a61b6153edf8809deed91">background_color</a></div><div class="ttdeci">const SDL_Color background_color</div><div class="ttdoc">Global styles.</div><div class="ttdef"><b>Definition:</b> style.c:30</div></div>
+<div class="ttc" id="astructrender__params_html_a92bcd46e4c9f96542a27c06fce58ea7a"><div class="ttname"><a href="structrender__params.html#a92bcd46e4c9f96542a27c06fce58ea7a">render_params::x1</a></div><div class="ttdeci">int x1</div><div class="ttdef"><b>Definition:</b> style.h:24</div></div>
+<div class="ttc" id="astyle_8c_html_abb28301412072637c021a585eac3bbff"><div class="ttname"><a href="style_8c.html#abb28301412072637c021a585eac3bbff">tiles</a></div><div class="ttdeci">const rect_style tiles[12]</div><div class="ttdoc">Global array of vals for styling of the tiles. The index in the array is the log2(n) of the tile num,...</div><div class="ttdef"><b>Definition:</b> style.c:12</div></div>
+<div class="ttc" id="astyle_8h_html_ad00da9090508da22a585cd75c6b7bbd2"><div class="ttname"><a href="style_8h.html#ad00da9090508da22a585cd75c6b7bbd2">rect_style</a></div><div class="ttdeci">struct rect_style rect_style</div><div class="ttdoc">Text &amp; background color struct Structure used to store the visual properties of a rectangle with text...</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>style.h</b></li>
-    <li class="footer">Generated on Sat Nov 23 2019 15:01:41 for 2048 by
+    <li class="navelem"><a class="el" href="style_8h.html">style.h</a></li>
+    <li class="footer">Generated on Thu Nov 28 2019 19:16:59 for 2048 by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

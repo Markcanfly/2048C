@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['winsize_5fx_128',['WINSIZE_X',['../main_8c.html#ab49e2a88627a8f4937c4cf645c32e633',1,'main.c']]],
-  ['winsize_5fy_129',['WINSIZE_Y',['../main_8c.html#a876d500543a1bd95184d110b2a1723b2',1,'main.c']]]
+  ['real_5fmem_241',['real_mem',['../struct_debugmalloc_elem.html#a6dfb9ddf07222e1f3230af155ca9eb38',1,'DebugmallocElem']]],
+  ['renderer_242',['renderer',['../structrender__params.html#a62f9a7bbc2288ada6c0da00fb5d3469a',1,'render_params']]]
 ];

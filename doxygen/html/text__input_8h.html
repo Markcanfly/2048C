@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('text__input_8h.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae0e265482a5737d56359c0ff2f9cff45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text__input_8h.html#ae0e265482a5737d56359c0ff2f9cff45">input_text</a> (char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer)</td></tr>
-<tr class="memdesc:ae0e265482a5737d56359c0ff2f9cff45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Beolvas egy szoveget a billentyuzetrol.  <a href="text__input_8h.html#ae0e265482a5737d56359c0ff2f9cff45">More...</a><br /></td></tr>
+<tr class="memdesc:ae0e265482a5737d56359c0ff2f9cff45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads text input from the keyboard.  <a href="text__input_8h.html#ae0e265482a5737d56359c0ff2f9cff45">More...</a><br /></td></tr>
 <tr class="separator:ae0e265482a5737d56359c0ff2f9cff45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -119,25 +119,25 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>hossz</em>, </td>
+          <td class="paramname"><em>len</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Rect&#160;</td>
-          <td class="paramname"><em>teglalap</em>, </td>
+          <td class="paramname"><em>rectangle</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Color&#160;</td>
-          <td class="paramname"><em>hatter</em>, </td>
+          <td class="paramname"><em>background</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Color&#160;</td>
-          <td class="paramname"><em>szoveg</em>, </td>
+          <td class="paramname"><em>text_color</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -159,18 +159,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Beolvas egy szoveget a billentyuzetrol. </p>
+<p>Reads text input from the keyboard. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Font</td><td>used to draw the text, render </td></tr>
-    <tr><td class="paramname">The</td><td>array used to store the text </td></tr>
-    <tr><td class="paramname">Max</td><td>length of text to read </td></tr>
+    <tr><td class="paramname">dest</td><td>Char array pointer to store the input at </td></tr>
+    <tr><td class="paramname">len</td><td>Max length of text </td></tr>
+    <tr><td class="paramname">rectangle</td><td>SDL_Rect object to draw to </td></tr>
+    <tr><td class="paramname">background</td><td>SDL_Color </td></tr>
+    <tr><td class="paramname">text_color</td><td>SDL_Color </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF_Font object pointer to draw the text with </td></tr>
+    <tr><td class="paramname">renderer</td><td>The SDL_Renderer pointer to draw to </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, otherwise false </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="text__input_8c_source.html#l00015">15</a> of file <a class="el" href="text__input_8c_source.html">text_input.c</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, otherwise false</dd></dl>
+<p>Source: <a href="https://infoc.eet.bme.hu">https://infoc.eet.bme.hu</a> </p>
 
 </div>
 </div>
@@ -180,7 +183,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="text__input_8h.html">text_input.h</a></li>
-    <li class="footer">Generated on Sat Nov 23 2019 15:00:12 for 2048 by
+    <li class="footer">Generated on Thu Nov 28 2019 19:16:59 for 2048 by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['menu_5fitem_8',['menu_item',['../structmenu__item.html',1,'']]]
+  ['debugmallocdata_136',['DebugmallocData',['../struct_debugmalloc_data.html',1,'']]],
+  ['debugmallocelem_137',['DebugmallocElem',['../struct_debugmalloc_elem.html',1,'']]]
 ];

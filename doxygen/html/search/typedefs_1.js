@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['menu_5fitem_137',['menu_item',['../menu_8h.html#a0739c473ac989e64db3888f85247ff67',1,'menu.h']]]
+  ['debugmallocdata_262',['DebugmallocData',['../debugmalloc-impl_8h.html#a67d1b20cf90f70013df57939824f95d8',1,'debugmalloc-impl.h']]],
+  ['debugmallocelem_263',['DebugmallocElem',['../debugmalloc-impl_8h.html#a46ff63ffc3d2d4c1fc67a0f8c6fef6d4',1,'debugmalloc-impl.h']]]
 ];
