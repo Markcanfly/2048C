@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
+#include "highscores.h"
 #include "style.h"
 
 typedef struct tabla {
@@ -24,6 +25,8 @@ tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles);
 void free_tabla(tabla *to_free);
 
 void print_tabla(tabla *to_print);
+
+void move_game(tabla *to_move, HS_Node **hs_node, char dir);
 
 void draw_game(const struct render_params render_data, tabla *to_draw);
 

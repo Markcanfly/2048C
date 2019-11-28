@@ -73,6 +73,37 @@ void print_tabla(tabla *to_print) {
     }
 }
 
+/**
+* \brief Game move handler
+* \param to_move pointer to a tabla object
+* \param dir The direction to move, ['L', 'R', 'U', 'D']
+*/
+void move_game(tabla *to_move, HS_Node **hs_node, char dir) {
+    bool valid_move;
+    switch (dir) {
+        case 'L':
+            valid_move = push_left(to_move, hs_node);
+            break;
+        case 'R':
+            valid_move = push_right(to_move, hs_node);
+            break;
+        case 'U':
+            valid_move = push_up(to_move, hs_node);
+            break;
+        case 'D':
+            valid_move = push_down(to_move, hs_node);
+            break;
+    }
+    if (valid_move)
+        add_random(to_move);
+    if (lost(to_move))
+        printf("Game lost.");
+    // Save to file
+    store_save(to_move);
+    add_checked_highscore(hs_node, to_move -> name, to_move -> size_x, to_move -> score);
+
+}
+
 void draw_game(const struct render_params render_data, tabla *to_draw) {
     /**
     * \brief Draws all game elements

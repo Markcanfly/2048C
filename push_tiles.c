@@ -11,7 +11,7 @@ int my_rand(int from, int to) {
     return rand() % (to - from) + from;
 }
 
-void push_up(tabla *to_push, HS_Node **hs_node) {
+bool push_up(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -64,15 +64,10 @@ void push_up(tabla *to_push, HS_Node **hs_node) {
             }
         }
     }
-    if (valid_move)
-        add_random(to_push);
-    if (lost(to_push))
-        printf("Game lost.");
-    // Save to file
-    store_save(to_push);
-    add_checked_highscore(hs_node, to_push -> name, to_push -> size_x, to_push -> score);
+
+    return valid_move;
 }
-void push_down(tabla *to_push, HS_Node **hs_node) {
+bool push_down(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -123,15 +118,10 @@ void push_down(tabla *to_push, HS_Node **hs_node) {
             }
         }
     }
-    if (valid_move)
-        add_random(to_push);
-    if (lost(to_push))
-        printf("Game lost.");
-    // Save to file
-    store_save(to_push);
-    add_checked_highscore(hs_node, to_push -> name, to_push -> size_x, to_push -> score);
+
+    return valid_move;
 }
-void push_left(tabla *to_push, HS_Node **hs_node) {
+bool push_left(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -183,15 +173,10 @@ void push_left(tabla *to_push, HS_Node **hs_node) {
             }
         }
     }
-    if (valid_move)
-        add_random(to_push);
-    if (lost(to_push))
-        printf("Game lost.");
-    // Save to file
-    store_save(to_push);
-    add_checked_highscore(hs_node, to_push -> name, to_push -> size_x, to_push -> score);
+
+    return valid_move;
 }
-void push_right(tabla *to_push, HS_Node **hs_node) {
+bool push_right(tabla *to_push, HS_Node **hs_node) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
     int **fields = to_push -> dynarr;
@@ -244,13 +229,8 @@ void push_right(tabla *to_push, HS_Node **hs_node) {
             }
         }
     }
-    if (valid_move)
-        add_random(to_push);
-    if (lost(to_push))
-        printf("Game lost.");
-    // Save to file
-    store_save(to_push);
-    add_checked_highscore(hs_node, to_push -> name, to_push -> size_x, to_push -> score);
+
+    return valid_move;
 }
 
 void add_random(tabla *to_add) {

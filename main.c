@@ -49,18 +49,23 @@ void sdl_init(int szeles, int magas, SDL_Window **pwindow, SDL_Renderer **prende
 
 int main(int argc, char *argv[]) {
 
-    HS_Node *hs_first = load_highscores(); // TESTING
+    /* Initialize shared variables */
+
+    /* Highscore data */
+    HS_Node *hs_first = load_highscores();
     debug_print_HS(hs_first);
 
+    /* Tabla data */
     tabla *uj_tabla = load_save();
     print_tabla(uj_tabla);
 
-
+    /* SDL data */
     SDL_Window *window;
     SDL_Renderer *renderer;
 
     sdl_init(WINSIZE_X, WINSIZE_Y, &window, &renderer);
 
+    /* TrueTypeFont data */
     TTF_Init();
     TTF_Font *font = TTF_OpenFont("arial.ttf", 32);
     if (!font) {
@@ -68,7 +73,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-
+    /* Render data */
     const struct render_params render_data = {
         .renderer = renderer,
         .x0 = 0,
@@ -78,6 +83,7 @@ int main(int argc, char *argv[]) {
         font = font
     };
 
+    /* Menu controller data */
     bool quit = false;
     bool quit_game = true;
     bool quit_highscores = true;
@@ -109,10 +115,10 @@ int main(int argc, char *argv[]) {
                 switch (game_event.type) {
                     case SDL_KEYDOWN:
                         switch (game_event.key.keysym.sym) {
-                            case SDLK_LEFT: push_left(uj_tabla, &hs_first); break;
-                            case SDLK_RIGHT: push_right(uj_tabla, &hs_first); break;
-                            case SDLK_UP: push_up(uj_tabla, &hs_first); break;
-                            case SDLK_DOWN: push_down(uj_tabla, &hs_first); break;
+                            case SDLK_LEFT: move_game(uj_tabla, &hs_first, 'L'); break;
+                            case SDLK_RIGHT: move_game(uj_tabla, &hs_first, 'R'); break;
+                            case SDLK_UP: move_game(uj_tabla, &hs_first, 'U'); break;
+                            case SDLK_DOWN: move_game(uj_tabla, &hs_first, 'D'); break;
                             case SDLK_ESCAPE:
                                 quit_game = true;
                                 // Show previous after quitting game
@@ -129,6 +135,9 @@ int main(int argc, char *argv[]) {
                         quit = true;
                         break;
                 }
+
+                // Win splash / lose splash
+
             }
 
             /*

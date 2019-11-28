@@ -12,17 +12,19 @@
 	"push_tiles.h"
 	"debugmalloc.h"
 
-1574594577 c:\users\mark\documents\workspace\2048\game.h
+1574941955 c:\users\mark\documents\workspace\2048\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdbool.h>
+	"highscores.h"
 	"style.h"
 
-1574774167 c:\users\mark\documents\workspace\2048\push_tiles.h
+1574941577 c:\users\mark\documents\workspace\2048\push_tiles.h
+	<stdbool.h>
 	"game.h"
 	"highscores.h"
 
-1574774169 source:c:\users\mark\documents\workspace\2048\push_tiles.c
+1574941896 source:c:\users\mark\documents\workspace\2048\push_tiles.c
 	<stdlib.h>
 	<stdbool.h>
 	<stdio.h>
@@ -32,7 +34,7 @@
 	"debugmalloc.h"
 	"highscores.h"
 
-1574792900 source:c:\users\mark\documents\workspace\2048\main.c
+1574941940 source:c:\users\mark\documents\workspace\2048\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL2/SDL_ttf.h>
@@ -217,7 +219,7 @@
 	<process.h>
 	<unistd.h>
 
-1574940953 source:c:\users\mark\documents\workspace\2048\highscores.c
+1574941214 source:c:\users\mark\documents\workspace\2048\highscores.c
 	<string.h>
 	"debugmalloc.h"
 	"highscores.h"
