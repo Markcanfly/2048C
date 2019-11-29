@@ -157,9 +157,11 @@ HS_Node *load_highscores() {
     HS_Node *first = NULL;
     while (fgets(line, 255, hs_file) != NULL) {
         // Get data from each line
-        score = atoi(strtok(line, "-"));
+        name = strtok(line, "-");
         field_size = atoi(strtok(NULL, "-"));
-        name = strtok(strtok(NULL, "-"), "\n"); // Tokenize then strip newline
+        score = atoi(strtok(strtok(NULL, "-"), "\n"));
+
+         // Tokenize then strip newline
         if (name != NULL && field_size != 0)
             add_checked_highscore(&first, name, field_size, score);
     }
@@ -171,7 +173,7 @@ HS_Node *load_highscores() {
 * \brief Store the saved highscores to a static location
 * Write the saved highscores to *%workingdir%/mentes/highscores.txt*
 * Uses the following format on each line:
-* {score}-{field_size}-{name}
+* {name}-{field_size}-{score}
 */
 void store_highscores(HS_Node *to_store) {
     FILE *hs_file = fopen("mentes/highscores.txt", "w");
@@ -182,7 +184,7 @@ void store_highscores(HS_Node *to_store) {
     }
 
     for (HS_Node *c = to_store; c != NULL; c = c -> next) {
-        fprintf(hs_file, "%d-%d-%s\n", c -> score, c -> field_size, c -> name);
+        fprintf(hs_file, "%s-%d-%d\n", c -> name, c -> field_size, c -> score);
     }
 
     fclose(hs_file);

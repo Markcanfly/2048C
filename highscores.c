@@ -151,7 +151,7 @@ void add_checked_highscore(HS_Node **first, char *name, int field_size, int scor
 
 void debug_print_HS(HS_Node *node) {
     while (node != NULL) {
-        printf("%d | %d | %s\n", node -> score, node -> field_size, node -> name);
+        printf("%s | %d | %d\n", node -> name, node -> field_size, node -> score);
         node = node -> next;
     }
 }

@@ -29,7 +29,7 @@ void store_save(const tabla *to_store);
 * \brief Load the saved highscores from a static location
 * Load the saved highscores from *%workingdir%/mentes/highscores.txt*
 * Expects the following format on each line:
-* {score}-{field_size}-{name}
+* {name}-{field_size}-{score}
 */
 HS_Node *load_highscores();
 
@@ -37,7 +37,7 @@ HS_Node *load_highscores();
 * \brief Store the saved highscores to a static location
 * Write the saved highscores to *%workingdir%/mentes/highscores.txt*
 * Uses the following format on each line:
-* {score}-{field_size}-{name}
+* {name}-{field_size}-{score}
 */
 void store_highscores(HS_Node *to_store);
 

@@ -15,7 +15,6 @@
 
 /*  -- TODO list - ordered by priority --
     TODO add headers to highscore display
-    TODO fix highscore file structure - put name in front
     TODO malloc guards everywhere for error handling
     TODO remove debug printfs
 */
