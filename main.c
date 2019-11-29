@@ -15,6 +15,9 @@
 
 /*  -- TODO list - ordered by priority --
     TODO move logging, undo
+        TODO save and reload previous score
+        TODO store previous state and score in file
+    TODO add headers to highscore display and test max number of hs printable in relation to height
     TODO fix highscore file structure - put name in front
 */
 
@@ -124,15 +127,18 @@ int main(int argc, char *argv[]) {
                 switch (game_event.type) {
                     case SDL_KEYDOWN:
                         switch (game_event.key.keysym.sym) {
-                            case SDLK_LEFT: game_status = move_game(uj_tabla, &hs_first, 'L'); break;
-                            case SDLK_RIGHT: game_status = move_game(uj_tabla, &hs_first, 'R'); break;
-                            case SDLK_UP: game_status = move_game(uj_tabla, &hs_first, 'U'); break;
-                            case SDLK_DOWN: game_status = move_game(uj_tabla, &hs_first, 'D'); break;
+                            case SDLK_LEFT: game_status = game_move(uj_tabla, &hs_first, 'L'); break;
+                            case SDLK_RIGHT: game_status = game_move(uj_tabla, &hs_first, 'R'); break;
+                            case SDLK_UP: game_status = game_move(uj_tabla, &hs_first, 'U'); break;
+                            case SDLK_DOWN: game_status = game_move(uj_tabla, &hs_first, 'D'); break;
                             case SDLK_ESCAPE:
                                 quit_game = true;
                                 // Show previous after quitting game
                                 draw_menu_play(render_data, 0, 0, false);
                                 SDL_RenderPresent(renderer);
+                                break;
+                            case SDLK_SPACE:
+                                game_undo(uj_tabla);
                                 break;
                         }
                         printf("---------\n");

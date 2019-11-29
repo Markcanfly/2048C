@@ -13,7 +13,9 @@
 typedef struct tabla {
     char name[51];
     int score;
-    int **dynarr;
+    int **current_field;
+    int previous_score;
+    int **previous_field;
     int size_x;
     int size_y;
 } tabla;
@@ -42,6 +44,15 @@ tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles);
 void free_tabla(tabla *to_free);
 
 /**
+* \brief Free a tabla object, except for the current_state
+* Free a tabla object, excluding the current_state 2D array, which can be reused
+* Primarily used for the undo method, the state storing of which requires
+* the previous state to be reachable, and to avoid having to reallocate an identical array
+* we can reuse it.
+*/
+void free_tabla_ex_field(tabla *to_free);
+
+/**
 * \brief Print tabla object to console
 * \param to_print pointer to a tabla object
 * Takes a tabla object and prints a representation to stdout,
@@ -55,7 +66,7 @@ void print_tabla(tabla *to_print);
 * \param to_move pointer to a tabla object
 * \param dir The direction to move, ['L', 'R', 'U', 'D']
 */
-int move_game(tabla *to_move, HS_Node **hs_node, char dir);
+int game_move(tabla *to_move, HS_Node **hs_node, char dir);
 
 /**
 * \brief Draws all game elements

@@ -50,31 +50,29 @@ tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles) {
 */
 tabla *copy_tabla(tabla *to_copy) {
     // Allocate memory for the new array
-    int **nums = (int **) malloc((to_copy -> size_y) * sizeof(int));
-    nums[0] = (int *) malloc(sizeof(int) * (to_copy -> size_x) * (to_copy -> size_y));
+    int **nums = (int **) malloc(to_copy -> size_y * sizeof(int));
+    nums[0] = (int *) malloc(sizeof(int) * to_copy -> size_x * to_copy -> size_y);
     for (int y = 1; y < to_copy -> size_y; y++) {
         nums[y] = nums[0] + y * to_copy -> size_x;
     }
-
     // Copy values to new array
+
     for (int y = 0; y < to_copy -> size_y; y++) {
         for (int x = 0; x < to_copy -> size_x; x++) {
             nums[y][x] = to_copy -> current_field[y][x];
         }
     }
 
-    tabla *new_tabla = malloc(sizeof(tabla));
-
     // Copy values over
     strcpy(new_tabla -> name, to_copy -> name);
     new_tabla -> score = to_copy -> score;
     new_tabla -> current_field = nums;
-    new_tabla -> previous_field = NULL;
     new_tabla -> size_x = to_copy -> size_x;
     new_tabla -> size_y = to_copy -> size_y;
 
     return new_tabla;
 }
+
 
 /**
 * \brief Free a tabla object
@@ -83,25 +81,6 @@ tabla *copy_tabla(tabla *to_copy) {
 void free_tabla(tabla *to_free) {
     free(to_free -> current_field[0]);
     free(to_free -> current_field);
-    if (to_free -> previous_field != NULL) {
-        free(to_free -> previous_field[0]);
-        free(to_free -> previous_field);
-    }
-    free(to_free);
-}
-
-/**
-* \brief Free a tabla object, except for the current state
-* Free a tabla object, excluding the current_state 2D array, which can be reused
-* Primarily used for the undo method, the state storing of which requires
-* the previous state to be reachable, and to avoid having to reallocate an identical array
-* we can reuse it.
-*/
-void free_tabla_ex_field(tabla *to_free) {
-    if (to_free -> previous_field != NULL) {
-        free(to_free -> previous_field[0]);
-        free(to_free -> previous_field);
-    }
     free(to_free);
 }
 
@@ -132,10 +111,6 @@ void print_tabla(tabla *to_print) {
 * \param dir The direction to move, ['L', 'R', 'U', 'D']
 */
 int game_move(tabla *to_move, HS_Node **hs_node, char dir) {
-
-    // Create temporary save of current state
-    tabla *temp_fieldcopy = copy_tabla(to_move);
-
     int move_state; // -1: game won | 0: valid move | 1: invalid move
     switch (dir) {
         case 'L':
@@ -160,29 +135,14 @@ int game_move(tabla *to_move, HS_Node **hs_node, char dir) {
             return 1;
             break;
         case 0:
-            /* Valid move */
+            // Valid move
             add_random(to_move);
             // Save state
             store_save(to_move);
             add_checked_highscore(hs_node, to_move -> name, to_move -> size_x, to_move -> score);
-
-            /* Store previous state */
-            // Free the previous 2D array
-            if (to_move -> previous_field != NULL) {
-                free(to_move -> previous_field[0]);
-                free(to_move -> previous_field);
-            }
-            // Set the pointers
-            to_move -> previous_field = temp_fieldcopy -> current_field;
-            to_move -> previous_field[0] = temp_fieldcopy -> current_field[0];
-
-            // Free the temporary variable
-            free_tabla_ex_field(temp_fieldcopy);
-
-            break;
         case 1:
             // Invalid move
-            free_tabla(temp_fieldcopy);
+            // do nothing
             break;
     }
 
@@ -191,25 +151,6 @@ int game_move(tabla *to_move, HS_Node **hs_node, char dir) {
 
     // If we got here, all is well, return 0
     return 0;
-}
-
-/**
-* \brief Perform an undo on the object
-* In case there's an available previous state, replace the current state with that
-*/
-void game_undo(tabla *to_undo) {
-    if (to_undo -> previous_field != NULL) {
-        /* Free current state */
-        free(to_undo -> current_field[0]);
-        free(to_undo -> current_field);
-        /* Replace current state with previous */
-        to_undo -> current_field = to_undo -> previous_field;
-        to_undo -> current_field[0] = to_undo -> previous_field[0];
-        /* Set previous state to unavailable */
-        to_undo -> previous_field = NULL;
-    } else {
-        printf("Undo unavailable.\n");
-    }
 }
 
 /**
@@ -276,7 +217,7 @@ void draw_tiles(const struct render_params render_data, tabla *to_draw) {
 
     int size_x = to_draw -> size_x;
     int size_y = to_draw -> size_y;
-    int **fields = to_draw -> current_field;
+    int **fields = to_draw -> dynarr;
 
     const int width = render_data.x1 - render_data.x0;
     const int height = render_data.y1 - render_data.y0;
@@ -318,7 +259,7 @@ bool lost(tabla* to_check) {
 
     int size_x = to_check -> size_x;
     int size_y = to_check -> size_y;
-    int **fields = to_check -> current_field;
+    int **fields = to_check -> dynarr;
 
     for (int y = 0; y < size_y; y++) {
         for (int x = 0; x < size_x; x++) {

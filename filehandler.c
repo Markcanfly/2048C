@@ -50,7 +50,8 @@ tabla *load_save() {
 
     strcpy(new_tabla -> name, name);
     new_tabla -> score = score;
-    new_tabla -> dynarr = nums;
+    new_tabla -> current_field = nums;
+    new_tabla -> previous_field = NULL; // IN PROGRESS, JUST A SAFEGUARD FOR NOW
     new_tabla -> size_x = size_x;
     new_tabla -> size_y = size_y;
 
@@ -79,9 +80,9 @@ void store_save(const tabla *to_store) {
     // Write gamestate to file
 
     for (int y = 0; y < to_store -> size_y; y++) {
-        fprintf(save_file, "%d", to_store -> dynarr[y][0]); // First elem
+        fprintf(save_file, "%d", to_store -> current_field[y][0]); // First elem
         for (int x = 1; x < to_store -> size_x; x++) {
-            fprintf(save_file, " %d", to_store -> dynarr[y][x]);
+            fprintf(save_file, " %d", to_store -> current_field[y][x]);
         }
         fprintf(save_file, "\n");
     }

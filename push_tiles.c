@@ -14,7 +14,7 @@ int my_rand(int from, int to) {
 int push_up(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
-    int **fields = to_push -> dynarr;
+    int **fields = to_push -> current_field;
     int *score = &to_push -> score;
     bool valid_move = false;
     bool won = false;
@@ -77,7 +77,7 @@ int push_up(tabla *to_push) {
 int push_down(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
-    int **fields = to_push -> dynarr;
+    int **fields = to_push -> current_field;
     int *score = &to_push -> score;
     bool valid_move = false;
     bool won = false;
@@ -140,7 +140,7 @@ int push_down(tabla *to_push) {
 int push_left(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
-    int **fields = to_push -> dynarr;
+    int **fields = to_push -> current_field;
     int *score = &to_push -> score;
     bool valid_move = false;
     bool won = false;
@@ -204,7 +204,7 @@ int push_left(tabla *to_push) {
 int push_right(tabla *to_push) {
     int size_x = to_push -> size_x;
     int size_y = to_push -> size_y;
-    int **fields = to_push -> dynarr;
+    int **fields = to_push -> current_field;
     int *score = &to_push -> score;
     bool valid_move = false;
     bool won = false;
@@ -270,7 +270,7 @@ int push_right(tabla *to_push) {
 void add_random(tabla *to_add) {
     int size_x = to_add -> size_x;
     int size_y = to_add -> size_y;
-    int **fields = to_add -> dynarr;
+    int **fields = to_add -> current_field;
 
     int* uresek[size_x*size_y];
     int elemcount = 0;
