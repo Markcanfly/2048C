@@ -70,6 +70,7 @@ tabla *copy_tabla(tabla *to_copy) {
     new_tabla -> score = to_copy -> score;
     new_tabla -> current_field = nums;
     new_tabla -> previous_field = NULL;
+    new_tabla -> previous_score = 0;
     new_tabla -> size_x = to_copy -> size_x;
     new_tabla -> size_y = to_copy -> size_y;
 
@@ -166,7 +167,10 @@ int game_move(tabla *to_move, HS_Node **hs_node, char dir) {
             store_save(to_move);
             add_checked_highscore(hs_node, to_move -> name, to_move -> size_x, to_move -> score);
 
-            /* Store previous state */
+            /* SAVE THE PREVIOUS STATE */
+            // Save score
+            to_move -> previous_score = temp_fieldcopy -> score;
+
             // Free the previous 2D array
             if (to_move -> previous_field != NULL) {
                 free(to_move -> previous_field[0]);
@@ -199,6 +203,9 @@ int game_move(tabla *to_move, HS_Node **hs_node, char dir) {
 */
 void game_undo(tabla *to_undo) {
     if (to_undo -> previous_field != NULL) {
+        /* Reset score */
+        to_undo -> score = to_undo -> previous_score;
+        to_undo -> previous_score = 0;
         /* Free current state */
         free(to_undo -> current_field[0]);
         free(to_undo -> current_field);
