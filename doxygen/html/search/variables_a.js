@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['real_5fmem_241',['real_mem',['../struct_debugmalloc_elem.html#a6dfb9ddf07222e1f3230af155ca9eb38',1,'DebugmallocElem']]],
-  ['renderer_242',['renderer',['../structrender__params.html#a62f9a7bbc2288ada6c0da00fb5d3469a',1,'render_params']]]
+  ['prev_248',['prev',['../struct_debugmalloc_elem.html#a866a8d8ca0a1dae23c2d8f5c508d2f23',1,'DebugmallocElem']]],
+  ['previous_5ffield_249',['previous_field',['../structtabla.html#ac310de7a27ad0cea2c03f49d2078484d',1,'tabla']]],
+  ['previous_5fscore_250',['previous_score',['../structtabla.html#aa2e47d4d2898acfc8f72302df905fdcd',1,'tabla']]]
 ];

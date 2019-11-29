@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['down_223',['down',['../structbutton__style.html#a39eebb96739571f67684a63246c640a7',1,'button_style']]],
-  ['dynarr_224',['dynarr',['../structtabla.html#a15408f0751ac309f1e093be1caa835fe',1,'tabla']]]
+  ['current_5ffield_231',['current_field',['../structtabla.html#a9f2b2e66edd557b0962a5d0cc52f67de',1,'tabla']]]
 ];

@@ -102,21 +102,31 @@ $(document).ready(function(){initNavTree('game_8c.html','');});
 <code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="push__tiles_8h_source.html">push_tiles.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="debugmalloc_8h_source.html">debugmalloc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="filehandler_8h_source.html">filehandler.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9a23a77ec19c49584e7d330f9038f291"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtabla.html">tabla</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a9a23a77ec19c49584e7d330f9038f291">create_tabla</a> (char *name, int size_x, int size_y, int start_tiles)</td></tr>
 <tr class="memdesc:a9a23a77ec19c49584e7d330f9038f291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pseudo-constructor for a tabla object.  <a href="game_8c.html#a9a23a77ec19c49584e7d330f9038f291">More...</a><br /></td></tr>
 <tr class="separator:a9a23a77ec19c49584e7d330f9038f291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cee37bee0ffc07a240ce3aaf4fbfe2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtabla.html">tabla</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a8cee37bee0ffc07a240ce3aaf4fbfe2d">copy_tabla</a> (<a class="el" href="structtabla.html">tabla</a> *to_copy)</td></tr>
+<tr class="memdesc:a8cee37bee0ffc07a240ce3aaf4fbfe2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make copy of the tabla.  <a href="game_8c.html#a8cee37bee0ffc07a240ce3aaf4fbfe2d">More...</a><br /></td></tr>
+<tr class="separator:a8cee37bee0ffc07a240ce3aaf4fbfe2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f0b485351709ea6e12170077d6f2bf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a7f0b485351709ea6e12170077d6f2bf2">free_tabla</a> (<a class="el" href="structtabla.html">tabla</a> *to_free)</td></tr>
 <tr class="memdesc:a7f0b485351709ea6e12170077d6f2bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a tabla object.  <a href="game_8c.html#a7f0b485351709ea6e12170077d6f2bf2">More...</a><br /></td></tr>
 <tr class="separator:a7f0b485351709ea6e12170077d6f2bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a681a9533d4287a9817c59192fa56601c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a681a9533d4287a9817c59192fa56601c">free_tabla_ex_field</a> (<a class="el" href="structtabla.html">tabla</a> *to_free)</td></tr>
+<tr class="memdesc:a681a9533d4287a9817c59192fa56601c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a tabla object, except for the current state Free a tabla object, excluding the current_state 2D array, which can be reused Primarily used for the undo method, the state storing of which requires the previous state to be reachable, and to avoid having to reallocate an identical array we can reuse it.  <a href="game_8c.html#a681a9533d4287a9817c59192fa56601c">More...</a><br /></td></tr>
+<tr class="separator:a681a9533d4287a9817c59192fa56601c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1420b24fa62e3371e167a2e3b3f931ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a1420b24fa62e3371e167a2e3b3f931ac">print_tabla</a> (<a class="el" href="structtabla.html">tabla</a> *to_print)</td></tr>
 <tr class="memdesc:a1420b24fa62e3371e167a2e3b3f931ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print tabla object to console.  <a href="game_8c.html#a1420b24fa62e3371e167a2e3b3f931ac">More...</a><br /></td></tr>
 <tr class="separator:a1420b24fa62e3371e167a2e3b3f931ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5fef432f92387b9802cd0a88fbbff1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#ad5fef432f92387b9802cd0a88fbbff1f">move_game</a> (<a class="el" href="structtabla.html">tabla</a> *to_move, <a class="el" href="struct_h_s___node.html">HS_Node</a> **hs_node, char dir)</td></tr>
-<tr class="memdesc:ad5fef432f92387b9802cd0a88fbbff1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game move handler.  <a href="game_8c.html#ad5fef432f92387b9802cd0a88fbbff1f">More...</a><br /></td></tr>
-<tr class="separator:ad5fef432f92387b9802cd0a88fbbff1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a611f35ab41d0527683985f05d94ce0a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a611f35ab41d0527683985f05d94ce0a0">game_move</a> (<a class="el" href="structtabla.html">tabla</a> *to_move, <a class="el" href="struct_h_s___node.html">HS_Node</a> **hs_node, char dir)</td></tr>
+<tr class="memdesc:a611f35ab41d0527683985f05d94ce0a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game move handler.  <a href="game_8c.html#a611f35ab41d0527683985f05d94ce0a0">More...</a><br /></td></tr>
+<tr class="separator:a611f35ab41d0527683985f05d94ce0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bb8fe62644d0f5be508004984fc4684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a9bb8fe62644d0f5be508004984fc4684">game_undo</a> (<a class="el" href="structtabla.html">tabla</a> *to_undo)</td></tr>
+<tr class="memdesc:a9bb8fe62644d0f5be508004984fc4684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform an undo on the object In case there's an available previous state, replace the current state with that.  <a href="game_8c.html#a9bb8fe62644d0f5be508004984fc4684">More...</a><br /></td></tr>
+<tr class="separator:a9bb8fe62644d0f5be508004984fc4684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8c.html#a8013098b19bf36fcd571e3a37b4cc5a5">draw_game</a> (const struct <a class="el" href="structrender__params.html">render_params</a> render_data, <a class="el" href="structtabla.html">tabla</a> *to_draw)</td></tr>
 <tr class="memdesc:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws all game elements.  <a href="game_8c.html#a8013098b19bf36fcd571e3a37b4cc5a5">More...</a><br /></td></tr>
 <tr class="separator:a8013098b19bf36fcd571e3a37b4cc5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +141,32 @@ Functions</h2></td></tr>
 <tr class="separator:a961b0c717864dd4780d2e1eb2d384cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a8cee37bee0ffc07a240ce3aaf4fbfe2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cee37bee0ffc07a240ce3aaf4fbfe2d">&#9670;&nbsp;</a></span>copy_tabla()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structtabla.html">tabla</a>* copy_tabla </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structtabla.html">tabla</a> *&#160;</td>
+          <td class="paramname"><em>to_copy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Make copy of the tabla. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a9a23a77ec19c49584e7d330f9038f291"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a23a77ec19c49584e7d330f9038f291">&#9670;&nbsp;</a></span>create_tabla()</h2>
 
@@ -327,40 +363,35 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a961b0c717864dd4780d2e1eb2d384cdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a961b0c717864dd4780d2e1eb2d384cdc">&#9670;&nbsp;</a></span>lost()</h2>
+<a id="a681a9533d4287a9817c59192fa56601c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a681a9533d4287a9817c59192fa56601c">&#9670;&nbsp;</a></span>free_tabla_ex_field()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool lost </td>
+          <td class="memname">void free_tabla_ex_field </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structtabla.html">tabla</a> *&#160;</td>
-          <td class="paramname"><em>to_check</em></td><td>)</td>
+          <td class="paramname"><em>to_free</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check if game is lost. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">to_check</td><td>pointer to a tabla object Checks the whole field if there are any possible valid moves left. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Free a tabla object, except for the current state Free a tabla object, excluding the current_state 2D array, which can be reused Primarily used for the undo method, the state storing of which requires the previous state to be reachable, and to avoid having to reallocate an identical array we can reuse it. </p>
+<p>Free a tabla object, except for the current_state Free a tabla object, excluding the current_state 2D array, which can be reused Primarily used for the undo method, the state storing of which requires the previous state to be reachable, and to avoid having to reallocate an identical array we can reuse it. </p>
 
 </div>
 </div>
-<a id="ad5fef432f92387b9802cd0a88fbbff1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5fef432f92387b9802cd0a88fbbff1f">&#9670;&nbsp;</a></span>move_game()</h2>
+<a id="a611f35ab41d0527683985f05d94ce0a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a611f35ab41d0527683985f05d94ce0a0">&#9670;&nbsp;</a></span>game_move()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int move_game </td>
+          <td class="memname">int game_move </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structtabla.html">tabla</a> *&#160;</td>
           <td class="paramname"><em>to_move</em>, </td>
@@ -390,6 +421,52 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">to_move</td><td>pointer to a tabla object </td></tr>
     <tr><td class="paramname">dir</td><td>The direction to move, ['L', 'R', 'U', 'D'] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9bb8fe62644d0f5be508004984fc4684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bb8fe62644d0f5be508004984fc4684">&#9670;&nbsp;</a></span>game_undo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game_undo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structtabla.html">tabla</a> *&#160;</td>
+          <td class="paramname"><em>to_undo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform an undo on the object In case there's an available previous state, replace the current state with that. </p>
+
+</div>
+</div>
+<a id="a961b0c717864dd4780d2e1eb2d384cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a961b0c717864dd4780d2e1eb2d384cdc">&#9670;&nbsp;</a></span>lost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool lost </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structtabla.html">tabla</a> *&#160;</td>
+          <td class="paramname"><em>to_check</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if game is lost. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">to_check</td><td>pointer to a tabla object Checks the whole field if there are any possible valid moves left. </td></tr>
   </table>
   </dd>
 </dl>
@@ -428,7 +505,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="game_8c.html">game.c</a></li>
-    <li class="footer">Generated on Thu Nov 28 2019 19:16:59 for 2048 by
+    <li class="footer">Generated on Fri Nov 29 2019 22:54:29 for 2048 by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

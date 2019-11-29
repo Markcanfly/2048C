@@ -1,6 +1,7 @@
-C:/Users/Mark/Documents/workspace/2048/game.c:81: warning: The following parameters of move_game(tabla *to_move, HS_Node **hs_node, char dir) are not documented:
+C:/Users/Mark/Documents/workspace/2048/game.c:56: warning: unexpected token in comment block while parsing the argument of command param
+C:/Users/Mark/Documents/workspace/2048/game.c:153: warning: The following parameters of game_move(tabla *to_move, HS_Node **hs_node, char dir) are not documented:
   parameter 'hs_node'
-C:/Users/Mark/Documents/workspace/2048/game.h:58: warning: The following parameters of move_game(tabla *to_move, HS_Node **hs_node, char dir) are not documented:
+C:/Users/Mark/Documents/workspace/2048/game.h:69: warning: The following parameters of game_move(tabla *to_move, HS_Node **hs_node, char dir) are not documented:
   parameter 'hs_node'
 C:/Users/Mark/Documents/workspace/2048/menu.c:78: warning: The following parameters of draw_menu_items(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, menu_item menu_elems[], int count_menu_elems) are not documented:
   parameter 'mouse_x'

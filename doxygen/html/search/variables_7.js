@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['menu_5fbutton_236',['menu_button',['../menu_8c.html#a4366f5e6ed00bbd55b507c9cd3590aec',1,'menu.c']]],
-  ['menu_5ftext_5fcolor_237',['menu_text_color',['../style_8c.html#a9202c6f4c9473b7e4c8f4b8bdb7d2b65',1,'menu_text_color():&#160;style.c'],['../style_8h.html#a9202c6f4c9473b7e4c8f4b8bdb7d2b65',1,'menu_text_color():&#160;style.c']]]
+  ['line_242',['line',['../struct_debugmalloc_elem.html#a95a2909f7fac1cbc7ebfdf5cd70c7837',1,'DebugmallocElem']]],
+  ['logfile_243',['logfile',['../struct_debugmalloc_data.html#aaeb43a3c1fa6ff02ae2e49f00083cc45',1,'DebugmallocData']]]
 ];
