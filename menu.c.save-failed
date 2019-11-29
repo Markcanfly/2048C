@@ -6,6 +6,7 @@
 #include "menu.h"
 #include "style.h"
 #include "text_input.h"
+#include "debugmalloc.h"
 
 /**
 * \brief Global style for menu buttons
@@ -66,13 +67,17 @@ int handle_menu_interaction(const struct render_params render_data, bool *quit, 
     return -1;
 }
 
+/**
+* \brief Draw menu buttons and get the selected button
+* \param render_data
+* \param menu_elems menu_item array with the buttons to be displayed and their ID-s
+* Draws each button provided via the menu_elems array, and returns the ID of the
+* button the user is currently hovering their mouse above.
+* \return ID of selected menu
+*/
 int draw_menu_items(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, menu_item menu_elems[], int count_menu_elems) {
-    /**
-    Takes cursor position, sets the appropriate style of each button,
-    draws the frame, and returns the id of the menu item
-    that the cursor's hovering above.
-    */
 
+    // Background
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF);
 
     int selected_menu_elem = -1;
@@ -118,6 +123,9 @@ int draw_menu_items(const struct render_params render_data, int mouse_x, int mou
     return selected_menu_elem;
 }
 
+/**
+* \brief Draw the main menu
+*/
 int draw_menu_main(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down){
     const int count_menu_elems = 3;
     menu_item menu_elems[] = {
@@ -130,6 +138,9 @@ int draw_menu_main(const struct render_params render_data, int mouse_x, int mous
     return draw_menu_items(render_data, mouse_x, mouse_y, mouse_down, menu_elems, count_menu_elems);
 }
 
+/**
+* \brief Draw 'Play' submenu
+*/
 int draw_menu_play(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down) {
     const int count_menu_elems = 3;
     menu_item menu_elems[] = {
@@ -150,14 +161,16 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 int handle_menu_newgame_interaction(const struct render_params render_data, char *name, int len) {
     bool successful = draw_menu_choose_name(render_data, name, len);
     bool quit_fs = false;
-    int choice = -1;
-
+    bool esc = false;
+    int field_size = 4;
     if (successful) {
         // Handle field size selection
+        draw_menu_choose_fieldsize(render_data, 0, 0, false, &field_size, name);
+
         while (!quit_fs) {
             int mouse_x;
             int mouse_y;
-            int choice;
+            int choice = -1;
             bool clicked = false;
             bool keyup = false;
 
@@ -182,19 +195,45 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
                     break;
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym) {
-                        case SDLK_ESCAPE: *quit = true; break;
+                        case SDLK_ESCAPE: quit_fs = true; esc = true; break;
+                        case SDLK_LEFT: if (field_size > 1) field_size--; break;
+                        case SDLK_RIGHT: if (field_size < 10) field_size++; break;
+                        case SDLK_RETURN: quit_fs = true;
                     }
                     break;
             }
             SDL_RenderClear(render_data.renderer);
-            choice = draw_menu_choose_fieldsize(render_data, name);
+            choice = draw_menu_choose_fieldsize(render_data, mouse_x, mouse_y, clicked, &field_size, name);
             SDL_RenderPresent(render_data.renderer);
+
+            if (keyup) {
+                switch (choice) {
+                    case 0:
+                        field_size--;
+                        break;
+                    case 1:
+                        field_size++;
+                        break;
+                    case 2:
+                        quit_fs = true;
+                        break;
+                }
+            }
         }
     } else {
         return -1;
     }
+
+    return esc ? -1 : field_size;
 }
 
+/**
+* \brief Draw the name chooser and get text input
+* \param render_data render_params object
+* \param dest Character array pointer to store the text input at
+* \param len Maximum length of text to read
+* \return success boolean
+*/
 bool draw_menu_choose_name(const struct render_params render_data, char *dest, int len) {
 
     // Draw user prompt
@@ -227,7 +266,27 @@ bool draw_menu_choose_name(const struct render_params render_data, char *dest, i
     return successful;
 }
 
-int draw_menu_choose_fieldsize(const struct render_params render_data, char *name) {
+/**
+* \brief Draw fieldsize chooser UI
+*/
+int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, int *field_size, char *name) {
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF); // Background
+    char fs_str[3];
+    itoa(*field_size, fs_str, 10);
+
+    // Text
+    draw_text_to_center(render_data.renderer, render_data.x0, 50, render_data.x1, 250, "Select game size", render_data.font, menu_text_color);
+    if (*field_size <= 1 || *field_size >= 10)
+        draw_text_to_center(render_data.renderer, render_data.x0, 200, render_data.x1, 350, "1 < x < 10", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, 100, render_data.x1, 300, fs_str, render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, 100, render_data.x1, 400, "<   >", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, 300, render_data.x1, 400, "Press ESC to go Back", render_data.font, menu_text_color);
+
+    // Draw buttons
+
+
+
+    return 0;
 
 }
 
@@ -284,8 +343,9 @@ int handle_menu_hs_interaction(const struct render_params render_data, bool *qui
 */
 int draw_menu_highscores(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, HS_Node *hs_node) {
 
-    int i = 10;
+    int i = 8;
     // Set drawing parameters
+    const int y_offset = 40;
     const int table_height = (render_data.y1 - render_data.y0);
     const int cell = table_height / i;
     const int name_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 10; // Margin for name
@@ -296,15 +356,16 @@ int draw_menu_highscores(const struct render_params render_data, int mouse_x, in
     const int score_x1 = render_data.x1 - 5;
 
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF); // Background
+    const int i_max = i;
     for (HS_Node *c = hs_node; c != NULL && i > 0; c = c -> next) {
         // Draw data
-        draw_text_to_center(render_data.renderer, name_x0, cell * (10-i), name_x1, cell * (10 - (i - 1)), c -> name, render_data.font, menu_text_color);
+        draw_text_to_center(render_data.renderer, name_x0, y_offset + cell * (i_max-i), name_x1, y_offset + cell * (i_max - (i - 1)), c -> name, render_data.font, menu_text_color);
         char field_size_text[3]; // buffer for 2-digit numbers for the field size
         char score_text[12]; // buffer for 11 digit score
         itoa(c -> field_size, field_size_text, 10);
         itoa(c -> score, score_text, 10);
-        draw_text_to_center(render_data.renderer, field_size_x0, cell * (10-i), field_size_x1, cell * (10 - (i - 1)), field_size_text, render_data.font, menu_text_color);
-        draw_text_to_center(render_data.renderer, score_x0, cell * (10-i), score_x1, cell * (10 - (i - 1)), score_text, render_data.font, menu_text_color);
+        draw_text_to_center(render_data.renderer, field_size_x0, y_offset + cell * (i_max-i), field_size_x1, y_offset + cell * (i_max - (i - 1)), field_size_text, render_data.font, menu_text_color);
+        draw_text_to_center(render_data.renderer, score_x0, cell * (i_max-i), score_x1, y_offset + cell * (i_max - (i - 1)), score_text, render_data.font, menu_text_color);
         i--;
     }
 
@@ -338,4 +399,25 @@ int draw_menu_highscores(const struct render_params render_data, int mouse_x, in
     SDL_RenderPresent(render_data.renderer);
 
     return selected_menu_elem;
+}
+
+/**
+* \brief Draw simple win message
+*/
+void draw_win_splash(const struct render_params render_data) {
+    // Semi-transparent background
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48C88);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1 - 80, "Congratulations!", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, "You've won.", render_data.font, menu_text_color);
+    // draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0 + 80, render_data.x1, render_data.y1, "Press any key to continue.", render_data.font, menu_text_color);
+}
+
+/**
+* \brief Draw simple lost message
+*/
+void draw_lose_splash(const struct render_params render_data) {
+    // Semi-transparent background
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48C88);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1 - 40, "Game over!", render_data.font, menu_text_color);
+    draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0 + 40, render_data.x1, render_data.y1, "Press ESC to exit", render_data.font, menu_text_color);
 }

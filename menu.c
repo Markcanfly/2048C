@@ -343,27 +343,31 @@ int handle_menu_hs_interaction(const struct render_params render_data, bool *qui
 */
 int draw_menu_highscores(const struct render_params render_data, int mouse_x, int mouse_y, bool mouse_down, HS_Node *hs_node) {
 
-    int i = 10;
+    int i = 8;
     // Set drawing parameters
-    const int table_height = (render_data.y1 - render_data.y0);
+    const int y_offset = 40;
+    const int y_bottom_margin = 80;
+    const int table_height = (render_data.y1 - render_data.y0) - y_bottom_margin;
     const int cell = table_height / i;
     const int name_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 10; // Margin for name
-    const int name_x1 = render_data.x0 + (render_data.x1 - render_data.x0) / 2;
-    const int field_size_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 2 + 5;
-    const int field_size_x1 = render_data.x0 + ((render_data.x1 - render_data.x0) / 8) * 5;
-    const int score_x0 = render_data.x0 + ((render_data.x1 - render_data.x0) / 8) * 5 + 5;
+    const int name_x1 = render_data.x0 + (render_data.x1 - render_data.x0) / 3;
+    const int field_size_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 3 + 5;
+    const int field_size_x1 = render_data.x0 + (render_data.x1 - render_data.x0) / 3 * 2;
+    const int score_x0 = render_data.x0 + (render_data.x1 - render_data.x0) / 3 * 2 + 5;
     const int score_x1 = render_data.x1 - 5;
 
+    // Draw highscores
     boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF); // Background
+    const int i_max = i;
     for (HS_Node *c = hs_node; c != NULL && i > 0; c = c -> next) {
         // Draw data
-        draw_text_to_center(render_data.renderer, name_x0, cell * (10-i), name_x1, cell * (10 - (i - 1)), c -> name, render_data.font, menu_text_color);
+        draw_text_to_center(render_data.renderer, name_x0, y_offset + cell * (i_max-i), name_x1, y_offset + cell * (i_max - (i - 1)), c -> name, render_data.font, menu_text_color);
         char field_size_text[3]; // buffer for 2-digit numbers for the field size
         char score_text[12]; // buffer for 11 digit score
         itoa(c -> field_size, field_size_text, 10);
         itoa(c -> score, score_text, 10);
-        draw_text_to_center(render_data.renderer, field_size_x0, cell * (10-i), field_size_x1, cell * (10 - (i - 1)), field_size_text, render_data.font, menu_text_color);
-        draw_text_to_center(render_data.renderer, score_x0, cell * (10-i), score_x1, cell * (10 - (i - 1)), score_text, render_data.font, menu_text_color);
+        draw_text_to_center(render_data.renderer, field_size_x0, y_offset + cell * (i_max-i), field_size_x1, y_offset + cell * (i_max - (i - 1)), field_size_text, render_data.font, menu_text_color);
+        draw_text_to_center(render_data.renderer, score_x0, y_offset + cell * (i_max-i), score_x1, y_offset + cell * (i_max - (i - 1)), score_text, render_data.font, menu_text_color);
         i--;
     }
 

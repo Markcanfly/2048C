@@ -141,7 +141,7 @@ void store_save(const tabla *to_store) {
 * \brief Load the saved highscores from a static location
 * Load the saved highscores from *%workingdir%/mentes/highscores.txt*
 * Expects the following format on each line:
-* {score}-{field_size}-{name}
+* {name}-{field_size}-{score}
 */
 HS_Node *load_highscores() {
     FILE *hs_file = fopen("mentes/highscores.txt", "r");
