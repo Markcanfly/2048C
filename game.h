@@ -69,6 +69,13 @@ void print_tabla(tabla *to_print);
 int game_move(tabla *to_move, HS_Node **hs_node, char dir);
 
 /**
+* \brief Perform an undo on the object
+* In case there's an available previous state, replace the current state with that
+*/
+void game_undo(tabla *to_undo);
+
+
+/**
 * \brief Draws all game elements
 * \param render_data rendering hyperparameters
 * \param to_draw pointer to a tabla object

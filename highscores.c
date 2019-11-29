@@ -85,6 +85,8 @@ void add_highscore(HS_Node **first, char *name, int field_size, int score) {
     if (*first == NULL) {
         // Just create new node
         *first = (HS_Node *) malloc(sizeof(HS_Node));
+        if (*first == NULL)
+            return;
         strcpy((*first) -> name, name);
         (*first) -> field_size = field_size;
         (*first) -> score = score;
@@ -92,6 +94,8 @@ void add_highscore(HS_Node **first, char *name, int field_size, int score) {
     } else if ((*first) -> score < score) {
         HS_Node *new_next = *first;
         *first = (HS_Node *) malloc(sizeof(HS_Node));
+        if (*first == NULL)
+            return;
         strcpy((*first) -> name, name);
         (*first) -> field_size = field_size;
         (*first) -> score = score;
@@ -106,6 +110,8 @@ void add_highscore(HS_Node **first, char *name, int field_size, int score) {
         // Insert new node here
         HS_Node *new_next = previous -> next;
         previous -> next = (HS_Node *) malloc(sizeof(HS_Node));
+        if (previous -> next == NULL)
+            return;
         strcpy(previous -> next -> name, name);
         previous -> next -> field_size = field_size;
         previous -> next -> score = score;

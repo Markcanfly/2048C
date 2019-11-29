@@ -9,6 +9,7 @@
 #include "game.h"
 #include "push_tiles.h"
 #include "debugmalloc.h"
+#include "filehandler.h"
 
 /**
 * \brief Pseudo-constructor for a tabla object
@@ -22,12 +23,20 @@
 */
 tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles) {
     int **nums = (int **) malloc(size_y * sizeof(int));
+    if (nums == NULL)
+        return NULL;
+
     nums[0] = (int *) calloc(size_x * size_y, sizeof(int)); // filled with 0s
+    if (nums[0] == NULL)
+        return NULL;
+
     for (int y = 1; y < size_y; y++) {
         nums[y] = nums[0] + y*size_x;
     }
 
     tabla* new_tabla = malloc(sizeof(tabla));
+    if (new_tabla == NULL)
+        return NULL;
 
     strcpy(new_tabla -> name, name);
     new_tabla -> score = 0;
@@ -52,7 +61,13 @@ tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles) {
 tabla *copy_tabla(tabla *to_copy) {
     // Allocate memory for the new array
     int **nums = (int **) malloc((to_copy -> size_y) * sizeof(int));
+    if (nums == NULL)
+        return NULL;
+
     nums[0] = (int *) malloc(sizeof(int) * (to_copy -> size_x) * (to_copy -> size_y));
+    if (nums[0] == NULL)
+        return NULL;
+
     for (int y = 1; y < to_copy -> size_y; y++) {
         nums[y] = nums[0] + y * to_copy -> size_x;
     }
@@ -65,6 +80,8 @@ tabla *copy_tabla(tabla *to_copy) {
     }
 
     tabla *new_tabla = malloc(sizeof(tabla));
+    if (new_tabla == NULL)
+        return NULL;
 
     // Copy values over
     strcpy(new_tabla -> name, to_copy -> name);

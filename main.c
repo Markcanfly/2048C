@@ -15,8 +15,6 @@
 
 /*  -- TODO list - ordered by priority --
     TODO add headers to highscore display
-    TODO malloc guards everywhere for error handling
-    TODO remove debug printfs
 */
 
 // Hyperparameters
@@ -51,11 +49,9 @@ int main(int argc, char *argv[]) {
 
     /* Highscore data */
     HS_Node *hs_first = load_highscores();
-    debug_print_HS(hs_first);
 
     /* Tabla data */
     tabla *uj_tabla = load_save();
-    print_tabla(uj_tabla);
 
     /* SDL data */
     SDL_Window *window;
@@ -139,8 +135,6 @@ int main(int argc, char *argv[]) {
                                 game_undo(uj_tabla);
                                 break;
                         }
-                        printf("---------\n");
-                        print_tabla(uj_tabla);
                         break;
 
                     case SDL_QUIT:
@@ -226,8 +220,6 @@ int main(int argc, char *argv[]) {
         SDL_RenderPresent(renderer);
 
     }
-
-    debug_print_HS(hs_first);
 
     // Save highscores to file
     store_highscores(hs_first);

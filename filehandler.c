@@ -38,7 +38,11 @@ tabla *load_save() {
     // Create new dynamic array for the field
 
     int **nums = (int **) malloc(size_y * sizeof(int));
+    if (nums == NULL)
+        return create_tabla("Default", 4, 4, 3);
     nums[0] = (int *) malloc(size_x * size_y * sizeof(int)); // filled with 0s
+    if (nums[0] == NULL)
+        return create_tabla("Default", 4, 4, 3);
     for (int y = 1; y < size_y; y++) {
         nums[y] = nums[0] + y*size_x;
     }
@@ -59,7 +63,13 @@ tabla *load_save() {
         // Create new dynamic array for the field
 
         prev_nums = (int **) malloc(size_y * sizeof(int));
-        prev_nums[0] = (int *) malloc(size_x * size_y * sizeof(int)); // filled with 0s
+        if (prev_nums == NULL)
+            return create_tabla("Default", 4, 4, 3);
+
+        prev_nums[0] = (int *) malloc(size_x * size_y * sizeof(int));
+        if (prev_nums[0] == NULL)
+            return create_tabla("Default", 4, 4, 3);
+
         for (int y = 1; y < size_y; y++) {
             prev_nums[y] = prev_nums[0] + y*size_x;
         }
@@ -77,6 +87,9 @@ tabla *load_save() {
 
     // Create new tabla obj
     tabla* new_tabla = malloc(sizeof(tabla));
+
+    if (new_tabla == NULL)
+        return create_tabla("Default", 4, 4, 3);
 
     strcpy(new_tabla -> name, name);
     new_tabla -> score = score;
