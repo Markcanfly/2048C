@@ -14,6 +14,8 @@
 * - SIZE_X
 * - SIZE_Y
 * - `SIZE_Y` Rows and `SIZE_X` columns of numbers, separated with a space
+* - Previous score (for undo)
+* - `SIZE_Y` Rows and `SIZE_X` columns of numbers, separated with a space or '-' if nonexistent (previous state for undo)
 */
 tabla *load_save() {
 
@@ -24,34 +26,63 @@ tabla *load_save() {
         return create_tabla("Default", 4, 4, 3);
     }
     char name[51];
-    int score, size_x, size_y;
+    int score, previous_score, size_x, size_y;
     fgets(name, 51, save_file);
     strtok(name, "\n");
     fscanf(save_file,"%d", &score);
     fscanf(save_file, "%d", &size_x);
     fscanf(save_file, "%d", &size_y);
 
-    // Create new tabla obj
+    /* Load field values */
+
+    // Create new dynamic array for the field
 
     int **nums = (int **) malloc(size_y * sizeof(int));
-    nums[0] = (int *) calloc(size_x * size_y, sizeof(int)); // filled with 0s
+    nums[0] = (int *) malloc(size_x * size_y * sizeof(int)); // filled with 0s
     for (int y = 1; y < size_y; y++) {
         nums[y] = nums[0] + y*size_x;
     }
-
+    // Assign values
     for (int y = 0; y < size_y; y++) {
         for (int x = 0; x < size_x; x++) {
             fscanf(save_file, "%d", &nums[y][x]);
         }
     }
+
+    /* Load previous field if present */
+
+    // Load previous score
+    fscanf(save_file, "%d", &previous_score);
+    int **prev_nums;
+
+    if (previous_score > 0) { /* Read previous state */
+        // Create new dynamic array for the field
+
+        prev_nums = (int **) malloc(size_y * sizeof(int));
+        prev_nums[0] = (int *) malloc(size_x * size_y * sizeof(int)); // filled with 0s
+        for (int y = 1; y < size_y; y++) {
+            prev_nums[y] = prev_nums[0] + y*size_x;
+        }
+        // Assign values
+        for (int y = 0; y < size_y; y++) {
+            for (int x = 0; x < size_x; x++) {
+                fscanf(save_file, "%d", &prev_nums[y][x]);
+            }
+        }
+    } else { /* No previous state present, don't even read */
+        prev_nums = NULL;
+    }
+
     fclose(save_file);
 
+    // Create new tabla obj
     tabla* new_tabla = malloc(sizeof(tabla));
 
     strcpy(new_tabla -> name, name);
     new_tabla -> score = score;
+    new_tabla -> previous_score = previous_score;
     new_tabla -> current_field = nums;
-    new_tabla -> previous_field = NULL; // IN PROGRESS, JUST A SAFEGUARD FOR NOW
+    new_tabla -> previous_field = prev_nums;
     new_tabla -> size_x = size_x;
     new_tabla -> size_y = size_y;
 
@@ -74,17 +105,32 @@ void store_save(const tabla *to_store) {
         return;
     }
 
-
-    // Write out metadata
+    // Write out generic metadata
     fprintf(save_file, "%s\n%d\n%d\n%d\n", to_store -> name, to_store -> score, to_store -> size_x, to_store -> size_y);
-    // Write gamestate to file
 
+    // Write gamestate to file
     for (int y = 0; y < to_store -> size_y; y++) {
         fprintf(save_file, "%d", to_store -> current_field[y][0]); // First elem
         for (int x = 1; x < to_store -> size_x; x++) {
             fprintf(save_file, " %d", to_store -> current_field[y][x]);
         }
         fprintf(save_file, "\n");
+    }
+
+    // Write previous score
+    fprintf(save_file, "%d\n", to_store -> previous_score);
+
+    // Write previous gamestate if such exists, otherwise a '-'
+    if (to_store -> previous_field != NULL) {
+        for (int y = 0; y < to_store -> size_y; y++) {
+            fprintf(save_file, "%d", to_store -> previous_field[y][0]); // First elem
+            for (int x = 1; x < to_store -> size_x; x++) {
+                fprintf(save_file, " %d", to_store -> previous_field[y][x]);
+            }
+            fprintf(save_file, "\n");
+        }
+    } else {
+        fprintf(save_file, "-\n");
     }
 
     fclose(save_file);

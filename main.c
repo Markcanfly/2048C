@@ -14,10 +14,10 @@
 
 
 /*  -- TODO list - ordered by priority --
-    TODO move logging, undo
-        TODO store previous state and score in file
     TODO add headers to highscore display and test max number of hs printable in relation to height
     TODO fix highscore file structure - put name in front
+    TODO malloc guards everywhere for error handling
+    TODO remove debug printfs
 */
 
 // Hyperparameters

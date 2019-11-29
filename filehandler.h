@@ -13,6 +13,8 @@
 * - SIZE_X
 * - SIZE_Y
 * - `SIZE_Y` Rows and `SIZE_X` columns of numbers, separated with a space
+* - Previous score (for undo)
+* - `SIZE_Y` Rows and `SIZE_X` columns of numbers, separated with a space or '-' if nonexistent (previous state for undo)
 */
 tabla *load_save();
 

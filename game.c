@@ -31,6 +31,7 @@ tabla *create_tabla(char *name, int size_x, int size_y, int start_tiles) {
 
     strcpy(new_tabla -> name, name);
     new_tabla -> score = 0;
+    new_tabla -> previous_score = 0;
     new_tabla -> current_field = nums;
     new_tabla -> previous_field = NULL;
     new_tabla -> size_x = size_x;
@@ -154,14 +155,13 @@ int game_move(tabla *to_move, HS_Node **hs_node, char dir) {
     }
 
     switch (move_state) {
-        case -1:
-            // Game won
+        case -1: /* Game won */
             add_checked_highscore(hs_node, to_move -> name, to_move -> size_x, to_move -> score);
             store_save(to_move);
             return 1;
             break;
-        case 0:
-            /* Valid move */
+
+        case 0: /* Valid move */
             add_random(to_move);
             // Save state
             store_save(to_move);
@@ -184,8 +184,7 @@ int game_move(tabla *to_move, HS_Node **hs_node, char dir) {
             free_tabla_ex_field(temp_fieldcopy);
 
             break;
-        case 1:
-            // Invalid move
+        case 1: /* Invalid move */
             free_tabla(temp_fieldcopy);
             break;
     }
@@ -205,7 +204,7 @@ void game_undo(tabla *to_undo) {
     if (to_undo -> previous_field != NULL) {
         /* Reset score */
         to_undo -> score = to_undo -> previous_score;
-        to_undo -> previous_score = 0;
+        to_undo -> previous_score = 0; // Flag for the save
         /* Free current state */
         free(to_undo -> current_field[0]);
         free(to_undo -> current_field);
