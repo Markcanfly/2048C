@@ -7,7 +7,7 @@
 
 /**
 * \brief Load the saved gamestate from a static location
-* Load the saved gamestate from *%workingdir%/mentes/tabla.txt*
+* Load the saved gamestate from *%workingdir%/data/mentes.txt*
 * Expects the following format:
 * - Name
 * - Score
@@ -19,7 +19,7 @@
 */
 tabla *load_save() {
 
-    FILE *save_file = fopen("mentes/tabla.txt", "r");
+    FILE *save_file = fopen("data/mentes.txt", "r");
 
     if (save_file == NULL) {
         printf("Error! Couldn't open save file for reading.\n");
@@ -104,14 +104,14 @@ tabla *load_save() {
 
 /**
 * \brief Store a save of the current gamestate to a static location
-* Stores the save at *%workingdir%/mentes/tabla.txt*
+* Stores the save at *%workingdir%/data/mentes.txt*
 * \param to_store pointer to a tabla object
 */
 void store_save(const tabla *to_store) {
     /*
     Takes a tabla object and writes its data to file.
     */
-    FILE *save_file = fopen("mentes/tabla.txt", "w");
+    FILE *save_file = fopen("data/mentes.txt", "w");
 
     if (save_file == NULL) {
         printf("Error! Couldn't open save file for writing.");
@@ -152,12 +152,12 @@ void store_save(const tabla *to_store) {
 
 /**
 * \brief Load the saved highscores from a static location
-* Load the saved highscores from *%workingdir%/mentes/highscores.txt*
+* Load the saved highscores from *%workingdir%/data/toplista.txt*
 * Expects the following format on each line:
 * {name}-{field_size}-{score}
 */
 HS_Node *load_highscores() {
-    FILE *hs_file = fopen("mentes/highscores.txt", "r");
+    FILE *hs_file = fopen("data/toplista.txt", "r");
 
     if (hs_file == NULL) {
         printf("Error! Couldn't open highscore file for reading.\n");
@@ -184,12 +184,12 @@ HS_Node *load_highscores() {
 
 /**
 * \brief Store the saved highscores to a static location
-* Write the saved highscores to *%workingdir%/mentes/highscores.txt*
+* Write the saved highscores to *%workingdir%/data/toplista.txt*
 * Uses the following format on each line:
 * {name}-{field_size}-{score}
 */
 void store_highscores(HS_Node *to_store) {
-    FILE *hs_file = fopen("mentes/highscores.txt", "w");
+    FILE *hs_file = fopen("data/toplista.txt", "w");
 
     if (hs_file == NULL) {
         printf("Error! Couldn't open highscore file for writing.\n");

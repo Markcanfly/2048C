@@ -6,7 +6,7 @@
 
 /**
 * \brief Load the saved gamestate from a static location
-* Load the saved gamestate from *%workingdir%/mentes/tabla.txt*
+* Load the saved gamestate from *%workingdir%/data/mentes.txt*
 * Expects the following format:
 * - Name
 * - Score
@@ -20,14 +20,14 @@ tabla *load_save();
 
 /**
 * \brief Store a save of the current gamestate to a static location
-* Stores the save at *%workingdir%/mentes/tabla.txt*
+* Stores the save at *%workingdir%/data/mentes.txt*
 * \param to_store pointer to a tabla object
 */
 void store_save(const tabla *to_store);
 
 /**
 * \brief Load the saved highscores from a static location
-* Load the saved highscores from *%workingdir%/mentes/highscores.txt*
+* Load the saved highscores from *%workingdir%/data/toplista.txt*
 * Expects the following format on each line:
 * {name}-{field_size}-{score}
 */
@@ -35,7 +35,7 @@ HS_Node *load_highscores();
 
 /**
 * \brief Store the saved highscores to a static location
-* Write the saved highscores to *%workingdir%/mentes/highscores.txt*
+* Write the saved highscores to *%workingdir%/data/toplista.txt*
 * Uses the following format on each line:
 * {name}-{field_size}-{score}
 */
