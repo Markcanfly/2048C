@@ -95,9 +95,6 @@ int main(int argc, char *argv[]) {
             // ENTER Game
             while (!quit_game) {
 
-                // Game background
-                boxColor(renderer, 0, 0, WINSIZE_X, WINSIZE_Y, 0xD2B48CFF);
-
                 // Draw tiles
                 draw_game(render_data, uj_tabla);
 
@@ -145,10 +142,7 @@ int main(int argc, char *argv[]) {
 
             }
 
-            /*
-            ENTER Play menu
-            */
-
+            // ENTER Play menu
             int choice = -1; // Store the menu option choice here
             choice = handle_menu_interaction(render_data, &quit_play_select, &draw_menu_play);
             switch (choice) {
@@ -165,34 +159,24 @@ int main(int argc, char *argv[]) {
             }
 
             if (create_newgame) {
-                // New Game pressed
-                char name[51]; // buffer
-                SDL_RenderClear(renderer);
-                // Draw prompt and parse text in one func, then return status code (true/false)
-                int tabla_size = handle_menu_newgame_interaction(render_data, name, 51); // Inner while loop
-                if (tabla_size > 1 && tabla_size < 10) {
-                    free_tabla(uj_tabla);
-                    uj_tabla = create_tabla(name, tabla_size, tabla_size, tabla_size - 1);
-                    quit_game = false; // Enter game
-                } else {
-                    SDL_RenderClear(renderer);
-                }
+                bool successful = handle_menu_newgame_interaction(render_data, &uj_tabla);
+                if (successful)
+                    quit_game = false;
+
                 create_newgame = false; // avoid looping back here without user choice
             }
 
             SDL_RenderPresent(renderer);
-
         }
 
         // ENTER High Scores screen
         while (!quit_highscores) {
-            int exit = handle_menu_hs_interaction(render_data, &quit_highscores, hs_first);
-            switch (exit) {
-                case 0:
-                    quit_highscores = true;
-                    draw_menu_main(render_data, 0, 0, false);
-                    SDL_RenderPresent(renderer);
-                    break;
+            bool exit = handle_menu_hs_interaction(render_data, &quit_highscores, hs_first);
+            if (exit) {
+                quit_highscores = true;
+                draw_menu_main(render_data, 0, 0, false);
+                SDL_RenderPresent(renderer);
+                break;
             }
         }
 
@@ -220,6 +204,8 @@ int main(int argc, char *argv[]) {
         SDL_RenderPresent(renderer);
 
     }
+
+    /* EXIT */
 
     // Save highscores to file
     store_highscores(hs_first);

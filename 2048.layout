@@ -2,37 +2,85 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="game.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="push_tiles.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="286" topLine="0" />
+			<Cursor1 position="8236" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="219" />
+			<Collapse line="13" />
+			<Collapse line="76" />
+			<Collapse line="139" />
+			<Collapse line="203" />
 		</Folding>
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4503" topLine="59" />
+		</Cursor>
+		<Folding>
+			<Collapse line="24" />
+			<Collapse line="64" />
+			<Collapse line="70" />
+			<Collapse line="95" />
+			<Collapse line="185" />
+		</Folding>
+	</File>
+	<File name="menu.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1875" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="menu.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8016" topLine="118" />
+		</Cursor>
+		<Folding>
+			<Collapse line="14" />
+			<Collapse line="26" />
+			<Collapse line="78" />
+			<Collapse line="129" />
+			<Collapse line="144" />
+			<Collapse line="249" />
+			<Collapse line="287" />
+			<Collapse line="312" />
+			<Collapse line="360" />
+			<Collapse line="425" />
+			<Collapse line="436" />
+		</Folding>
+	</File>
+	<File name="text_input.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="568" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="style.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1566" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="text_input.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="661" topLine="0" />
+		</Cursor>
 	</File>
 	<File name="highscores.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="356" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="menu.c" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="filehandler.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="12957" topLine="292" />
+			<Cursor1 position="115" topLine="18" />
 		</Cursor>
 	</File>
-	<File name="filehandler.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="filehandler.c" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="115" topLine="25" />
+			<Cursor1 position="4886" topLine="179" />
 		</Cursor>
 	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="game.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="402" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="debugmalloc-impl.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2885" topLine="0" />
+			<Cursor1 position="1611" topLine="24" />
 		</Cursor>
 	</File>
 	<File name="game.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -50,31 +98,15 @@
 			<Collapse line="44" />
 		</Folding>
 	</File>
-	<File name="menu.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="debugmalloc-impl.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2947" topLine="59" />
-		</Cursor>
-	</File>
-	<File name="filehandler.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4886" topLine="186" />
+			<Cursor1 position="2885" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="push_tiles.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="253" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="push_tiles.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8236" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="13" />
-			<Collapse line="76" />
-			<Collapse line="139" />
-			<Collapse line="203" />
-		</Folding>
 	</File>
 	<File name="style.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -84,20 +116,5 @@
 			<Collapse line="11" />
 			<Collapse line="21" />
 		</Folding>
-	</File>
-	<File name="text_input.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="205" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="style.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1566" topLine="42" />
-		</Cursor>
-	</File>
-	<File name="text_input.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="568" topLine="0" />
-		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
