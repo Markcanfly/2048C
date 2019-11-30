@@ -6,6 +6,7 @@
 #include <SDL2/SDL_ttf.h>
 #include "style.h"
 #include "highscores.h"
+#include "game.h"
 
 /**
 * \brief Structure used to store a menu button
@@ -49,7 +50,7 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 * WARNING: while loops included free of charge
 * \return tabla_size or -1 if user input failed
 */
-int handle_menu_newgame_interaction(const struct render_params render_data, char *name, int len);
+bool handle_menu_newgame_interaction(const struct render_params render_data, tabla **to_create);
 
 /**
 * \brief Draw the name chooser and get text input
@@ -68,7 +69,7 @@ int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse
 /**
 * \brief Exit-only interaction handler for high scores
 */
-int handle_menu_hs_interaction(const struct render_params render_data, bool *quit, HS_Node *hs_node);
+bool handle_menu_hs_interaction(const struct render_params render_data, bool *quit, HS_Node *hs_node);
 
 /**
 * \brief Draw the **High Scores** menu

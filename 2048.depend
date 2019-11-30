@@ -243,3 +243,133 @@
 	"debugmalloc.h"
 	"highscores.h"
 
+1575115176 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\game.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdbool.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"style.h"
+	"game.h"
+	"push_tiles.h"
+	"debugmalloc.h"
+	"filehandler.h"
+
+1575114177 c:\users\mark\documents\workspace\2048_from_remote\2048c\style.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+
+1575114177 c:\users\mark\documents\workspace\2048_from_remote\2048c\game.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdbool.h>
+	"highscores.h"
+	"style.h"
+
+1575114177 c:\users\mark\documents\workspace\2048_from_remote\2048c\highscores.h
+
+1575114177 c:\users\mark\documents\workspace\2048_from_remote\2048c\push_tiles.h
+	<stdbool.h>
+	"game.h"
+	"highscores.h"
+
+1575114176 c:\users\mark\documents\workspace\2048_from_remote\2048c\debugmalloc.h
+	<stdbool.h>
+	"debugmalloc-impl.h"
+
+1575114176 c:\users\mark\documents\workspace\2048_from_remote\2048c\debugmalloc-impl.h
+	<stdbool.h>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdarg.h>
+	<process.h>
+	<unistd.h>
+
+1575114177 c:\users\mark\documents\workspace\2048_from_remote\2048c\filehandler.h
+	"game.h"
+	"highscores.h"
+
+1575114177 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\push_tiles.c
+	<stdlib.h>
+	<stdbool.h>
+	<stdio.h>
+	<string.h>
+	"push_tiles.h"
+	"game.h"
+	"debugmalloc.h"
+	"highscores.h"
+
+1575114177 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\style.c
+	<math.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	"style.h"
+	"debugmalloc.h"
+
+1575114177 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\filehandler.c
+	<string.h>
+	"filehandler.h"
+	"game.h"
+	"debugmalloc.h"
+	"highscores.h"
+	<stdio.h>
+
+1575114177 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\highscores.c
+	<string.h>
+	"debugmalloc.h"
+	"highscores.h"
+
+1575116348 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\main.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdbool.h>
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	"game.h"
+	"push_tiles.h"
+	"menu.h"
+	"filehandler.h"
+	"debugmalloc.h"
+	"highscores.h"
+
+1575116368 c:\users\mark\documents\workspace\2048_from_remote\2048c\menu.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	"style.h"
+	"highscores.h"
+	"game.h"
+
+1575114177 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\text_input.c
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<stdbool.h>
+	<string.h>
+	<stdlib.h>
+	"text_input.h"
+	"debugmalloc.h"
+
+1575114177 c:\users\mark\documents\workspace\2048_from_remote\2048c\text_input.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+
+1575116375 source:c:\users\mark\documents\workspace\2048_from_remote\2048c\menu.c
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdbool.h>
+	<stdlib.h>
+	"menu.h"
+	"style.h"
+	"text_input.h"
+	"debugmalloc.h"
+	"game.h"
+

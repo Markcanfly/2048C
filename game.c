@@ -263,6 +263,11 @@ void draw_game(const struct render_params render_data, tabla *to_draw) {
     struct render_params controls_rp = render_data;
     controls_rp.y1 = game_rp.y0;
 
+    SDL_RenderClear(render_data.renderer);
+
+    // Game background
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF);
+
     draw_game_controls(controls_rp, to_draw);
     draw_tiles(game_rp, to_draw);
 

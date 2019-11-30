@@ -7,6 +7,7 @@
 #include "style.h"
 #include "text_input.h"
 #include "debugmalloc.h"
+#include "game.h"
 
 /**
 * \brief Global style for menu buttons
@@ -158,10 +159,11 @@ int draw_menu_play(const struct render_params render_data, int mouse_x, int mous
 * WARNING: while loops included free of charge
 * \return tabla_size or -1 if user input failed
 */
-int handle_menu_newgame_interaction(const struct render_params render_data, char *name, int len) {
-    bool successful = draw_menu_choose_name(render_data, name, len);
+bool handle_menu_newgame_interaction(const struct render_params render_data, tabla **to_create) {
+    char name[51];
+    SDL_RenderClear(render_data.renderer);
+    bool successful = draw_menu_choose_name(render_data, name, 51);
     bool quit_fs = false;
-    bool esc = false;
     int field_size = 4;
     if (successful) {
         // Handle field size selection
@@ -195,7 +197,7 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
                     break;
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym) {
-                        case SDLK_ESCAPE: quit_fs = true; esc = true; break;
+                        case SDLK_ESCAPE: quit_fs = true; return false; break;
                         case SDLK_LEFT: if (field_size > 1) field_size--; break;
                         case SDLK_RIGHT: if (field_size < 10) field_size++; break;
                         case SDLK_RETURN: quit_fs = true;
@@ -220,11 +222,22 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
                 }
             }
         }
+
+        // Check if field size satisfies constraints
+        if (field_size > 1 && field_size < 10) {
+            free_tabla(*to_create);
+            *to_create = create_tabla(name, field_size, field_size, field_size - 1);
+            return true;
+        } else {
+            return false;
+        }
     } else {
-        return -1;
+        return false;
     }
 
-    return esc ? -1 : field_size;
+    // Anything fails terribly, just return false
+    return false;
+
 }
 
 /**
@@ -235,6 +248,9 @@ int handle_menu_newgame_interaction(const struct render_params render_data, char
 * \return success boolean
 */
 bool draw_menu_choose_name(const struct render_params render_data, char *dest, int len) {
+
+    // Background
+    boxColor(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1, 0xD2B48CFF);
 
     // Draw user prompt
 
@@ -292,8 +308,9 @@ int draw_menu_choose_fieldsize(const struct render_params render_data, int mouse
 
 /**
 * \brief Exit-only interaction handler for high scores
+* \return true if user hit exit, otherwise false
 */
-int handle_menu_hs_interaction(const struct render_params render_data, bool *quit, HS_Node *hs_node) {
+bool handle_menu_hs_interaction(const struct render_params render_data, bool *quit, HS_Node *hs_node) {
     int mouse_x;
     int mouse_y;
     int choice;
@@ -327,14 +344,14 @@ int handle_menu_hs_interaction(const struct render_params render_data, bool *qui
     }
     SDL_RenderClear(render_data.renderer);
     /*
-    Draw menu with appropriate button states,
-    then return choice on KEYUP or -1 otherwise.
+    If choice is 0, we know user hit back, otherwise it's -1
     */
     choice = draw_menu_highscores(render_data, mouse_x, mouse_y, clicked, hs_node);
     if (keyup)
-        return choice;
+        if (choice == 0)
+            return true;
 
-    return -1;
+    return false;
 }
 
 /**
@@ -423,3 +440,4 @@ void draw_lose_splash(const struct render_params render_data) {
     draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0, render_data.x1, render_data.y1 - 40, "Game over!", render_data.font, menu_text_color);
     draw_text_to_center(render_data.renderer, render_data.x0, render_data.y0 + 40, render_data.x1, render_data.y1, "Press ESC to exit", render_data.font, menu_text_color);
 }
+
